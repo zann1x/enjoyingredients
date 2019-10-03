@@ -1,0 +1,17 @@
+{
+  "name": "enjoyingredients",
+  "version": "0.0.1",
+  "description": "EnjoyIngredients - Not Your Traditional Food Blog",
+  "author": "Lukas Zanner",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "nuxt": "^2.10.0"
+  }
+}

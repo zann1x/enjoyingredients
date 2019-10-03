@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  cms:
+    image: agentejo/cockpit
+    container_name: cockpit_cms
+    ports:
+      - "8080:80"
+    networks:
+      - enjoynet
+
+networks:
+  enjoynet:
+    driver: bridge
