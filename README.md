@@ -1,24 +1,19 @@
+![CI Status](https://github.com/zann1x/enjoyingredients/workflows/CI/badge.svg)
+
 # enjoyingredients
 
 ## Prerequisites
 
-- node.js is installed
+- Docker is installed
 
-## Build setup
+## Local development setup
 
 ``` bash
-# install dependencies
-$ npm run install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+$ docker-compose run --rm node
+$ docker-compose up -d
+$ ./install-db.sh
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+The website is running on ``localhost:3000``. \
+Directus is accessible via ``localhost:8090``. \
+The database is accessible via ``localhost:3306``.

@@ -4,6 +4,9 @@ export default {
     ** Headers of the page
     */
     head: {
+        htmlAttrs: {
+            lang: 'de'
+        },
         title: process.env.npm_package_name || '',
         meta: [
             {charset: 'utf-8'},
@@ -12,9 +15,6 @@ export default {
         ],
         link: [
             {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
-            {rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'},
-            {rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css'},
-            {rel: 'stylesheet', href: 'https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css'}
         ]
     },
     /*
@@ -36,7 +36,10 @@ export default {
     /*
     ** Nuxt.js modules
     */
-    modules: [],
+    modules: [
+        '@nuxtjs/axios',
+        'nuxt-i18n'
+    ],
     /*
     ** Build configuration
     */
@@ -47,11 +50,33 @@ export default {
         extend(config, ctx) {
         }
     },
-    env: {
-        cockpit: {
-            apiUrl: 'http://localhost:8080/api',
-            apiToken: '87dc64fe625dee431fc7ab5fe7294f',
-            baseUrl: 'http://localhost:8080'
+    /*
+    ** Watchers
+     */
+    watchers: {
+        /*
+        ** Webpack needs polling for hot reload as the filesystems on Windows and Linux are different and
+        ** therefore save actions are not recognized in the Docker container otherwise
+         */
+        webpack: {
+            poll: process.env.NODE_ENV !== 'production'
+        }
+    },
+    /*
+    ** i18n Module Settings
+     */
+    i18n: {
+        seo: true,
+        baseUrl: 'https://enjoyingredients.de',
+        locales: [
+            {
+                code: 'de',
+                iso: 'de-DE'
+            }
+        ],
+        defaultLocale: 'de',
+        vueI18n: {
+            fallbackLocale: 'de'
         }
     }
 }

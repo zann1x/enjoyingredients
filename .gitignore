@@ -1,5 +1,6 @@
-# Created by .ignore support plugin (hsz.mobi)
-### Node template
+# MySQL volume mount
+mysql_data
+
 # Logs
 logs
 *.log
@@ -78,7 +79,8 @@ dist
 .serverless
 
 # IDE / Editor
-.idea
+.idea/*
+!.idea/runConfigurations
 
 # Service worker
 sw.*
