@@ -2,17 +2,6 @@ version: "3"
 
 services:
   #
-  # Node
-  #
-  node:
-    image: node:12-alpine
-    volumes:
-      - ./:/usr/src/enjoyingredients
-    working_dir: /usr/src/enjoyingredients
-    restart: "no"
-    command: npm install
-
-  #
   # Application
   #
   enjoyingredients:
@@ -25,9 +14,11 @@ services:
     depends_on:
       - api
     volumes:
-      - ./:/usr/src/enjoyingredients
+      - ./frontend:/usr/src/enjoyingredients
     working_dir: /usr/src/enjoyingredients
     command: npm run dev
+    networks:
+      - web
 
   #
   # Database
@@ -37,15 +28,17 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: ${MYSQL_DB}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PWD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PWD}
+      MYSQL_DATABASE: "directus"
+      MYSQL_USER: "directus"
+      MYSQL_PASSWORD: "directus"
+      MYSQL_ROOT_PASSWORD: "directus"
     ports:
       - "3306:3306"
+    networks:
+      - internal
 
   #
-  # API instance
+  # Directus API instance
   # This should serve our api requests and won't work before database
   # is properly installed by running the installer
   #
@@ -66,24 +59,36 @@ services:
       # Database
       DIRECTUS_DATABASE_HOST: "mysql"
       DIRECTUS_DATABASE_PORT: "3306"
-      DIRECTUS_DATABASE_NAME: ${MYSQL_DB}
-      DIRECTUS_DATABASE_USERNAME: ${MYSQL_USER}
-      DIRECTUS_DATABASE_PASSWORD: ${MYSQL_PWD}
-    links:
-      - mysql:mysql
+      DIRECTUS_DATABASE_NAME: "directus"
+      DIRECTUS_DATABASE_USERNAME: "directus"
+      DIRECTUS_DATABASE_PASSWORD: "directus"
+    depends_on:
+      - mysql
+    networks:
+      - internal
+      - web
 
   #
-  # APP instance
+  # Directus APP instance
   # This is our graphical management interface
   #
-  app:
+  cms:
     image: directus/app:v7-node
     ports:
       - "8090:80"
     environment:
       # Endpoints
-      DIRECTUS_APP_TITLE: ${APP_TITLE}
+      DIRECTUS_APP_TITLE: 'DEV::EnjoyIngredients'
       DIRECTUS_APP_URL: "http://localhost:8080/_/"
+    depends_on:
+      - api
+    networks:
+      - web
+
+networks:
+  internal:
+    driver: bridge
+  web:
 
 volumes:
   dbdata:

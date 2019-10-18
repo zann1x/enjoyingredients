@@ -52,7 +52,7 @@ export default {
     },
     /*
     ** Watchers
-     */
+    */
     watchers: {
         /*
         ** Webpack needs polling for hot reload as the filesystems on Windows and Linux are different and
@@ -64,7 +64,7 @@ export default {
     },
     /*
     ** i18n Module Settings
-     */
+    */
     i18n: {
         seo: true,
         baseUrl: 'https://enjoyingredients.de',

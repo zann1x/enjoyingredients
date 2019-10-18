@@ -18,5 +18,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and push the Docker image
         run: |
-          docker build . -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/enjoyingredients:latest
+          docker build -f frontend/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/enjoyingredients:latest ./frontend
           docker push ${{ secrets.DOCKER_USERNAME }}/enjoyingredients:latest
