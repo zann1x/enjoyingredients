@@ -20,4 +20,5 @@ node_modules/
 
 # gatsby files
 .cache/
-public
+public/*
+!public/_redirects
