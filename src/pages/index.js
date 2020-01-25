@@ -9,24 +9,18 @@ export default ({ data }) => {
     const siteTitle = data.site.siteMetadata.title;
     const posts = data.allMarkdownRemark.edges;
 
-    // Remove the dummy post
-    if (posts.length > 0 && posts[posts.length - 1].node.frontmatter.title === "nr-sse-tintsh-11-e") {
-        posts.pop();
-    }
-
     if (posts.length) {
         return (
             <Layout siteTitle={siteTitle}>
                 <SEO title="The other food blog" />
                 <div className="flex-row">
                     {posts.map(({ node }) => {
-                        const postTitle = node.frontmatter.title || node.fields.slug
                         return (
                             <div className="mx-5 mb-6 max-w-lg">
                                 <PostOverview
                                     slug={node.fields.slug}
-                                    title={postTitle}
-                                    description={node.frontmatter.description}
+                                    title={node.frontmatter.title}
+                                    description={node.frontmatter.description || node.excerpt}
                                     categories={node.frontmatter.categories}
                                 ></PostOverview>
                             </div>
@@ -54,11 +48,14 @@ export const pageQuery = graphql`
                 title
             }
         }
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        allMarkdownRemark(
+            sort: { fields: frontmatter___date, order: DESC }
+            filter: { frontmatter: { title: { ne: "nr-sse-tintsh-11-e" } } }
+            ) {
             edges {
                 node {
                     id
-                    excerpt
+                    excerpt(pruneLength: 160)
                     fields {
                         slug
                     }

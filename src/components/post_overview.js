@@ -14,7 +14,7 @@ const PostOverview = (props) => {
             <div className="px-6 py-4">
                 <h2 className="font-bold text-xl">
                     <Link to={slug}>
-                        {title}
+                        {title || slug}
                     </Link>
                 </h2>
                 <p className="text-gray-700 text-base">
