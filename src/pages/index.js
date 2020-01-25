@@ -10,7 +10,6 @@ export default ({ data }) => {
     const posts = data.allMarkdownRemark.edges;
 
     // Remove the dummy post
-    console.log(posts)
     if (posts.length > 0 && posts[posts.length - 1].node.frontmatter.title === "nr-sse-tintsh-11-e") {
         posts.pop();
     }
@@ -38,7 +37,9 @@ export default ({ data }) => {
         return (
             <Layout siteTitle={siteTitle}>
                 <SEO title="The other food blog" />
-                <p>Hier gibt es noch nichts zu sehen...</p>
+                <div className="text-center">
+                    <p>Hier gibt es noch nichts zu sehen... ( •́ ⍨ •̀)</p>
+                </div>
             </Layout>
         );
     }
