@@ -3,11 +3,13 @@ import { Link, graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import CategoryButton from "../components/category_button";
 
 export default (props) => {
-    const post = props.data.markdownRemark
-    const siteTitle = props.data.site.siteMetadata.title
-    const { previous, next } = props.pageContext
+    const post = props.data.markdownRemark;
+    const siteTitle = props.data.site.siteMetadata.title;
+    const { previous, next } = props.pageContext;
+    const categories = post.frontmatter.categories;
 
     return (
         <Layout siteTitle={siteTitle}>
@@ -16,13 +18,22 @@ export default (props) => {
                 description={post.frontmatter.description || post.excerpt}
             />
             <article>
-                <header>
-                    <h1>{post.frontmatter.title}</h1>
-                    <p>{post.frontmatter.date}</p>
+                <header className="pb-4">
+                    <h1 className="text-3xl font-bold">{post.frontmatter.title}</h1>
+                    <p className="text-sm">{post.frontmatter.date}</p>
                 </header>
                 <section dangerouslySetInnerHTML={{ __html: post.html }} />
+                <p className="text-sm pt-6 text-gray-600">
+                    <span>Kategorien: </span>
+                    {categories.map(category => {
+                        return (
+                            <CategoryButton category={category}></CategoryButton>
+                        );
+                    })}
+                </p>
             </article>
 
+            {(next || previous) &&
             <nav>
                 <ul>
                     <li>
@@ -41,6 +52,7 @@ export default (props) => {
                     </li>
                 </ul>
             </nav>
+            }
         </Layout>
     );
 }
@@ -59,6 +71,7 @@ export const pageQuery = graphql`
                 title
                 date(formatString: "DD.MM.YYYY")
                 description
+                categories
             }
         }
     }

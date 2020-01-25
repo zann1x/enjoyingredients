@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import CategoryButton from "./category_button";
 
 const PostOverview = (props) => {
     const slug = props.slug;
@@ -20,12 +21,11 @@ const PostOverview = (props) => {
                     {description}
                 </p>
             </div>
+
             <div className="px-5 py-4">
                 {categories.map(category => {
                     return (
-                        <Link to={`/categories/${category}`} className="inline-block rounded-full px-3 py-1 mx-1 text-sm font-semibold text-gray-700 bg-gray-100">
-                            {category}
-                        </Link>
+                        <CategoryButton category={category}></CategoryButton>
                     );
                 })}
             </div>
