@@ -9,27 +9,39 @@ export default ({ data }) => {
     const siteTitle = data.site.siteMetadata.title;
     const posts = data.allMarkdownRemark.edges;
 
-    return (
-        <Layout siteTitle={siteTitle}>
-            <SEO title="The other food blog" />
-            {posts.map(({ node }) => {
-                const postTitle = node.frontmatter.title || node.fields.slug
-                return (
-                    <article>
-                        <div className="flex flex-row flex-wrap justify-center">
-                            <PostOverview className="flex-auto mx-5 mb-10"
+    // Remove the dummy post
+    console.log(posts)
+    if (posts.length > 0 && posts[posts.length - 1].node.frontmatter.title === "nr-sse-tintsh-11-e") {
+        posts.pop();
+    }
+
+    if (posts.length) {
+        return (
+            <Layout siteTitle={siteTitle}>
+                <SEO title="The other food blog" />
+                {posts.map(({ node }) => {
+                    const postTitle = node.frontmatter.title || node.fields.slug
+                    return (
+                        <div className="content-center">
+                            <PostOverview
                                 slug={node.fields.slug}
                                 title={postTitle}
                                 description={node.frontmatter.description}
                                 categories={node.frontmatter.categories}
                             ></PostOverview>
                         </div>
-                        <div className="-mb-12"></div>
-                    </article>
-                )
-            })}
-        </Layout>
-    );
+                    );
+                })}
+            </Layout>
+        );
+    } else {
+        return (
+            <Layout siteTitle={siteTitle}>
+                <SEO title="The other food blog" />
+                <p>Hier gibt es noch nichts zu sehen...</p>
+            </Layout>
+        );
+    }
 }
 
 export const pageQuery = graphql`
@@ -42,6 +54,7 @@ export const pageQuery = graphql`
         allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
             edges {
                 node {
+                    id
                     excerpt
                     fields {
                         slug

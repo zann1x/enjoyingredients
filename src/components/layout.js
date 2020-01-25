@@ -18,8 +18,10 @@ const Layout = ({children}) => {
 
     return (
         <div className="flex flex-col min-h-screen">
-            <Navbar siteTitle={data.site.siteMetadata.title} />
-            <div className="container flex-grow mx-auto xl:3/5 px-2 py-4">{children}</div>
+            <Navbar siteTitle={data.site.siteMetadata.title}></Navbar>
+            <div className="container flex-grow mx-auto xl:3/5 px-2 py-4">
+                {children}
+            </div>
             <footer className="text-sm text-center py-2">
                 <p>
                     © {new Date().getFullYear()} | <a href="https://lukaszanner.de">Mit Hunger gemacht</a>
