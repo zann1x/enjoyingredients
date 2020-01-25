@@ -9,7 +9,7 @@ const PostOverview = (props) => {
     const categories = props.categories;
 
     return (
-        <div className="mx-5 mb-6 rounded shadow-md bg-gray-300">
+        <div className="rounded shadow-md bg-gray-300">
             <img className="w-full" alt="Teaser" src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" />
             <div className="px-6 py-4">
                 <h2 className="font-bold text-xl">

@@ -18,19 +18,21 @@ export default ({ data }) => {
         return (
             <Layout siteTitle={siteTitle}>
                 <SEO title="The other food blog" />
-                {posts.map(({ node }) => {
-                    const postTitle = node.frontmatter.title || node.fields.slug
-                    return (
-                        <div className="content-center">
-                            <PostOverview
-                                slug={node.fields.slug}
-                                title={postTitle}
-                                description={node.frontmatter.description}
-                                categories={node.frontmatter.categories}
-                            ></PostOverview>
-                        </div>
-                    );
-                })}
+                <div className="flex-row">
+                    {posts.map(({ node }) => {
+                        const postTitle = node.frontmatter.title || node.fields.slug
+                        return (
+                            <div className="mx-5 mb-6 max-w-lg">
+                                <PostOverview
+                                    slug={node.fields.slug}
+                                    title={postTitle}
+                                    description={node.frontmatter.description}
+                                    categories={node.frontmatter.categories}
+                                ></PostOverview>
+                            </div>
+                        );
+                    })}
+                </div>
             </Layout>
         );
     } else {

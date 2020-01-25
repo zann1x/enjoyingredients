@@ -1,9 +1,10 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import CategoryButton from "../components/category_button";
+import SwitchPostNavigation from "../components/switch_post_navigation";
 
 export default (props) => {
     const post = props.data.markdownRemark;
@@ -33,26 +34,10 @@ export default (props) => {
                 </p>
             </article>
 
-            {(next || previous) &&
-            <nav>
-                <ul>
-                    <li>
-                        {next && (
-                            <Link to={next.fields.slug} rel="next">
-                                ← {next.frontmatter.title}
-                            </Link>
-                        )}
-                    </li>
-                    <li>
-                        {previous && (
-                            <Link to={previous.fields.slug} rel="prev">
-                                {previous.frontmatter.title} →
-                            </Link>
-                        )}
-                    </li>
-                </ul>
-            </nav>
-            }
+            <SwitchPostNavigation
+                previousPost={previous}
+                nextPost={next}
+            ></SwitchPostNavigation>
         </Layout>
     );
 }
