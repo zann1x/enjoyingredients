@@ -1,75 +1,34 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import Navbar from "./navbar";
+import { useStaticQuery, graphql } from "gatsby";
 
-import { rhythm, scale } from "../utils/typography"
+const Layout = ({children}) => {
+    const data = useStaticQuery(
+        graphql`
+            query {
+                site {
+                    siteMetadata {
+                        title
+                    }
+                }
+            }
+        `
+    );
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
-
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    )
-  }
+        <div>
+            <Navbar siteTitle={data.site.siteMetadata.title} />
+            <div className="container mx-auto xl:3/5 px-2 py-4">{children}</div>
+            <footer>
+                <div className="text-sm bottom-0 block text-center py-2">
+                    <p>
+                        © {new Date().getFullYear()} |
+                        Mit <a className="hover:underline hover:text-gray-700" href="https://lukaszanner.de">Hunger</a> gemacht
+                    </p>
+                </div>
+            </footer>
+        </div>
+    );
 }
 
-export default Layout
+export default Layout;

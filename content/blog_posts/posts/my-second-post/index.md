@@ -2,6 +2,9 @@
 title: My Second Post!
 language: en
 date: "2015-05-06T23:46:37.121Z"
+description: "The description is a mandatory thing for SEO i guess"
+categories:
+    - "asdf"
 ---
 
 Wow! I love blogging so much already.
