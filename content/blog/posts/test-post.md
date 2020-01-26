@@ -1,6 +1,6 @@
 ---
 title: Test post
-status: 1
+status: 2
 date: 26.01.2020
 categories: Frühstück
 description: Some description text
