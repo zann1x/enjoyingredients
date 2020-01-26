@@ -50,8 +50,12 @@ export const pageQuery = graphql`
         }
         allMarkdownRemark(
             sort: { fields: frontmatter___date, order: DESC }
-            filter: { frontmatter: { title: { ne: "nr-sse-tintsh-11-e" } } }
-            ) {
+            filter: {
+                frontmatter: {
+                    title: { ne: "post-nr-sse-tintsh-11-e" }
+                    status: { eq: 2 }
+                }
+            }) {
             edges {
                 node {
                     id

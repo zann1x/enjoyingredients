@@ -16,7 +16,10 @@ exports.createPages = async ({ actions, graphql }) => {
                     filter: {
                         frontmatter: {
                             title: {
-                                ne: "nr-sse-tintsh-11-e"
+                                ne: "post-nr-sse-tintsh-11-e"
+                            }
+                            status: {
+                                eq: 2
                             }
                         }
                     }) {

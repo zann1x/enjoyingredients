@@ -11,12 +11,59 @@ collections:
   - name: "blog_posts"
     label: "Blog Posts"
     label_singular: "Blog Post"
+    editor:
+      preview: true
     folder: "content/blog/posts"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
-      - { label: "Publish Date", name: "date", widget: "date", format: "DD.MM.YYYY" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Titel"
+        name: "title"
+        widget: "string"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "Entwurf", value : 0 }
+          - { label: "Im Review", value: 1 }
+          - { label: "Veröffentlicht", value: 2 }
+        default: "Entwurf"
+      - label: "Thumbnail"
+        name: "thumbnail"
+        widget: "image"
+        required: false
+      - label: "Veröffentlichungsdatum"
+        name: "date"
+        widget: "date"
+        format: "DD.MM.YYYY"
+      - label: "Kategorien"
+        name: "categories"
+        widget: "relation"
+        collection: "blog_categories"
+        searchFields: ["name"]
+        valueField: "name"
+      - label: "Kurzbeschreibung"
+        name: "description"
+        widget: "text"
+      - label: "Inhalt"
+        name: "body"
+        widget: "markdown"
+  - name: "blog_categories"
+    label: "Kategorien"
+    label_singular: "Kategorie"
+    editor:
+      preview: false
+    folder: "content/blog/categories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "string"
+      - label: "Thumbnail"
+        name: "thumbnail"
+        widget: "image"
+        required: false
+      - label: "Kurzbeschreibung"
+        name: "description"
+        widget: "text"
