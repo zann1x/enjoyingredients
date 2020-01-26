@@ -13,10 +13,10 @@ export default ({ data }) => {
         return (
             <Layout siteTitle={siteTitle}>
                 <SEO title="The other food blog" />
-                <div className="flex-row">
+                <div className="flex flex-wrap justify-center">
                     {posts.map(({ node }) => {
                         return (
-                            <div className="mx-5 mb-6 max-w-lg">
+                            <div className="max-w-lg m-3">
                                 <PostOverview
                                     slug={node.fields.slug}
                                     title={node.frontmatter.title}
