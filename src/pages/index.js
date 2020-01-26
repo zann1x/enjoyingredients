@@ -53,7 +53,11 @@ export const pageQuery = graphql`
             filter: {
                 frontmatter: {
                     title: { ne: "post-nr-sse-tintsh-11-e" }
-                    status: { eq: 2 }
+                }
+                fields: {
+                    slug: {
+                        regex: "//posts/.+/"
+                    }
                 }
             }) {
             edges {
@@ -64,7 +68,7 @@ export const pageQuery = graphql`
                         slug
                     }
                     frontmatter {
-                        date(formatString: "DD.MM.YYYY")
+                        date(formatString: "YYYY-MM-DD")
                         title
                         description
                         categories

@@ -20,14 +20,6 @@ collections:
       - label: "Titel"
         name: "title"
         widget: "string"
-      - label: "Status"
-        name: "status"
-        widget: "select"
-        options:
-          - { label: "Entwurf", value : 0 }
-          - { label: "Im Review", value: 1 }
-          - { label: "Veröffentlicht", value: 2 }
-        default: "Entwurf"
       - label: "Thumbnail"
         name: "thumbnail"
         widget: "image"
@@ -35,7 +27,7 @@ collections:
       - label: "Veröffentlichungsdatum"
         name: "date"
         widget: "date"
-        format: "DD.MM.YYYY"
+        format: "YYYY-MM-DD"
       - label: "Kategorien"
         name: "categories"
         widget: "relation"
@@ -58,7 +50,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - label: "Name"
-        name: "name"
+        name: "title"
         widget: "string"
       - label: "Thumbnail"
         name: "thumbnail"

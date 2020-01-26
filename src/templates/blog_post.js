@@ -28,16 +28,20 @@ export default (props) => {
                     <span>Kategorien: </span>
                     {categories.map(category => {
                         return (
-                            <CategoryButton category={category}></CategoryButton>
+                            <CategoryButton
+                                category={category}
+                            ></CategoryButton>
                         );
                     })}
                 </p>
             </article>
 
-            <SwitchPostNavigation
-                previousPost={previous}
-                nextPost={next}
-            ></SwitchPostNavigation>
+            {(previous || next) &&
+                <SwitchPostNavigation
+                    previousPost={previous}
+                    nextPost={next}
+                ></SwitchPostNavigation>
+            }
         </Layout>
     );
 }
@@ -54,7 +58,7 @@ export const pageQuery = graphql`
             html
             frontmatter {
                 title
-                date(formatString: "DD.MM.YYYY")
+                date(formatString: "YYYY-MM-DD")
                 description
                 categories
             }

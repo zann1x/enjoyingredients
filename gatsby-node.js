@@ -18,8 +18,10 @@ exports.createPages = async ({ actions, graphql }) => {
                             title: {
                                 ne: "post-nr-sse-tintsh-11-e"
                             }
-                            status: {
-                                eq: 2
+                        }
+                        fields: {
+                            slug: {
+                                regex: "//posts/.+/"
                             }
                         }
                     }) {
