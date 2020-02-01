@@ -19,7 +19,7 @@ locale: 'de'
 
 slug:
   encoding: 'unicode'
-  clean_accents: true
+  # clean_accents: true
 
 collections:
   # Single pages
@@ -31,7 +31,7 @@ collections:
     # public_folder: ''
     files:
       - name: 'about'
-        label: 'Über mich'
+        label: 'Über mich und die Welt'
         file: 'content/pages/about/index.md'
         fields:
           - name: 'title'
