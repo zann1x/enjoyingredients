@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "~components/layout";
-import PostOverview from "~components/post_overview";
-import SEO from "~components/seo";
+import Layout from "~components/layout.js";
+import PostOverview from "~components/post_overview.js";
+import SEO from "~components/seo.js";
 
 export default ({ data }) => {
     const siteTitle = data.site.siteMetadata.title;

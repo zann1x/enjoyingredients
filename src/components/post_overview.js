@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import CategoryButton from "~components/category_button";
+import CategoryButton from "~components/category_button.js";
 
 const PostOverview = (props) => {
     const slug = props.slug;

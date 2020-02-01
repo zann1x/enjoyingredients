@@ -9,7 +9,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
-import config from '~config';
+import config from '~config/index.js';
 
 const SEO = ({ title, description, lang, meta }) => {
     const metaDescription = description || config.siteDescription;
