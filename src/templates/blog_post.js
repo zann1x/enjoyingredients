@@ -1,10 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import CategoryButton from "../components/category_button";
-import SwitchPostNavigation from "../components/switch_post_navigation";
+import Layout from "~components/layout";
+import SEO from "~components/seo";
+import CategoryButton from "~components/category_button";
+import SwitchPostNavigation from "~components/switch_post_navigation";
 
 export default (props) => {
     const post = props.data.markdownRemark;

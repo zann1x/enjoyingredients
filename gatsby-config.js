@@ -1,12 +1,10 @@
+const config = require('./src/config');
+
 module.exports = {
     siteMetadata: {
-        title: `EnjoyIngredients`,
-        author: `Lukas Zanner`,
-        description: `EnjoyIngredients - the other food blog`,
-        siteUrl: `https://enjoyingredients.de/`,
-        social: {
-            twitter: `@iamzann1x`,
-        },
+        title: config.siteTitle,
+        description: config.siteDescription,
+        siteUrl: config.siteUrl,
     },
     plugins: [
         `gatsby-plugin-netlify-cms`,
@@ -41,6 +39,13 @@ module.exports = {
                 plugins: [
                     `gatsby-remark-copy-linked-files`,
                     `gatsby-remark-smartypants`,
+                    {
+                        resolve: "gatsby-remark-external-links",
+                        options: {
+                          target: "_blank",
+                          rel: "nofollow noopener noreferrer"
+                        }
+                    },
                     {
                         resolve: `gatsby-remark-images`,
                         options: {

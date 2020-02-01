@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import Navbar from "./navbar";
+import Navbar from '~components/Navbar';
 
 const Layout = ({children}) => {
     const data = useStaticQuery(

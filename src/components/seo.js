@@ -8,36 +8,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+
+import config from '~config';
 
 const SEO = ({ title, description, lang, meta }) => {
-    const { site } = useStaticQuery(
-        graphql`
-            query {
-                site {
-                    siteMetadata {
-                        title
-                        description
-                        author
-                        social {
-                            twitter
-                        }
-                    }
-                }
-            }
-        `
-    );
-
-    const metaDescription = description || site.siteMetadata.description;
+    const metaDescription = description || config.siteDescription;
 
     return (
         <Helmet
             htmlAttributes={{
                 lang,
             }}
-            defaultTitle = {site.siteMetadata.title}
+            defaultTitle = {config.siteTitle}
             title={title}
-            titleTemplate={`%s - ${site.siteMetadata.title}`}
+            titleTemplate={`%s - ${config.siteTitle}`}
             meta={[
                 {
                     name: 'robots',
@@ -49,7 +33,7 @@ const SEO = ({ title, description, lang, meta }) => {
                 },
                 {
                     name: `author`,
-                    content: site.siteMetadata.author,
+                    content: config.creator.name,
                 },
                 {
                     property: `og:title`,
@@ -69,7 +53,7 @@ const SEO = ({ title, description, lang, meta }) => {
                 },
                 {
                     name: `twitter:creator`,
-                    content: site.siteMetadata.social.twitter,
+                    content: config.creator.twitterHandle,
                 },
                 {
                     name: `twitter:title`,
