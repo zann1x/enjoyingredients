@@ -1,82 +1,100 @@
 backend:
   name: git-gateway
-  branch: master
+  branch: netlify_dev
+
+# backend:
+#   name: proxy
+#   proxy_url: http://localhost:8081/api/v1
+#   branch: netlify_dev
+
+# backend:
+#   name: test-repo
 
 publish_mode: editorial_workflow
 
 media_folder: static/img
 public_folder: /img
 
+locale: 'de'
+
+slug:
+  encoding: 'unicode'
+  clean_accents: true
+
 collections:
   # Single pages
-  - name: "pages"
-    label: "Individuelle Seiten"
+  - name: 'pages'
+    label: 'Individuelle Seiten'
+    folder: 'content/pages'
+    path: '{{slug}}/index'
+    media_folder: ''
+    public_folder: ''
     files:
-      - name: "about"
-        label: "Über mich"
-        file: "content/about.md"
+      - name: 'about'
+        label: 'Über mich'
+        file: 'content/about/index.md'
         fields:
-          - name: "title"
-            label: "Titel"
+          - name: 'title'
+            label: 'Titel'
             widget: string
-          - name: "avatar"
-            label: "Avatar"
-            widget: "image"
-          - name: "body"
-            label: "Inhalt"
-            widget: "markdown"
+          - name: 'avatar'
+            label: 'Avatar'
+            widget: 'image'
+          - name: 'body'
+            label: 'Inhalt'
+            widget: 'markdown'
 
   # Blog Posts
-  - name: "blog_posts"
-    label: "Blog Posts"
-    label_singular: "Blog Post"
+  - name: 'blog_posts'
+    label: 'Blog Posts'
+    label_singular: 'Blog Post'
     editor:
       preview: true
-    folder: "content/blog/posts"
+    folder: 'content/blog/posts'
     create: true
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
-      - name: "title"
-        label: "Titel"
-        widget: "string"
-      - name: "thumbnail"
-        label: "Thumbnail"
-        widget: "image"
+      - name: 'title'
+        label: 'Titel'
+        widget: 'string'
+      - name: 'thumbnail'
+        label: 'Thumbnail'
+        widget: 'image'
         required: false
-      - name: "date"
-        label: "Veröffentlichungsdatum"
-        widget: "date"
-        format: "YYYY-MM-DD"
-      - name: "categories"
-        label: "Kategorien"
-        widget: "relation"
-        collection: "blog_categories"
-        searchFields: ["name"]
-        valueField: "name"
-      - name: "description"
-        label: "Kurzbeschreibung"
-        widget: "text"
-      - name: "body"
-        label: "Inhalt"
-        widget: "markdown"
+      - name: 'date'
+        label: 'Veröffentlichungsdatum'
+        widget: 'date'
+        format: 'YYYY-MM-DD'
+      - name: 'categories'
+        label: 'Kategorien'
+        widget: 'relation'
+        collection: 'blog_categories'
+        searchFields: ['name']
+        valueField: 'name'
+      - name: 'description'
+        label: 'Kurzbeschreibung'
+        widget: 'text'
+      - name: 'body'
+        label: 'Inhalt'
+        widget: 'markdown'
 
   # Blog categories
-  - name: "blog_categories"
-    label: "Kategorien"
-    label_singular: "Kategorie"
+  - name: 'blog_categories'
+    label: 'Kategorien'
+    label_singular: 'Kategorie'
     editor:
       preview: false
-    folder: "content/blog/categories"
+    folder: 'content/blog/categories'
     create: true
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
-      - name: "title"
-        label: "Name"
-        widget: "string"
-      - name: "thumbnail"
-        label: "Thumbnail"
-        widget: "image"
+      - name: 'title'
+        label: 'Name'
+        widget: 'string'
+      - name: 'thumbnail'
+        label: 'Thumbnail'
+        widget: 'image'
         required: false
-      - name: "description"
-        label: "Kurzbeschreibung"
-        widget: "text"
+      - name: 'description'
+        label: 'Kurzbeschreibung'
+        widget: 'text'
