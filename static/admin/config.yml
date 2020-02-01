@@ -30,7 +30,7 @@ collections:
     # public_folder: ''
     files:
       - name: 'about'
-        label: 'Über mich und die Welt'
+        label: 'Über mich'
         file: 'content/pages/about/index.md'
         fields:
           - name: 'title'
@@ -48,8 +48,8 @@ collections:
     editor:
       preview: true
     folder: 'content/blog/posts'
-    # slug: '{{slug}}'
-    path: '{{slug}}/index'
+    slug: '{{slug}}'
+    # path: '{{slug}}/index'
     # media_folder: 'content/blog/posts/{{slug}}'
     # public_folder: ''
     fields:
@@ -68,8 +68,8 @@ collections:
         label: 'Kategorien'
         widget: 'relation'
         collection: 'blog_categories'
-        searchFields: ['name']
-        valueField: 'name'
+        searchFields: ['title']
+        valueField: 'title'
         required: false
       - name: 'description'
         label: 'Kurzbeschreibung'

@@ -1,5 +1,4 @@
 ---
 title: 'Über mich'
-avatar: './me.jpg'
 ---
-Hello!
+Über mich
