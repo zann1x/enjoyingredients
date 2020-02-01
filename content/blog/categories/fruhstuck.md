@@ -1,0 +1,5 @@
+---
+title: Frühstück
+description: Frühstückskategorie
+---
+
