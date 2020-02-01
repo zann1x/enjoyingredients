@@ -7,7 +7,7 @@ import SEO from "~components/seo.js";
 
 export default ({ data }) => {
     const siteTitle = data.site.siteMetadata.title;
-    const posts = data.allMarkdownRemark.edges;
+    const posts = data.posts.edges;
 
     if (posts.length) {
         return (
@@ -43,12 +43,12 @@ export default ({ data }) => {
 
 export const pageQuery = graphql`
     query {
-        site {
+        site: site {
             siteMetadata {
                 title
             }
         }
-        allMarkdownRemark(
+        posts: allMarkdownRemark(
             sort: { fields: frontmatter___date, order: DESC }
             filter: {
                 frontmatter: {
