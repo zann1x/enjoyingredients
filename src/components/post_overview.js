@@ -25,7 +25,10 @@ const PostOverview = (props) => {
             <div className="px-5 py-4">
                 {categories.map(category => {
                     return (
-                        <CategoryButton category={category}></CategoryButton>
+                        <CategoryButton
+                            key={category}
+                            category={category}
+                        ></CategoryButton>
                     );
                 })}
             </div>

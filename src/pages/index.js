@@ -16,7 +16,7 @@ export default ({ data }) => {
                 <div className="flex flex-wrap justify-center">
                     {posts.map(({ node }) => {
                         return (
-                            <div className="max-w-lg m-3">
+                            <div key={node.fields.slug} className="max-w-lg m-3">
                                 <PostOverview
                                     slug={node.fields.slug}
                                     title={node.frontmatter.title}
