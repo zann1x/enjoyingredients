@@ -25,10 +25,10 @@ collections:
   # Single pages
   - name: 'pages'
     label: 'Individuelle Seiten'
-    folder: 'content/pages'
-    path: '{{slug}}/index'
-    media_folder: ''
-    public_folder: ''
+    # folder: 'content/pages'
+    # path: '{{slug}}/index'
+    # media_folder: ''
+    # public_folder: ''
     files:
       - name: 'about'
         label: 'Über mich'
