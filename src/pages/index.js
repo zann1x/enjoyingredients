@@ -56,7 +56,7 @@ export const pageQuery = graphql`
                 }
                 fields: {
                     slug: {
-                        regex: "//posts/.+/"
+                        regex: "/posts/"
                     }
                 }
             }) {
