@@ -32,7 +32,7 @@ collections:
     files:
       - name: 'about'
         label: 'Über mich'
-        file: 'content/about/index.md'
+        file: 'content/pages/about/index.md'
         fields:
           - name: 'title'
             label: 'Titel'
