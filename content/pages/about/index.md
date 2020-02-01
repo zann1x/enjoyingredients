@@ -1,5 +1,5 @@
 ---
-title: 'Über mich'
-avatar: './me.jpg'
+title: Über mich
+avatar: /img/boi_fork.png
 ---
 Hello!
