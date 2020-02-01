@@ -18,8 +18,7 @@ public_folder: /img
 locale: 'de'
 
 slug:
-  encoding: 'ascii'
-  # clean_accents: true
+  encoding: 'unicode'
 
 collections:
   # Single pages
@@ -37,9 +36,6 @@ collections:
           - name: 'title'
             label: 'Titel'
             widget: string
-          - name: 'avatar'
-            label: 'Avatar'
-            widget: 'image'
           - name: 'body'
             label: 'Inhalt'
             widget: 'markdown'
@@ -48,11 +44,14 @@ collections:
   - name: 'blog_posts'
     label: 'Blog Posts'
     label_singular: 'Blog Post'
+    create: true
     editor:
       preview: true
     folder: 'content/blog/posts'
-    create: true
     slug: '{{slug}}'
+    path: '{{slug}}/index'
+    media_folder: ''
+    public_folder: ''
     fields:
       - name: 'title'
         label: 'Titel'
@@ -71,6 +70,7 @@ collections:
         collection: 'blog_categories'
         searchFields: ['name']
         valueField: 'name'
+        required: false
       - name: 'description'
         label: 'Kurzbeschreibung'
         widget: 'text'
@@ -82,10 +82,10 @@ collections:
   - name: 'blog_categories'
     label: 'Kategorien'
     label_singular: 'Kategorie'
+    create: true
     editor:
       preview: false
     folder: 'content/blog/categories'
-    create: true
     slug: '{{slug}}'
     fields:
       - name: 'title'
