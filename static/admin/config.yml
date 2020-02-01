@@ -8,6 +8,25 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  # Single pages
+  - name: "pages"
+    label: "Individuelle Seiten"
+    files:
+      - name: "about"
+        label: "Über mich"
+        file: "content/about.md"
+        fields:
+          - name: "title"
+            label: "Titel"
+            widget: string
+          - name: "avatar"
+            label: "Avatar"
+            widget: "image"
+          - name: "body"
+            label: "Inhalt"
+            widget: "markdown"
+
+  # Blog Posts
   - name: "blog_posts"
     label: "Blog Posts"
     label_singular: "Blog Post"
@@ -17,29 +36,31 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - label: "Titel"
-        name: "title"
+      - name: "title"
+        label: "Titel"
         widget: "string"
-      - label: "Thumbnail"
-        name: "thumbnail"
+      - name: "thumbnail"
+        label: "Thumbnail"
         widget: "image"
         required: false
-      - label: "Veröffentlichungsdatum"
-        name: "date"
+      - name: "date"
+        label: "Veröffentlichungsdatum"
         widget: "date"
         format: "YYYY-MM-DD"
-      - label: "Kategorien"
-        name: "categories"
+      - name: "categories"
+        label: "Kategorien"
         widget: "relation"
         collection: "blog_categories"
         searchFields: ["name"]
         valueField: "name"
-      - label: "Kurzbeschreibung"
-        name: "description"
+      - name: "description"
+        label: "Kurzbeschreibung"
         widget: "text"
-      - label: "Inhalt"
-        name: "body"
+      - name: "body"
+        label: "Inhalt"
         widget: "markdown"
+
+  # Blog categories
   - name: "blog_categories"
     label: "Kategorien"
     label_singular: "Kategorie"
@@ -49,13 +70,13 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - label: "Name"
-        name: "title"
+      - name: "title"
+        label: "Name"
         widget: "string"
-      - label: "Thumbnail"
-        name: "thumbnail"
+      - name: "thumbnail"
+        label: "Thumbnail"
         widget: "image"
         required: false
-      - label: "Kurzbeschreibung"
-        name: "description"
+      - name: "description"
+        label: "Kurzbeschreibung"
         widget: "text"

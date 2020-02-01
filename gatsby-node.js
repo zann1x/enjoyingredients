@@ -76,6 +76,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 }
 
+// Give the src folders an alias for prettier imports
 exports.onCreateWebpackConfig = ({ actions }) => {
     actions.setWebpackConfig({
         resolve: {
