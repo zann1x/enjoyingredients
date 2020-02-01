@@ -50,13 +50,12 @@ export const pageQuery = graphql`
         }
         posts: allMarkdownRemark(
             sort: { fields: frontmatter___date, order: DESC }
+            limit: 10
             filter: {
-                frontmatter: {
-                    title: { ne: "post-nr-sse-tintsh-11-e" }
-                }
                 fields: {
                     slug: {
                         regex: "/posts/"
+                        ne: "/posts/dummy/"
                     }
                 }
             }) {

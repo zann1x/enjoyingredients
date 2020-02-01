@@ -1,11 +1,11 @@
 ---
-title: This is a test
-date: "2020-01-01"
+title: Dummy
+thumbnail: pic
+date: '1970-01-01'
 categories:
-    - "cat-nr-sse-tintsh-11-e"
-description: "Hello World"
+    - Dummy
+description: Dummy
 ---
-
 Hello World! This is a mandatory dummy post.
 
 Nothing to see here... (´・＿・`)

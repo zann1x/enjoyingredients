@@ -12,16 +12,12 @@ exports.createPages = async ({ actions, graphql }) => {
                         fields: frontmatter___date
                         order: DESC
                     }
-                    limit: 20
+                    limit: 2000
                     filter: {
-                        frontmatter: {
-                            title: {
-                                ne: "post-nr-sse-tintsh-11-e"
-                            }
-                        }
                         fields: {
                             slug: {
                                 regex: "/posts/"
+                                ne: "/posts/dummy/"
                             }
                         }
                     }) {
