@@ -48,10 +48,10 @@ collections:
     editor:
       preview: true
     folder: 'content/blog/posts'
-    slug: '{{slug}}'
+    # slug: '{{slug}}'
     path: '{{slug}}/index'
-    media_folder: ''
-    public_folder: ''
+    # media_folder: 'content/blog/posts/{{slug}}'
+    # public_folder: ''
     fields:
       - name: 'title'
         label: 'Titel'
