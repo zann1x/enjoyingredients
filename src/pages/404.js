@@ -6,7 +6,10 @@ import SEO from "~components/seo.js";
 export default () => {
     return (
         <Layout>
-            <SEO title="404 Not Found" />
+            <SEO
+                title="404 Not Found"
+                robots="noindex, nofollow, noarchive"
+            />
             <p className="text-center">
                 Diese Seite existiert nicht... ( •́ﻩ•̀ )
             </p>

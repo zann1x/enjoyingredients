@@ -11,7 +11,7 @@ import Helmet from "react-helmet";
 
 import config from '~config/index.js';
 
-const SEO = ({ title, description, lang, meta }) => {
+const SEO = ({ title, description, lang, meta, pathname, robots }) => {
     const metaDescription = description || config.siteDescription;
 
     return (
@@ -25,42 +25,46 @@ const SEO = ({ title, description, lang, meta }) => {
             meta={[
                 {
                     name: 'robots',
-                    content: 'index, follow'
+                    content: robots
                 },
                 {
-                    name: `description`,
+                    name: 'description',
                     content: metaDescription,
                 },
                 {
-                    name: `author`,
+                    name: 'author',
                     content: config.creator.name,
                 },
                 {
-                    property: `og:title`,
+                    property: 'og:title',
                     content: title,
                 },
                 {
-                    property: `og:description`,
+                    property: 'og:description',
                     content: metaDescription,
                 },
                 {
-                    property: `og:type`,
-                    content: `website`,
+                    property: 'og:type',
+                    content: 'website',
                 },
                 {
-                    name: `twitter:card`,
-                    content: `summary`,
+                    property: 'og:url',
+                    content: `${config.siteUrl}${pathname || '/'}`,
                 },
                 {
-                    name: `twitter:creator`,
+                    name: 'twitter:card',
+                    content: 'summary',
+                },
+                {
+                    name: 'twitter:creator',
                     content: config.creator.twitterHandle,
                 },
                 {
-                    name: `twitter:title`,
+                    name: 'twitter:title',
                     content: title,
                 },
                 {
-                    name: `twitter:description`,
+                    name: 'twitter:description',
                     content: metaDescription,
                 },
             ].concat(meta)}
@@ -69,10 +73,12 @@ const SEO = ({ title, description, lang, meta }) => {
 }
 
 SEO.defaultProps = {
-    title: ``,
-    description: ``,
-    lang: `de`,
+    title: '',
+    description: '',
+    lang: 'de',
     meta: [],
+    pathname: '',
+    robots: 'index, follow',
 }
 
 SEO.propTypes = {
@@ -80,6 +86,8 @@ SEO.propTypes = {
     description: PropTypes.string,
     lang: PropTypes.string,
     meta: PropTypes.arrayOf(PropTypes.object),
+    pathname: PropTypes.string,
+    robots: PropTypes.string,
 }
 
 export default SEO;

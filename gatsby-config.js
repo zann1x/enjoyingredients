@@ -62,12 +62,6 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-google-analytics`,
-            options: {
-                //trackingId: `ADD YOUR TRACKING ID HERE`,
-            },
-        },
-        {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 name: `EnjoyIngredients - the other food blog`,

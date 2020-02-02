@@ -17,6 +17,7 @@ export default (props) => {
             <SEO
                 title={post.frontmatter.title}
                 description={post.frontmatter.description || post.excerpt}
+                pathname={post.fields.slug}
             />
             <article>
                 <header className="pb-4">
@@ -61,6 +62,9 @@ export const pageQuery = graphql`
                 date(formatString: "YYYY-MM-DD")
                 description
                 categories
+            }
+            fields {
+                slug
             }
         }
     }
