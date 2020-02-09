@@ -6,12 +6,11 @@ import PostOverview from "~components/post_overview.js";
 import SEO from "~components/seo.js";
 
 export default ({ data }) => {
-    const siteTitle = data.site.siteMetadata.title;
     const posts = data.posts.edges;
 
     if (posts.length) {
         return (
-            <Layout siteTitle={siteTitle}>
+            <Layout>
                 <SEO title="The other food blog" />
                 <div className="flex flex-wrap justify-center">
                     {posts.map(({ node }) => {
@@ -31,7 +30,7 @@ export default ({ data }) => {
         );
     } else {
         return (
-            <Layout siteTitle={siteTitle}>
+            <Layout>
                 <SEO title="The other food blog" />
                 <div className="text-center">
                     <p>Hier gibt es noch nichts zu sehen... ( •́ ⍨ •̀)</p>
@@ -43,11 +42,6 @@ export default ({ data }) => {
 
 export const pageQuery = graphql`
     query {
-        site: site {
-            siteMetadata {
-                title
-            }
-        }
         posts: allMarkdownRemark(
             sort: { fields: frontmatter___date, order: DESC }
             limit: 10

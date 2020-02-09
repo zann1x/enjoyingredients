@@ -13,7 +13,7 @@ export default (props) => {
     const categories = post.frontmatter.categories;
 
     return (
-        <Layout siteTitle={siteTitle}>
+        <Layout>
             <SEO
                 title={post.frontmatter.title}
                 description={post.frontmatter.description || post.excerpt}
