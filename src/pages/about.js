@@ -11,8 +11,8 @@ export default ({ data }) => {
         <Layout>
             <SEO title={content.frontmatter.title} />
             <div>
-                <h1 className="text-3xl font-bold">{content.frontmatter.title}</h1>
-                <section dangerouslySetInnerHTML={{ __html: content.html }}></section>
+                <h1 className="text-3xl font-bold pb-2">{content.frontmatter.title}</h1>
+                <section className="leading-relaxed" dangerouslySetInnerHTML={{ __html: content.html }}></section>
             </div>
         </Layout>
     );
