@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "~components/layout.js";
 import SEO from "~components/seo.js";
 import CategoryButton from "~components/category_button.js";
-import SwitchPostNavigation from "~components/switch_post_navigation.js";
+// import SwitchPostNavigation from "~components/switch_post_navigation.js";
 
 export default (props) => {
     const post = props.data.markdownRemark;
@@ -37,12 +37,14 @@ export default (props) => {
                 </p>
             </article>
 
+            {/*
             {(previous || next) &&
                 <SwitchPostNavigation
                     previousPost={previous}
                     nextPost={next}
                 ></SwitchPostNavigation>
             }
+            */}
         </Layout>
     );
 }
