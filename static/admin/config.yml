@@ -64,12 +64,21 @@ collections:
         label: 'Veröffentlichungsdatum'
         widget: 'date'
         format: 'YYYY-MM-DD'
-      - name: 'categories'
-        label: 'Kategorien'
+      - name: 'main_category'
+        label: 'Hauptkategorie'
         widget: 'relation'
         collection: 'blog_categories'
         searchFields: ['title']
         valueField: 'title'
+        multiple: false
+        required: false
+      - name: 'secondary_categories'
+        label: 'Nebenkategorien'
+        widget: 'relation'
+        collection: 'blog_categories'
+        searchFields: ['title']
+        valueField: 'title'
+        multiple: true
         required: false
       - name: 'description'
         label: 'Kurzbeschreibung'

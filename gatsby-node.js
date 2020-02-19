@@ -1,47 +1,65 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
+// const replacePath = path => (path === `/` ? path : path.replace(/\/$/, ''));
 
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
     const blogPost = path.resolve(`./src/templates/blog_post.js`);
-    const result = await graphql(
-        `
-            {
-                allMarkdownRemark(
-                    sort: {
-                        fields: frontmatter___date
-                        order: DESC
-                    }
-                    limit: 2000
-                    filter: {
-                        fields: {
-                            slug: {
-                                regex: "/posts/"
-                                ne: "/posts/dummy/"
-                            }
+    const blogCategory = path.resolve(`./src/templates/blog_category.js`);
+
+    const result = await graphql(`
+        {
+            posts: allMarkdownRemark(
+                sort: {
+                    fields: frontmatter___date
+                    order: DESC
+                }
+                limit: 2000
+                filter: {
+                    fields: {
+                        slug: {
+                            regex: "/posts/"
+                            ne: "/posts/dummy/"
                         }
-                    }) {
-                    edges {
-                        node {
-                            fields {
-                                slug
-                            }
-                            frontmatter {
-                                title
-                            }
+                    }
+                }) {
+                edges {
+                    node {
+                        fields {
+                            slug
                         }
                     }
                 }
             }
-        `
-    );
+            categories: allMarkdownRemark(
+                filter: {
+                    fields: {
+                        slug: {
+                            regex: "/category/"
+                            ne: "/category/dummy/"
+                        }
+                    }
+                }) {
+                edges {
+                    node {
+                        fields {
+                            slug
+                        }
+                        frontmatter {
+                            title
+                        }
+                    }
+                }
+            }
+        }
+    `);
 
     if (result.errors) {
         throw result.errors;
     }
 
     // Create blog posts pages
-    const posts = result.data.allMarkdownRemark.edges;
+    const posts = result.data.posts.edges;
     posts.forEach((post, index) => {
         const previous = index === posts.length - 1 ? null : posts[index + 1].node;
         const next = index === 0 ? null : posts[index - 1].node;
@@ -54,6 +72,21 @@ exports.createPages = async ({ actions, graphql }) => {
                 slug: slug,
                 previous,
                 next,
+            },
+        });
+    });
+
+    // Create category pages
+    const categories = result.data.categories.edges;
+    categories.forEach((category) => {
+        const slug = category.node.fields.slug;
+        const title = category.node.frontmatter.title;
+        createPage({
+            path: slug,
+            component: blogCategory,
+            context: {
+                slug: slug,
+                title: title,
             },
         });
     });
@@ -71,6 +104,21 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         });
     }
 }
+
+// TODO
+// Implement the Gatsby API “onCreatePage”. This is called after every page is created.
+// exports.onCreatePage = ({ page, actions }) => {
+//     const { createPage, deletePage } = actions;
+//     const oldPage = Object.assign({}, page);
+    
+//     // Remove trailing slash unless page is /
+//     page.path = replacePath(page.path);
+//     if (page.path !== oldPage.path) {
+//         // Replace new page with old page
+//         deletePage(oldPage);
+//         createPage(page);
+//     }
+// }
 
 // Give the src folders an alias for prettier imports
 exports.onCreateWebpackConfig = ({ actions }) => {

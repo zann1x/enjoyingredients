@@ -8,7 +8,6 @@ import SwitchPostNavigation from "~components/switch_post_navigation.js";
 
 export default (props) => {
     const post = props.data.markdownRemark;
-    const siteTitle = props.data.site.siteMetadata.title;
     const { previous, next } = props.pageContext;
     const categories = post.frontmatter.categories;
 
