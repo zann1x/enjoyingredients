@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "~components/layout.js";
-import PostOverview from "~components/post_overview.js";
 import SEO from "~components/seo.js";
 
 export default ({ data }) => {
@@ -13,18 +12,7 @@ export default ({ data }) => {
             <Layout>
                 <SEO title="The other food blog" />
                 <div className="flex flex-wrap justify-center">
-                    {posts.map(({ node }) => {
-                        return (
-                            <div key={node.fields.slug} className="max-w-lg m-3">
-                                <PostOverview
-                                    slug={node.fields.slug}
-                                    title={node.frontmatter.title}
-                                    description={node.frontmatter.description || node.excerpt}
-                                    categories={node.frontmatter.categories}
-                                ></PostOverview>
-                            </div>
-                        );
-                    })}
+                    We have something to do here...
                 </div>
             </Layout>
         );

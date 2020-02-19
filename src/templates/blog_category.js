@@ -9,8 +9,6 @@ export default ({ data }) => {
     const posts = data.posts.edges;
     const category = data.category;
 
-    console.log(data.posts);
-
     return (
         <Layout>
             <SEO/>

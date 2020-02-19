@@ -28,6 +28,9 @@ exports.createPages = async ({ actions, graphql }) => {
                         fields {
                             slug
                         }
+                        frontmatter {
+                            title
+                        }
                     }
                 }
             }
@@ -59,10 +62,11 @@ exports.createPages = async ({ actions, graphql }) => {
     }
 
     // Create blog posts pages
-    const posts = result.data.posts.edges;
-    posts.forEach((post, index) => {
-        const previous = index === posts.length - 1 ? null : posts[index + 1].node;
-        const next = index === 0 ? null : posts[index - 1].node;
+    const posts = result.data.posts;
+    posts.edges.forEach((post, index) => {
+        // As the posts are ordered descending by creation time, the previous post is always the older one
+        const previous = index === posts.edges.length - 1 ? null : posts.edges[index + 1].node;
+        const next = index === 0 ? null : posts.edges[index - 1].node;
 
         const slug = post.node.fields.slug;
         createPage({

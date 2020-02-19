@@ -29,6 +29,7 @@ export default (props) => {
                     {categories.map(category => {
                         return (
                             <CategoryButton
+                                key={category}
                                 category={category}
                             ></CategoryButton>
                         );
@@ -48,11 +49,6 @@ export default (props) => {
 
 export const pageQuery = graphql`
     query ($slug: String!) {
-        site {
-            siteMetadata {
-                title
-            }
-        }
         markdownRemark(fields: { slug: { eq: $slug } }) {
             excerpt(pruneLength: 160)
             html
