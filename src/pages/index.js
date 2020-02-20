@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "~components/layout.js";
+import Home from "~components/layout/home.js";
 import SEO from "~components/seo.js";
 
 export default ({ data }) => {
@@ -9,21 +9,21 @@ export default ({ data }) => {
 
     if (posts.length) {
         return (
-            <Layout>
+            <Home>
                 <SEO title="The other food blog" />
                 <div className="flex flex-wrap justify-center">
                     We have something to do here...
                 </div>
-            </Layout>
+            </Home>
         );
     } else {
         return (
-            <Layout>
+            <Home>
                 <SEO title="The other food blog" />
                 <div className="text-center">
                     <p>Hier gibt es noch nichts zu sehen... ( •́ ⍨ •̀)</p>
                 </div>
-            </Layout>
+            </Home>
         );
     }
 }

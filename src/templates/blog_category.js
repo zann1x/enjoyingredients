@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "~components/layout.js";
+import Content from "~components/layout/content.js";
 import PostOverview from "~components/post_overview.js";
 import SEO from "~components/seo.js";
 
@@ -10,7 +10,7 @@ export default ({ data }) => {
     const category = data.category;
 
     return (
-        <Layout>
+        <Content>
             <SEO/>
             <div className="flex flex-wrap justify-center">
                 <h1>{category.frontmatter.title}</h1>
@@ -28,7 +28,7 @@ export default ({ data }) => {
                     );
                 })}
             </div>
-        </Layout>
+        </Content>
     );
 }
 

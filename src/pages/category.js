@@ -1,20 +1,20 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "~components/layout.js";
+import Home from "~components/layout/home.js";
 import SEO from "~components/seo.js";
 
 export default ({ data }) => {
     const { content } = data;
 
     return (
-        <Layout>
+        <Home>
             <SEO title={content.frontmatter.title} />
             <div>
                 <h1 className="text-3xl font-bold pb-2">Kategorie</h1>
                 <section className="leading-relaxed" dangerouslySetInnerHTML={{ __html: content.html }}></section>
             </div>
-        </Layout>
+        </Home>
     );
 }
 
