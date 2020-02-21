@@ -1,5 +1,5 @@
 ---
 title: Frühstück
-thumbnail: default_background.jpg
+thumbnail: default_thumbnail.jpg
 description: Frühstück
 ---
