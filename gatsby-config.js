@@ -1,4 +1,24 @@
-const config = require('./src/config');
+const config = require('./src/utils/config');
+const path = require(`path`);
+
+let ghostConfig;
+
+try {
+    ghostConfig = require(`./.ghost`);
+} catch (e) {
+    ghostConfig = {
+        production: {
+            apiUrl: process.env.GHOST_API_URL,
+            contentApiKey: process.env.GHOST_CONTENT_API_KEY,
+        },
+    }
+} finally {
+    const { apiUrl, contentApiKey } = process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production
+
+    if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
+        throw new Error(`GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`) // eslint-disable-line
+    }
+}
 
 module.exports = {
     siteMetadata: {
@@ -7,7 +27,8 @@ module.exports = {
         siteUrl: config.siteUrl,
     },
     plugins: [
-        'gatsby-plugin-netlify-cms',
+        `gatsby-plugin-catch-links`,
+        `gatsby-plugin-force-trailing-slashes`,
         'gatsby-plugin-postcss',
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sharp',
@@ -15,24 +36,31 @@ module.exports = {
         {
             resolve: 'gatsby-source-filesystem',
             options: {
-                path: `${__dirname}/content/pages`,
+                path: path.join(__dirname, `content`, `pages`),
                 name: 'pages',
             },
         },
         {
             resolve: 'gatsby-source-filesystem',
             options: {
-                path: `${__dirname}/content/blog`,
+                path: path.join(__dirname, `content`, `blog`),
                 name: 'blog',
             },
         },
         // {
         //     resolve: 'gatsby-source-filesystem',
         //     options: {
-        //         path: `${__dirname}/content/assets`,
+        //         path: path.join(__dirname, `content`, `assets`)
         //         name: 'assets',
         //     },
         // },
+        {
+            resolve: `gatsby-source-ghost`,
+            options:
+                process.env.NODE_ENV === `development`
+                    ? ghostConfig.development
+                    : ghostConfig.production,
+        },
         {
             resolve: 'gatsby-transformer-remark',
             options: {
