@@ -8,31 +8,19 @@ exports.createPages = async ({ actions, graphql }) => {
 
     const result = await graphql(`
         {
-            posts: allMarkdownRemark(
+            posts: allGhostPost(
                 sort: {
-                    fields: frontmatter___date
-                    order: DESC
+                    order: DESC,
+                    fields: [published_at]
                 }
-                limit: 2000
-                filter: {
-                    fields: {
-                        slug: {
-                            regex: "/posts/"
-                            ne: "/posts/dummy/"
-                        }
-                    }
-                }) {
+                ) {
                 edges {
                     node {
-                        fields {
-                            slug
-                        }
-                        frontmatter {
-                            title
-                        }
+                        slug
                     }
                 }
             }
+
             categories: allMarkdownRemark(
                 filter: {
                     fields: {
@@ -61,23 +49,18 @@ exports.createPages = async ({ actions, graphql }) => {
     }
 
     // Create blog posts pages
-    const posts = result.data.posts;
-    posts.edges.forEach((post, index) => {
-        // As the posts are ordered descending by creation time, the previous post is always the older one
-        const previous = index === posts.edges.length - 1 ? null : posts.edges[index + 1].node;
-        const next = index === 0 ? null : posts.edges[index - 1].node;
-
-        const slug = post.node.fields.slug;
-        createPage({
-            path: slug,
-            component: blogPost,
-            context: {
-                slug: slug,
-                previous,
-                next,
-            },
+    if (result.data.posts) {
+        const posts = result.data.posts;
+        posts.edges.forEach(({ node }) => {
+            createPage({
+                path: `/blog/${node.slug}`,
+                component: blogPost,
+                context: {
+                    slug: node.slug,
+                },
+            });
         });
-    });
+    }
 
     // Create category pages
     const categories = result.data.categories.edges;

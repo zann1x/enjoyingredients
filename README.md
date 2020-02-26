@@ -1,51 +1,48 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/73f01ed1-7664-42a8-9f0a-d53c2cc646cb/deploy-status)](https://app.netlify.com/sites/thirsty-goldstine-7e53d0/deploys)
 
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
 <h1 align="center">
-  Gatsby's blog starter
+  EnjoyIngredients
 </h1>
-
-Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
-
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+1. **Install node.js in version ^12.10**
 
-    Use the Gatsby CLI to create a new site, specifying the blog starter.
-
-    ```shell
-    # create a new Gatsby site using the blog starter
-    gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
+1. **Install Ghost CMS**
 
     ```shell
-    cd my-blog-starter/
-    gatsby develop
+    npm install -g ghost-cli
     ```
 
-1.  **Open the source code and start editing!**
+1. **Start ghost**
 
-    Your site is now running at `http://localhost:8000`!
+    Make a folder for Ghost and start it locally.
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+    ```shell
+    mkdir ghost && cd ghost
+    ghost install local
+    ```
 
-    Open the `my-blog-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+1. **Finish the setup of Ghost**
+
+    Enter `http://localhost:2368/ghost/` and finish the setup there.
+
+1. **Start the Blog**
+
+    ```shell
+    cd ../enjoyingredients
+    npm start
+    ```
+
+1. **Open the source code and start editing!**
+
+    The site is now running at `http://localhost:8000`.
+    
+    The GraphQL Tool can be accessed at `http://localhost:8000/___graphql`.
 
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
-
     .
     ├── node_modules
     ├── src
@@ -83,17 +80,3 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
 12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
--   **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
--   **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-blog)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
