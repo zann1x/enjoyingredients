@@ -1,13 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
 import CategoryButton from "~components/category_button.js";
+import PropTypes from "prop-types";
 
-const PostOverview = (props) => {
-    const slug = props.slug;
-    const title = props.title;
-    const description = props.description;
-    const categories = props.categories;
-
+const PostOverview = ({ slug, title, description, categories }) => {
     return (
         <div className="rounded shadow-md bg-gray-300">
             <img className="w-full" alt="Teaser" src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" />
@@ -35,5 +31,12 @@ const PostOverview = (props) => {
         </div>
     );
 }
+
+PostOverview.propTypes = {
+    slug: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    categories: PropTypes.object.isRequired,
+};
 
 export default PostOverview;
