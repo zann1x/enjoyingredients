@@ -1,10 +1,10 @@
 {
     "development": {
         "apiUrl": "http://localhost:2368",
-        "contentApiKey": "c13bc8fd2a691da3713b49bbd2"
+        "contentApiKey": "517a546ec4ddb02c0de50f140d"
     },
     "production": {
-        "apiUrl": "https://gatsby.ghost.io",
-        "contentApiKey": "9cc5c67c358edfdd81455149d0"
+        "apiUrl": "https://cms.enjoyingredients.com",
+        "contentApiKey": "b417e0059bb480b891c160ac0f"
     }
 }
