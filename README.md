@@ -8,6 +8,12 @@
 
 1. **Install node.js in version ^12.10**
 
+1. **Install Gatsby**
+
+    ```shell
+    npm install -g gatsby-cli
+    ```
+
 1. **Install Ghost CMS**
 
     ```shell
