@@ -4,78 +4,67 @@ import { graphql } from "gatsby";
 import Content from "~components/layout/content.js";
 import PostOverview from "~components/post_overview.js";
 import SEO from "~components/seo.js";
+import PropTypes from "prop-types";
 
-export default ({ data }) => {
-    const posts = data.posts.edges;
-    const category = data.category;
+const BlogCategory =  ({ data: { category, postsInCategory} }) => {
+    return (
+        <Content>
+            <SEO/>
+            <div className="flex flex-wrap justify-center">
+                <h1>{category.name}</h1>
 
-    if (posts.length) {
-        return (
-            <Content>
-                <SEO/>
-                <div className="flex flex-wrap justify-center">
-                    <h1>{category.frontmatter.title}</h1>
-
-                    {posts.map(({ node }) => {
-                        return (
-                            <div key={node.fields.slug} className="max-w-lg m-3">
-                                <PostOverview
-                                    slug={node.fields.slug}
-                                    title={node.frontmatter.title}
-                                    description={node.frontmatter.description || node.excerpt}
-                                    categories={node.frontmatter.categories}
-                                ></PostOverview>
-                            </div>
-                        );
-                    })}
-                </div>
-            </Content>
-        );
-    } else {
-        return (
-            <Content>
-                <SEO/>
-                <div className="flex flex-wrap justify-center">
-                    <p>Hier gibt es noch nichts zu sehen... ( •́ ⍨ •̀)</p>
-                </div>
-            </Content>
-        );
-    }
+                {postsInCategory.nodes.map((post) => {
+                    return (
+                        <div key={post.id} className="max-w-lg m-3">
+                            <PostOverview
+                                slug={post.slug}
+                                title={post.title}
+                                description={post.custom_excerpt || post.excerpt}
+                                categories={post.tags}
+                            ></PostOverview>
+                        </div>
+                    );
+                })}
+            </div>
+        </Content>
+    );
 }
 
+BlogCategory.propTypes = {
+    category: PropTypes.object,
+    postsInCategory: PropTypes.arrayOf(PropTypes.object),
+};
+
+export default BlogCategory;
+
 export const pageQuery = graphql`
-    query ($slug: String!, $title: String!) {
-        category: markdownRemark(
-            fields: {
-                slug: { eq: $slug }
-            }
+    query ($slug: String!) {
+        category: ghostTag(
+            slug: { eq: $slug },
+            postCount: { gt: 0 }
         ) {
-            fields {
-                slug
-            }
-            frontmatter {
-                title
-                thumbnail
-            }
+            name
         }
 
-        posts: allMarkdownRemark(
+        postsInCategory: allGhostPost(
             filter: {
-                frontmatter: {
-                    categories: { in: [$title] }
+                tags: {
+                    elemMatch: {
+                        slug: { eq: $slug }
+                    }
                 }
             }
         ) {
-            edges {
-                node {
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        title
-                        description
-                        categories
-                    }
+            nodes {
+                id
+                slug
+                title
+                excerpt
+                custom_excerpt
+                tags {
+                    id
+                    slug
+                    name
                 }
             }
         }

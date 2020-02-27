@@ -22,7 +22,7 @@ const PostOverview = ({ slug, title, description, categories }) => {
                 {categories.map(category => {
                     return (
                         <CategoryButton
-                            key={category}
+                            key={category.id}
                             category={category}
                         ></CategoryButton>
                     );

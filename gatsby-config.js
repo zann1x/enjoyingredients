@@ -16,7 +16,7 @@ try {
     const { apiUrl, contentApiKey } = process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production
 
     if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
-        throw new Error(`GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`) // eslint-disable-line
+        throw new Error(`GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build.`) // eslint-disable-line
     }
 }
 

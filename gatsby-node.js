@@ -21,24 +21,9 @@ exports.createPages = async ({ actions, graphql }) => {
                 }
             }
 
-            categories: allMarkdownRemark(
-                filter: {
-                    fields: {
-                        slug: {
-                            regex: "/category/"
-                            ne: "/category/dummy/"
-                        }
-                    }
-                }) {
-                edges {
-                    node {
-                        fields {
-                            slug
-                        }
-                        frontmatter {
-                            title
-                        }
-                    }
+            categories: allGhostTag {
+                nodes {
+                    slug
                 }
             }
         }
@@ -49,8 +34,8 @@ exports.createPages = async ({ actions, graphql }) => {
     }
 
     // Create blog posts pages
-    if (result.data.posts) {
-        const posts = result.data.posts;
+    const { posts } = result.data;
+    if (posts) {
         posts.edges.forEach(({ node }) => {
             createPage({
                 path: `/blog/${node.slug}`,
@@ -63,19 +48,18 @@ exports.createPages = async ({ actions, graphql }) => {
     }
 
     // Create category pages
-    const categories = result.data.categories.edges;
-    categories.forEach((category) => {
-        const slug = category.node.fields.slug;
-        const title = category.node.frontmatter.title;
-        createPage({
-            path: slug,
-            component: blogCategory,
-            context: {
-                slug: slug,
-                title: title,
-            },
+    const { categories } = result.data;
+    if (categories) {
+        categories.nodes.forEach((category) => {
+            createPage({
+                path: category.slug,
+                component: blogCategory,
+                context: {
+                    slug: category.slug,
+                },
+            });
         });
-    });
+    }
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
