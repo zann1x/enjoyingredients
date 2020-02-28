@@ -1,18 +1,16 @@
 const config = require('./config');
 
 const EUrlType = {
-    BLOG_POST: '/blog/',
+    BLOG_POST: '/blog/posts/',
     BLOG_CATEGORY: '/blog/categories/',
 }
 
 function createPathFromSlug(urlType, slug) {
-    const url = urlType + slug;
-    return url;
+    return urlType + slug + '/';
 }
 
 function createLinkFromSlug(urlType, slug) {
-    const url = config.siteUrl + urlType + slug;
-    return url;
+    return config.siteUrl + createPathFromSlug(urlType, slug);
 }
 
 module.exports = {

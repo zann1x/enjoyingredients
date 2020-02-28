@@ -6,22 +6,21 @@ import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
 import PropTypes from "prop-types";
 
-const BlogCategory =  ({ data: { category, postsInCategory} }) => {
+const BlogCategory =  ({ data: { category, postsInCategory}, location }) => {
     return (
         <Content>
-            <SEO/>
+            <SEO
+                title={category.name}
+                description={category.description || category.name}
+                pathname={location.pathname}
+            />
             <div className="flex flex-wrap justify-center">
                 <h1>{category.name}</h1>
 
                 {postsInCategory.nodes.map((post) => {
                     return (
                         <div key={post.id} className="max-w-lg m-3">
-                            <PostTeaserCard
-                                slug={post.slug}
-                                title={post.title}
-                                description={post.custom_excerpt || post.excerpt}
-                                categories={post.tags}
-                            ></PostTeaserCard>
+                            <PostTeaserCard post={post}></PostTeaserCard>
                         </div>
                     );
                 })}
@@ -44,6 +43,7 @@ export const pageQuery = graphql`
             postCount: { gt: 0 }
         ) {
             name
+            description
         }
 
         postsInCategory: allGhostPost(

@@ -4,8 +4,9 @@ import CategoryButton from "~components/categoryButton";
 import PropTypes from "prop-types";
 import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
 
-const PostTeaserCard = ({ slug, title, description, categories }) => {
+const PostTeaserCard = ({ post: { slug, title, excerpt, custom_excerpt, tags }}) => {
     const postUrl = createPathFromSlug(EUrlType.BLOG_POST, slug);
+    const description = custom_excerpt || excerpt;
 
     return (
         <div className="rounded shadow-md bg-gray-300">
@@ -22,7 +23,7 @@ const PostTeaserCard = ({ slug, title, description, categories }) => {
             </div>
 
             <div className="px-5 py-4">
-                {categories.map(category => {
+                {tags.map(category => {
                     return (
                         <CategoryButton
                             key={category.id}
@@ -36,10 +37,7 @@ const PostTeaserCard = ({ slug, title, description, categories }) => {
 }
 
 PostTeaserCard.propTypes = {
-    slug: PropTypes.string.isRequired,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+    post: PropTypes.object,
 };
 
 export default PostTeaserCard;

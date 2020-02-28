@@ -1,18 +1,29 @@
 import React from "react"
 
 import Home from "~components/layout/home.js";
-import SEO from "~components/seo.js";
+import Helmet from "react-helmet";
+import config from "~utils/config";
 
 export default () => {
+    const lang = 'de';
+
     return (
-        <Home>
-            <SEO
-                title="404 Not Found"
-                robots="noindex, nofollow, noarchive"
+        <>
+            <Helmet
+                htmlAttributes={{lang}}
+                title={`404 - ${config.siteTitle}`}
+                meta={[
+                    {
+                        name: 'robots',
+                        content: 'noindex, nofollow, noarchive'
+                    },
+                ]}
             />
-            <p className="text-center">
-                Diese Seite existiert nicht... ( •́ﻩ•̀ )
-            </p>
-        </Home>
+            <Home>
+                <p className="text-center">
+                    Diese Seite existiert nicht... ( •́ﻩ•̀ )
+                </p>
+            </Home>
+        </>
     );
 }

@@ -12,8 +12,8 @@ import Helmet from "react-helmet";
 const config = require('~utils/config');
 
 const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) => {
-    const metaDescription = description ? description.substr(0, 160).concat('...') : config.siteDescription;
-    canonical = canonical ? canonical : `${config.siteUrl}${pathname}/`;
+    const metaDescription = description.substr(0, 160).concat('...');
+    canonical = canonical ? canonical : `${config.siteUrl}${pathname}`;
 
     return (
         <Helmet
@@ -80,7 +80,6 @@ const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) =>
 SEO.defaultProps = {
     lang: 'de',
     meta: [],
-    canonical: '',
     robots: 'index, follow',
 }
 

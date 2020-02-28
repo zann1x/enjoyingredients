@@ -12,10 +12,10 @@ const CategoryButtonList = ({ categories }) => {
         return (
             <p className="text-sm pt-6 text-gray-600">
                 <span>Kategorien: </span>
-                { categories.map(category => {
+                {categories.map(category => {
                     return (
                         <CategoryButton
-                            key={category.slug}
+                            key={category.id}
                             category={category}
                         ></CategoryButton>
                     );
@@ -40,7 +40,6 @@ const BlogPost = ({ data: { post }, location }) => {
     // });
 
     const categories = post.tags;
-    console.log(categories);
 
     return (
         <Content>
