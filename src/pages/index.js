@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 
 import Navbar from "~components/navbar.js";
 import SEO from "~components/seo.js";
+import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
 
 const Index = ({ data }) => {
     const { about } = data;
@@ -29,6 +30,7 @@ const Index = ({ data }) => {
                 {categories.edges.map((category, index) => {
                     const categoryTitle = category.node.frontmatter.title;
                     const categorySlug = category.node.fields.slug;
+                    const categoryUrl = createPathFromSlug(EUrlType.BLOG_CATEGORY, categorySlug);
 
                     if (index % 2 === 0) {
                         return (
@@ -36,7 +38,7 @@ const Index = ({ data }) => {
                                 <div className="w-2/3 text-center my-auto">
                                     img
                                 </div>
-                                <Link to={categorySlug} className="w-1/3 my-auto text-justify">
+                                <Link to={categoryUrl} className="w-1/3 my-auto text-justify">
                                     <h2>{categoryTitle}</h2>
                                     <section>Beschreibung der Kategorie</section>
                                 </Link>
@@ -45,7 +47,7 @@ const Index = ({ data }) => {
                     } else {
                         return (
                             <div className="flex bg-green-200">
-                                <Link to={categorySlug} className="w-1/3 my-auto text-justify">
+                                <Link to={categoryUrl} className="w-1/3 my-auto text-justify">
                                     <h2>{categoryTitle}</h2>
                                     <section>Beschreibung der Kategorie</section>
                                 </Link>

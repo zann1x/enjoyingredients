@@ -1,10 +1,11 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
+const { createPathFromSlug, EUrlType } = require("./src/utils/createLinkFromSlug");
 
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
-    const blogPost = path.resolve(`./src/templates/blog_post.js`);
-    const blogCategory = path.resolve(`./src/templates/blog_category.js`);
+    const blogPost = path.resolve(`./src/templates/blogPost.js`);
+    const blogCategory = path.resolve(`./src/templates/blogCategory.js`);
 
     const result = await graphql(`
         {
@@ -38,7 +39,7 @@ exports.createPages = async ({ actions, graphql }) => {
     if (posts) {
         posts.edges.forEach(({ node }) => {
             createPage({
-                path: `/blog/${node.slug}`,
+                path: createPathFromSlug(EUrlType.BLOG_POST, node.slug),
                 component: blogPost,
                 context: {
                     slug: node.slug,
@@ -52,7 +53,7 @@ exports.createPages = async ({ actions, graphql }) => {
     if (categories) {
         categories.nodes.forEach((category) => {
             createPage({
-                path: category.slug,
+                path: createPathFromSlug(EUrlType.BLOG_CATEGORY, category.slug),
                 component: blogCategory,
                 context: {
                     slug: category.slug,

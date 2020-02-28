@@ -11,8 +11,9 @@ import Helmet from "react-helmet";
 
 const config = require('~utils/config');
 
-const SEO = ({ title, description, lang, meta, pathname, robots }) => {
-    const metaDescription = description || config.siteDescription;
+const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) => {
+    const metaDescription = description ? description.substr(0, 160).concat('...') : config.siteDescription;
+    canonical = canonical ? canonical : `${config.siteUrl}${pathname}/`;
 
     return (
         <Helmet
@@ -23,6 +24,10 @@ const SEO = ({ title, description, lang, meta, pathname, robots }) => {
             title={title}
             titleTemplate={`%s - ${config.siteTitle}`}
             meta={[
+                {
+                    name: 'canonical',
+                    content: canonical
+                },
                 {
                     name: 'robots',
                     content: robots
@@ -49,7 +54,7 @@ const SEO = ({ title, description, lang, meta, pathname, robots }) => {
                 },
                 {
                     property: 'og:url',
-                    content: `${config.siteUrl}${pathname || '/'}`,
+                    content: canonical,
                 },
                 {
                     name: 'twitter:card',
@@ -73,20 +78,19 @@ const SEO = ({ title, description, lang, meta, pathname, robots }) => {
 }
 
 SEO.defaultProps = {
-    title: '',
-    description: '',
     lang: 'de',
     meta: [],
-    pathname: '',
+    canonical: '',
     robots: 'index, follow',
 }
 
 SEO.propTypes = {
-    title: PropTypes.string,
-    description: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     lang: PropTypes.string,
     meta: PropTypes.arrayOf(PropTypes.object),
-    pathname: PropTypes.string,
+    canonical: PropTypes.string,
+    pathname: PropTypes.string.isRequired,
     robots: PropTypes.string,
 }
 

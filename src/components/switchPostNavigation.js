@@ -1,25 +1,32 @@
 import React from "react";
 import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
 
 const SwitchPostNavigation = ({ previousPost, nextPost }) => {
     return (
         <ul className="flex flex-row justify-around mt-10">
             {previousPost && (
                 <li className="text-xl p-3 hover:bg-gray-200 rounded">
-                    <Link to={previousPost.fields.slug} rel="prev">
-                        ← {previousPost.frontmatter.title}
+                    <Link to={createPathFromSlug(EUrlType.BLOG_POST, previousPost.slug)} rel="prev">
+                        ← {previousPost.title}
                     </Link>
                 </li>
             )}
             {nextPost && (
                 <li className="text-xl p-3 hover:bg-gray-200 rounded">
-                    <Link to={nextPost.fields.slug} rel="next">
-                        {nextPost.frontmatter.title} →
+                    <Link to={createPathFromSlug(EUrlType.BLOG_POST, nextPost.slug)} rel="next">
+                        {nextPost.title} →
                     </Link>
                 </li>
             )}
         </ul>
     );
 }
+
+SwitchPostNavigation.propTypes = {
+    previousPost: PropTypes.object,
+    nextPost: PropTypes.object,
+};
 
 export default SwitchPostNavigation;

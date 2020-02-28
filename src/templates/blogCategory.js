@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Content from "~components/layout/content.js";
-import PostOverview from "~components/post_overview.js";
-import SEO from "~components/seo.js";
+import Content from "~components/layout/content";
+import PostTeaserCard from "~components/postTeaserCard";
+import SEO from "~components/seo";
 import PropTypes from "prop-types";
 
 const BlogCategory =  ({ data: { category, postsInCategory} }) => {
@@ -16,12 +16,12 @@ const BlogCategory =  ({ data: { category, postsInCategory} }) => {
                 {postsInCategory.nodes.map((post) => {
                     return (
                         <div key={post.id} className="max-w-lg m-3">
-                            <PostOverview
+                            <PostTeaserCard
                                 slug={post.slug}
                                 title={post.title}
                                 description={post.custom_excerpt || post.excerpt}
                                 categories={post.tags}
-                            ></PostOverview>
+                            ></PostTeaserCard>
                         </div>
                     );
                 })}

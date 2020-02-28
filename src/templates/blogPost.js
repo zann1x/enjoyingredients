@@ -3,8 +3,8 @@ import { graphql } from "gatsby";
 
 import Content from "~components/layout/content.js";
 import SEO from "~components/seo.js";
-import CategoryButton from "~components/category_button.js";
-import { internalTagCleaner } from "~utils/internal_tag_cleaner.js";
+import CategoryButton from "~components/categoryButton";
+import { cleanInternalTags } from "~utils/cleanInternalTags";
 import PropTypes from "prop-types";
 
 const CategoryButtonList = ({ categories }) => {
@@ -32,18 +32,21 @@ CategoryButtonList.propTypes = {
 };
 
 const BlogPost = ({ data: { post }, location }) => {
-    const categories = post.tags.filter(tag => {
-        if (tag.name.startsWith('cat-'))
-            return internalTagCleaner(tag, 'cat');
-        else
-            return null;
-    });
+    // const categories = post.tags.filter(tag => {
+    //     if (tag.name.startsWith('cat-'))
+    //         return cleanInternalTags(tag, 'cat');
+    //     else
+    //         return null;
+    // });
+
+    const categories = post.tags;
+    console.log(categories);
 
     return (
         <Content>
             <SEO
                 title={post.title}
-                description={post.excerpt.substr(0, 160).concat('...')}
+                description={post.custom_excerpt || post.excerpt}
                 pathname={location.pathname}
             />
             <article>

@@ -1,15 +1,18 @@
 import React from "react";
 import { Link } from "gatsby";
-import CategoryButton from "~components/category_button.js";
+import CategoryButton from "~components/categoryButton";
 import PropTypes from "prop-types";
+import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
 
-const PostOverview = ({ slug, title, description, categories }) => {
+const PostTeaserCard = ({ slug, title, description, categories }) => {
+    const postUrl = createPathFromSlug(EUrlType.BLOG_POST, slug);
+
     return (
         <div className="rounded shadow-md bg-gray-300">
             <img className="w-full" alt="Teaser" src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" />
             <div className="px-6 py-4">
                 <h2 className="font-bold text-xl">
-                    <Link to={slug}>
+                    <Link to={postUrl}>
                         {title || slug}
                     </Link>
                 </h2>
@@ -32,11 +35,11 @@ const PostOverview = ({ slug, title, description, categories }) => {
     );
 }
 
-PostOverview.propTypes = {
+PostTeaserCard.propTypes = {
     slug: PropTypes.string.isRequired,
     title: PropTypes.string,
     description: PropTypes.string,
-    categories: PropTypes.object.isRequired,
+    categories: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default PostOverview;
+export default PostTeaserCard;
