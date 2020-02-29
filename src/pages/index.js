@@ -8,7 +8,7 @@ import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
 
 const Index = ({ data: { about, categories, site }}) => {
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen">
             <SEO 
                 title="The other food blog"
                 description={config.siteDescription}
