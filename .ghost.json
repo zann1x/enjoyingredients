@@ -1,10 +1,10 @@
 {
     "development": {
-        "apiUrl": "http://localhost:2368",
-        "contentApiKey": "28835150d0566d3b1b62cd9e55"
+        "apiUrl": "https://cms.enjoyingredients.com",
+        "contentApiKey": "e06d5572a5920c323602c5ae9e"
     },
     "production": {
         "apiUrl": "https://cms.enjoyingredients.com",
-        "contentApiKey": "b417e0059bb480b891c160ac0f"
+        "contentApiKey": "e06d5572a5920c323602c5ae9e"
     }
 }
