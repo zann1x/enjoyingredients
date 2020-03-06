@@ -80,12 +80,14 @@ const StyledPostContent = styled.section`
         line-height: 1.5;
         overflow-wrap: break-word;
         text-align: justify;
+        hypens: auto;
+        margin-bottom: 3em;
     }
 
     h2 {
         font-size: ${theme.fontSize.xl2};
         font-weight: 500;
-        padding: 2rem 0 0.5rem 0;
+        padding: 2rem 0 0.3rem 0;
         &:first-child {
             padding-top: 1rem;
         }
@@ -93,19 +95,61 @@ const StyledPostContent = styled.section`
     h3 {
         font-size: ${theme.fontSize.xl};
         font-weight: 500;
-        padding: 1.125rem 0 0.5rem 0;
+        padding: 1.125rem 0 0.3rem 0;
+    }
+
+    blockquote {
+        border-left: 3px solid #3eb0ef;
+        padding: 0 0 0 1.5rem;
+        
+        &:before {
+            content: open-quote;
+        }
+        &:after {
+            content:close-quote;
+        }
+    }
+
+    figcaption {
+        font-size: ${theme.fontSize.base};
+        color: ${theme.color.gray600};
+        padding: 0.875rem 0 0.875rem 0;
+        text-align: center;
+    }
+
+    pre {
+        padding: 1.5rem 0 1.5rem 0;
+    }
+
+    code {
+        padding: 0 5px 2px;
+        font-size: ${theme.fontSize.sm};
+        line-height: 1em;
+        font-weight: 400!important;
+        background: ${theme.color.gray300};
+        border-radius: 3px;
     }
 
     p {
         padding-bottom: 1rem;
     }
 
-    pre code {
-        padding: 1.5rem 0 1.5rem 0;
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            transition: all .2s ease;
+            color: #4299e1;
+        }
     }
 
     ol, ul {
-        list-style-position: inside;
+        list-style-position: outside;
+        padding-left: 1.5rem;
+
+        li {
+            padding-bottom: 0.5rem;
+        }
     }
     ol {
         list-style-type: decimal;
@@ -114,7 +158,18 @@ const StyledPostContent = styled.section`
         list-style-type: disc;
     }
 
-    /* Koenig styles
+    /* Koenig styles (coming from Ghost itself)
+    /* ---------------------------------------------------------- */
+    .kg-width-full {
+        position: relative;
+        display: inline-block;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100vw;
+    }
+    .kg-width-wide {
+        max-width: 1040px;
+    }
     /* ---------------------------------------------------------- */
     .kg-bookmark-card {
         width: 100%;
@@ -123,14 +178,11 @@ const StyledPostContent = styled.section`
     .kg-bookmark-container {
         display: flex;
         min-height: 148px;
-        color: var(--color-base);
-        font-family: var(--font-sans-serif);
         text-decoration: none;
         border-radius: 3px;
         box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.09);
     }
     .kg-bookmark-container:hover {
-        color: var(--color-base);
         text-decoration: none;
         box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.09);
     }
@@ -150,7 +202,7 @@ const StyledPostContent = styled.section`
         transition: color 0.2s ease-in-out;
     }
     .kg-bookmark-container:hover .kg-bookmark-title {
-        color: var(--color-primary);
+        color: #4299e1;
     }
     .kg-bookmark-description {
         display: -webkit-box;
