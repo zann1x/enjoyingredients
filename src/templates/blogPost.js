@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Content from "~components/layout/content.js";
+import CenteredContent from "~components/layout/centeredContent.js";
 import SEO from "~components/seo.js";
 import { cleanInternalTags } from "~utils/cleanInternalTags";
 import PropTypes from "prop-types";
@@ -20,7 +20,7 @@ export const BlogPost = ({ data: { post }, location }) => {
     const categories = post.tags;
 
     return (
-        <Content>
+        <CenteredContent>
             <SEO
                 title={post.title}
                 description={post.custom_excerpt || post.excerpt}
@@ -38,7 +38,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                 <StyledPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
                 <CategoryButtonList categories={categories} />
             </article>
-        </Content>
+        </CenteredContent>
     );
 }
 

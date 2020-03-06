@@ -1,8 +1,8 @@
 import React from "react"
-
-import Home from "~components/layout/home.js";
 import Helmet from "react-helmet";
+
 import config from "~utils/config";
+import CenteredContent from "~components/layout/centeredContent";
 
 export default () => {
     const lang = 'de';
@@ -19,11 +19,11 @@ export default () => {
                     },
                 ]}
             />
-            <Home>
+            <CenteredContent>
                 <p className="text-center">
                     Diese Seite existiert nicht... ( •́ﻩ•̀ )
                 </p>
-            </Home>
+            </CenteredContent>
         </>
     );
 }

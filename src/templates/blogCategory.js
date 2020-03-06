@@ -1,14 +1,14 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Content from "~components/layout/content";
+import CenteredContent from "~components/layout/centeredContent";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
 import PropTypes from "prop-types";
 
 const BlogCategory =  ({ data: { category, postsInCategory}, location }) => {
     return (
-        <Content>
+        <CenteredContent>
             <SEO
                 title={category.name}
                 description={category.description || category.name}
@@ -25,7 +25,7 @@ const BlogCategory =  ({ data: { category, postsInCategory}, location }) => {
                     );
                 })}
             </div>
-        </Content>
+        </CenteredContent>
     );
 }
 
