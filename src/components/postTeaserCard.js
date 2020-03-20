@@ -10,16 +10,18 @@ const PostTeaserCard = ({ post: { slug, title, excerpt, custom_excerpt, tags }})
 
     return (
         <div className="rounded shadow-md bg-gray-300">
-            <img className="w-full" alt="Teaser" src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" />
+            <Link to={postUrl}>
+                <img className="w-full" alt="Teaser" src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" />
+            </Link>
             <div className="px-6 py-4">
-                <h2 className="font-bold text-xl">
-                    <Link to={postUrl}>
+                <Link to={postUrl}>
+                    <h2 className="font-bold text-xl">
                         {title || slug}
-                    </Link>
-                </h2>
-                <p className="text-gray-700 text-base">
-                    {description}
-                </p>
+                    </h2>
+                    <p className="text-gray-700 text-base">
+                        {description}
+                    </p>
+                </Link>
             </div>
 
             <div className="px-5 py-4">
