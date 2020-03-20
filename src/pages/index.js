@@ -1,10 +1,13 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import config from '~utils/config';
+import styled from "styled-components";
 
 import Navbar from "~components/navbar.js";
 import SEO from "~components/seo.js";
+import config from '~utils/config';
 import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
+
+import AvatarEvi from "~content/img/avatar-evi.jpg";
 
 const Index = ({ data: { about, categories, site }}) => {
     return (
@@ -19,13 +22,13 @@ const Index = ({ data: { about, categories, site }}) => {
             <div className="py-4 min-w-full">
                 <h1 className="text-center text-6xl font-bold ">ENJOYINGREDIENTS</h1>
 
-                <div className="flex">
+                <div className="flex flex-row flex-shrink">
                     <div className="w-2/3 my-auto mx-auto">
                         <h2>Über mich</h2>
                         <section dangerouslySetInnerHTML={{ __html: about.html }}></section>
                     </div>
                     <div className="w-1/3 text-center my-auto">
-                        img
+                        <StyledAvatarImage src={AvatarEvi} alt="Avatarbild Ivelina Radusheva" />
                     </div>
                 </div>
 
@@ -99,4 +102,9 @@ export const pageQuery = graphql`
             }
         }
     }
+`;
+
+const StyledAvatarImage = styled.img`
+    height: 320px;
+    display: cover;
 `;
