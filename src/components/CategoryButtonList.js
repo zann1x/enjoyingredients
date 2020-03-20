@@ -1,8 +1,9 @@
 import React from "react";
-import CategoryButton from "~components/categoryButton";
 import PropTypes from "prop-types";
+import { Link } from "gatsby";
 import styled from "styled-components";
 import theme from "~styles/theme";
+import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
 
 export const CategoryButtonList = ({ categories }) => {
     if (categories.length) {
@@ -10,11 +11,12 @@ export const CategoryButtonList = ({ categories }) => {
             <StyledCategoryList>
                 <span>Kategorien: </span>
                 {categories.map(category => {
+                    const categoryUrl = createPathFromSlug(EUrlType.BLOG_CATEGORY, category.slug);
+                    // TODO: key attribute at the Link element does somehow not get recognized
                     return (
-                        <CategoryButton
-                            key={category.id}
-                            category={category}
-                        ></CategoryButton>
+                        <Link key={category.id} to={categoryUrl} className="inline-block px-3 py-1 mx-1 text-sm font-semibold text-gray-700 underline">
+                            {category.name}
+                        </Link>  
                     );
                 })}
             </StyledCategoryList>

@@ -8,6 +8,7 @@ import config from '~utils/config';
 import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
 
 import AvatarEvi from "~content/img/avatar-evi.jpg";
+import DessertTeaserImg from "~content/img/desserts.jpeg";
 
 const Index = ({ data: { about, categories, site }}) => {
     return (
@@ -19,19 +20,7 @@ const Index = ({ data: { about, categories, site }}) => {
             />
             <Navbar siteTitle={site.siteMetadata.title} />
 
-            <div className="py-4 min-w-full">
-                <h1 className="text-center text-6xl font-bold ">ENJOYINGREDIENTS</h1>
-
-                <div className="flex flex-row flex-shrink">
-                    <div className="w-2/3 my-auto mx-auto">
-                        <h2>Über mich</h2>
-                        <section dangerouslySetInnerHTML={{ __html: about.html }}></section>
-                    </div>
-                    <div className="w-1/3 text-center my-auto">
-                        <StyledAvatarImage src={AvatarEvi} alt="Avatarbild Ivelina Radusheva" />
-                    </div>
-                </div>
-
+            <div className="pb-4 min-w-full">
                 {categories.nodes.map((category, index) => {
                     const categoryName = category.name;
                     const categorySlug = category.slug;
@@ -41,7 +30,7 @@ const Index = ({ data: { about, categories, site }}) => {
                         return (
                             <div key={category.id} className="flex bg-blue-200">
                                 <div className="w-2/3 text-center my-auto">
-                                    img
+                                    <img src={DessertTeaserImg} alt="Desserts" />
                                 </div>
                                 <Link to={categoryUrl} className="w-1/3 my-auto text-justify">
                                     <h2>{categoryName}</h2>
@@ -107,4 +96,8 @@ export const pageQuery = graphql`
 const StyledAvatarImage = styled.img`
     height: 320px;
     display: cover;
+`;
+
+const StyledOpacityDiv = styled.div`
+    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
 `;

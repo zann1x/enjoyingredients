@@ -36,6 +36,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                 </header>
                 <hr/>
                 <StyledPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
+                <StyledEndPostDiv />
                 <CategoryButtonList categories={categories} />
             </article>
         </CenteredContent>
@@ -72,6 +73,12 @@ const StyledPostExcerpt = styled.div`
     color: ${theme.color.gray600};
     font-size: ${theme.fontSize.lg};
     padding: 1rem 0 1.5rem 0;
+`;
+
+const StyledEndPostDiv = styled.div`
+    border-top: 1px solid #a6a5a5;
+    content: " ";
+    width: 30px;
 `;
 
 const StyledPostContent = styled.section`
