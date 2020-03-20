@@ -17,6 +17,6 @@ export default Footer;
 
 const StyledFooter = styled.footer`
     font-size: ${theme.fontSize.sm};
-    padding: 0 0.5em;
+    padding: 0.5em 0;
     text-align: center;
 `;
