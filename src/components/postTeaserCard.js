@@ -4,14 +4,14 @@ import CategoryButton from "~components/categoryButton";
 import PropTypes from "prop-types";
 import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
 
-const PostTeaserCard = ({ post: { slug, title, excerpt, custom_excerpt, tags }}) => {
+const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_excerpt, tags }}) => {
     const postUrl = createPathFromSlug(EUrlType.BLOG_POST, slug);
     const description = custom_excerpt || excerpt;
 
     return (
         <div className="rounded shadow-md bg-gray-300">
             <Link to={postUrl}>
-                <img className="w-full" alt="Teaser" src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" />
+                <img className="w-full" alt="Teaser" src={feature_image} />
             </Link>
             <div className="px-6 py-4">
                 <Link to={postUrl}>
