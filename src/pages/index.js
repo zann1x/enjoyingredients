@@ -92,12 +92,3 @@ export const pageQuery = graphql`
         }
     }
 `;
-
-const StyledAvatarImage = styled.img`
-    height: 320px;
-    display: cover;
-`;
-
-const StyledOpacityDiv = styled.div`
-    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
-`;
