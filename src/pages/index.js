@@ -7,7 +7,7 @@ import SEO from "~components/seo.js";
 import config from '~utils/config';
 import CenteredContent from "../components/layout/centeredContent";
 
-const Index = ({ data: { site, latestPosts }}) => {
+const Index = ({ data: { latestPosts }}) => {
     return (
         <CenteredContent>
             <SEO 
@@ -30,7 +30,6 @@ const Index = ({ data: { site, latestPosts }}) => {
 }
 
 Index.propTypes = {
-    site: PropTypes.object,
     latestPosts: PropTypes.arrayOf(PropTypes.object),
 };
 
@@ -38,12 +37,6 @@ export default Index;
 
 export const pageQuery = graphql`
     query {
-        site {
-            siteMetadata {
-                title
-            }
-        }
-
         latestPosts: allGhostPost(
             sort: {
                 order: DESC,
