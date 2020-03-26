@@ -23,10 +23,10 @@ const Navbar = ({ siteTitle }) => {
                         <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
                             {isOpen ? (
                                 // Closed burger menu displaying the three dashes
-                                <path fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>
+                                <path fillRule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>
                             ) : (
                                 // Opened burger menu displaying an X
-                                <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+                                <path fillRule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
                             )}
                         </svg>
                     </button>
@@ -34,7 +34,7 @@ const Navbar = ({ siteTitle }) => {
             </div>
 
             <div className={`${isOpen ? "block" : "hidden"} px-2 pt-2 pb-4 sm:flex sm:p-0`}>
-                <Link to="#" className=" block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
+                <Link to="/blog/categories" className=" block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
                     Kategorien
                 </Link>
                 <Link to="/about" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
