@@ -15,17 +15,17 @@ const BlogCategory =  ({ data: { category, postsInCategory}, location }) => {
                 pathname={location.pathname}
             />
             <div className="flex flex-wrap flex-col justify-center">
-                <h1>{category.name}</h1>
+                <h1 className="mx-auto pb-2 text-4xl">{category.name}</h1>
+                <hr></hr>
+                <span className="pb-8"></span>
 
-                <div>
-                    {postsInCategory.nodes.map((post) => {
-                        return (
-                            <div key={post.id} className="max-w-lg m-3">
-                                <PostTeaserCard post={post}></PostTeaserCard>
-                            </div>
-                        );
-                    })}
-                </div>
+                {postsInCategory.nodes.map((post) => {
+                    return (
+                        <div key={post.id} className="max-w-xl mb-6 mx-auto">
+                            <PostTeaserCard post={post}></PostTeaserCard>
+                        </div>
+                    );
+                })}
             </div>
         </CenteredContent>
     );
