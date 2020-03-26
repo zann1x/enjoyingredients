@@ -5,7 +5,6 @@ const { createPathFromSlug, EUrlType } = require("./src/utils/createLinkFromSlug
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
     const blogPost = path.resolve(`./src/templates/blogPost.js`);
-    const blogCategory = path.resolve(`./src/templates/blogCategory.js`);
 
     const result = await graphql(`
         {
@@ -19,12 +18,6 @@ exports.createPages = async ({ actions, graphql }) => {
                     node {
                         slug
                     }
-                }
-            }
-
-            categories: allGhostTag {
-                nodes {
-                    slug
                 }
             }
         }
@@ -43,20 +36,6 @@ exports.createPages = async ({ actions, graphql }) => {
                 component: blogPost,
                 context: {
                     slug: node.slug,
-                },
-            });
-        });
-    }
-
-    // Create category pages
-    const { categories } = result.data;
-    if (categories) {
-        categories.nodes.forEach((category) => {
-            createPage({
-                path: createPathFromSlug(EUrlType.BLOG_CATEGORY, category.slug),
-                component: blogCategory,
-                context: {
-                    slug: category.slug,
                 },
             });
         });
