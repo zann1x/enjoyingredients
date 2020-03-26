@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Footer from "~components/footer";
 import Navbar from "~components/navbar";
 import PostTeaserCard from "~components/postTeaserCard";
-import SEO from "~components/seo.js";
+import SEO from "~components/seo";
 import config from '~utils/config';
 
 export const Index = ({ data: { site, latestPosts }}) => {
@@ -18,7 +18,7 @@ export const Index = ({ data: { site, latestPosts }}) => {
             />
             <Navbar siteTitle={site.siteMetadata.title}></Navbar>
 
-            <div className="container mx-auto px-2 py-6">
+            <div className="container mx-auto px-2 py-6 w-11/12">
                 {latestPosts.nodes.map((post) => {
                     return (
                         <div key={post.id} className="max-w-xl mb-6 mx-auto">
