@@ -9,16 +9,16 @@ const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_ex
     const description = custom_excerpt || excerpt;
 
     return (
-        <div className="rounded shadow-md bg-gray-300">
+        <div className="rounded shadow-lg">
             <Link to={postUrl}>
                 <img className="w-full" alt="Teaser" src={feature_image} />
             </Link>
             <div className="px-6 py-4">
                 <Link to={postUrl}>
-                    <h2 className="font-bold text-xl">
+                    <h2 className="font-bold text-2xl">
                         {title || slug}
                     </h2>
-                    <p className="text-gray-700 text-base">
+                    <p className="text-gray-700 text-lg">
                         {description}
                     </p>
                 </Link>
