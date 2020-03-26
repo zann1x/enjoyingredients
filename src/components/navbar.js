@@ -1,38 +1,43 @@
 import React from "react";
-import { Link } from "gatsby";
+import { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "gatsby";
 
 const Navbar = ({ siteTitle }) => {
+    let [isOpen, setIsOpen] = useState(false);
+
     return (
-        <nav className="flex items-center flex-wrap bg-gray-600 p-4">
-            {/*
-            <div className="flex flex-shrink-0 w-1/3 justify-start items-center text-white">
-                <Link to="/" className="bg-green-400 font-semibold text-xl tracking-tight">
-                    {siteTitle}
-                </Link>
+        <nav className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-6">
+            <div className="flex items-center justify-between px-4 py-6 sm:p-0">
+                <div className="text-white">
+                    <Link to="/" className="font-semibold text-xl hover:bg-gray-800 rounded px-2 py-1 block">
+                        {siteTitle}
+                    </Link>
+                </div>
+                <div className="sm:hidden">
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        type="button"
+                        className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
+                        >
+                        <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                            {isOpen ? (
+                                // Closed burger menu displaying the three dashes
+                                <path fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>
+                            ) : (
+                                // Opened burger menu displaying an X
+                                <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+                            )}
+                        </svg>
+                    </button>
+                </div>
             </div>
 
-            <div className="flex flex-shrink-0 w-1/3 justify-center items-center text-white">
-                <Link to="/" className="font-semibold text-xl tracking-tight">
-                    Logo
+            <div className={`${isOpen ? "block" : "hidden"} px-2 pt-2 pb-4 sm:flex sm:p-0`}>
+                <Link to="#" className=" block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
+                    Kategorien
                 </Link>
-            </div>
-
-            <div className="flex flex-shrink-0 w-1/3 justify-end items-center text-white">
-                <Link to="/about" className="block lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-6">
-                    About
-                </Link>
-            </div>
-            */}
-
-            <div className="flex flex-shrink-0 w-1/2 justify-start items-center text-white">
-                <Link to="/" className="font-semibold text-xl tracking-tight">
-                    {siteTitle}
-                </Link>
-            </div>
-
-            <div className="flex flex-shrink-0 w-1/2 justify-end items-center text-white">
-                <Link to="/about" className="block lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-6">
+                <Link to="/about" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
                     Über mich
                 </Link>
             </div>
