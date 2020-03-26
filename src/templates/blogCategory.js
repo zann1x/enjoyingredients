@@ -15,9 +15,10 @@ const BlogCategory =  ({ data: { category, postsInCategory}, location }) => {
                 pathname={location.pathname}
             />
             <div className="flex flex-wrap flex-col justify-center">
-                <h1 className="mx-auto pb-2 text-4xl">{category.name}</h1>
-                <hr></hr>
-                <span className="pb-8"></span>
+                <h1 className="mx-auto pb-2 text-4xl">
+                    {category.name.toUpperCase()}
+                </h1>
+                <span className="border-t-2 border-gray-900 pb-8"></span>
 
                 {postsInCategory.nodes.map((post) => {
                     return (
