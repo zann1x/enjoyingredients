@@ -1,67 +1,38 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import styled from "styled-components";
+import PropTypes from "prop-types";
 
-import Navbar from "~components/navbar.js";
+import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo.js";
 import config from '~utils/config';
-import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
+import CenteredContent from "../components/layout/centeredContent";
 
-import AvatarEvi from "~content/img/avatar-evi.jpg";
-import DessertTeaserImg from "~content/img/desserts.jpeg";
-
-const Index = ({ data: { about, categories, site }}) => {
+const Index = ({ data: { site, latestPosts }}) => {
     return (
-        <div className="min-h-screen">
+        <CenteredContent>
             <SEO 
                 title="The other food blog"
                 description={config.siteDescription}
                 pathname="/"
             />
-            <Navbar siteTitle={site.siteMetadata.title} />
 
             <div className="pb-4 min-w-full">
-                {categories.nodes.map((category, index) => {
-                    const categoryName = category.name;
-                    const categorySlug = category.slug;
-                    const categoryUrl = createPathFromSlug(EUrlType.BLOG_CATEGORY, categorySlug);
-
-                    if (index % 2 === 0) {
-                        return (
-                            <div key={category.id} className="flex bg-blue-200">
-                                <div className="w-2/3 text-center my-auto">
-                                    <img src={DessertTeaserImg} alt="Desserts" />
-                                </div>
-                                <Link to={categoryUrl} className="w-1/3 my-auto text-justify">
-                                    <h2>{categoryName}</h2>
-                                    <section>Beschreibung der Kategorie</section>
-                                </Link>
-                            </div>
-                        );
-                    } else {
-                        return (
-                            <div key={category.id} className="flex bg-green-200">
-                                <Link to={categoryUrl} className="w-1/3 my-auto text-justify">
-                                    <h2>{categoryName}</h2>
-                                    <section>Beschreibung der Kategorie</section>
-                                </Link>
-                                <div className="w-2/3 text-center my-auto">
-                                    img
-                                </div>
-                            </div>
-                        );
-                    }
+                {latestPosts.nodes.map((post) => {
+                    return (
+                        <div key={post.id} className="max-w-lg m-3">
+                            <PostTeaserCard post={post}></PostTeaserCard>
+                        </div>
+                    );
                 })}
             </div>
-            
-            <footer className="text-sm text-center my-2">
-                <p>
-                    © {new Date().getFullYear()} | <a href="https://lukaszanner.de">Mit Hunger gemacht</a>
-                </p>
-            </footer>
-        </div>
+        </CenteredContent>
     );
 }
+
+Index.propTypes = {
+    site: PropTypes.object,
+    latestPosts: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default Index;
 
@@ -72,22 +43,26 @@ export const pageQuery = graphql`
                 title
             }
         }
-        about: markdownRemark(
-            fields: {
-                slug: { eq: "/about/" }
-            }) {
-            id
-            frontmatter {
-                title
-            }
-            html
-        }
 
-        categories: allGhostTag {
+        latestPosts: allGhostPost(
+            sort: {
+                order: DESC,
+                fields: published_at
+            }
+            limit: 3
+        ) {
             nodes {
                 id
                 slug
-                name
+                title
+                feature_image
+                excerpt
+                custom_excerpt
+                tags {
+                    id
+                    slug
+                    name
+                }
             }
         }
     }
