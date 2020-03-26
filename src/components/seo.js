@@ -12,7 +12,11 @@ import Helmet from "react-helmet";
 const config = require('~utils/config');
 
 const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) => {
-    const metaDescription = description.substr(0, 160).concat('...');
+    let metaDescription = description;
+    if (description.length > 170) {
+        metaDescription = metaDescription.substr(0, 160).concat('...');
+    }
+    
     canonical = canonical ? canonical : `${config.siteUrl}${pathname}`;
 
     return (

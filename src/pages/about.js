@@ -11,7 +11,7 @@ export default ({ data, location }) => {
         <CenteredContent>
             <SEO
                 title={content.frontmatter.title}
-                description={'Über mich'}
+                description={content.frontmatter.description}
                 pathname={location.pathname} />
             <div>
                 <h1 className="text-3xl font-bold pb-2">{content.frontmatter.title}</h1>
@@ -32,6 +32,7 @@ export const pageQuery = graphql`
             id
             frontmatter {
                 title
+                description
             }
             html
         }
