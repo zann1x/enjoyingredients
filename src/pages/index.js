@@ -1,35 +1,40 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 
+import Footer from "~components/footer";
+import Navbar from "~components/navbar";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo.js";
 import config from '~utils/config';
-import CenteredContent from "../components/layout/centeredContent";
 
-const Index = ({ data: { latestPosts }}) => {
+export const Index = ({ data: { site, latestPosts }}) => {
     return (
-        <CenteredContent>
+        <>
             <SEO 
                 title="The other food blog"
                 description={config.siteDescription}
                 pathname="/"
             />
+            <Navbar siteTitle={site.siteMetadata.title}></Navbar>
 
-            <div className="pb-4 min-w-full">
+            <div className="container mx-auto px-2 py-6">
                 {latestPosts.nodes.map((post) => {
                     return (
-                        <div key={post.id} className="max-w-lg m-3">
+                        <div key={post.id} className="max-w-xl mb-6 mx-auto">
                             <PostTeaserCard post={post}></PostTeaserCard>
                         </div>
                     );
                 })}
             </div>
-        </CenteredContent>
+
+            <Footer></Footer>
+        </>
     );
 }
 
 Index.propTypes = {
+    site: PropTypes.object,
     latestPosts: PropTypes.arrayOf(PropTypes.object),
 };
 
@@ -37,12 +42,18 @@ export default Index;
 
 export const pageQuery = graphql`
     query {
+        site {
+            siteMetadata {
+                title
+            }
+        }
+
         latestPosts: allGhostPost(
             sort: {
                 order: DESC,
                 fields: published_at
             }
-            limit: 3
+            limit: 8
         ) {
             nodes {
                 id
