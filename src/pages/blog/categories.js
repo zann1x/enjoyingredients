@@ -71,7 +71,12 @@ export const pageQuery = graphql`
             }
         }
 
-        allPosts: allGhostPost {
+        allPosts: allGhostPost (
+            sort: {
+                fields: published_at
+                order: DESC
+            }
+        ) {
             nodes {
                 id
                 slug
