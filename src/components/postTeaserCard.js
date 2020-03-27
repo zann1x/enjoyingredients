@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import CategoryButton from "~components/categoryButton";
 import PropTypes from "prop-types";
-import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
+import { createPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
 
 import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
 

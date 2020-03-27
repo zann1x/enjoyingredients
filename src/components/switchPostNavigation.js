@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
+import { createPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
 
 const SwitchPostNavigation = ({ previousPost, nextPost }) => {
     return (

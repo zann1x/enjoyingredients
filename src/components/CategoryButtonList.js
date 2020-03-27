@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import theme from "~styles/theme";
-import { createIdPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
+import { createIdPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
 
 export const CategoryButtonList = ({ categories }) => {
     if (categories.length) {

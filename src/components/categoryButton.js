@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import { createIdPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
+import { createIdPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
 
 const CategoryButton = ({ category }) => {
     const categoryPath = createIdPathFromSlug(EUrlType.BLOG_CATEGORY, category.slug);

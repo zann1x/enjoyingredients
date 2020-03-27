@@ -1,6 +1,6 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
-const { createPathFromSlug, EUrlType } = require("./src/utils/createLinkFromSlug");
+const { createPathFromSlug, EUrlType } = require("./src/utils/createPathFromSlug");
 
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
