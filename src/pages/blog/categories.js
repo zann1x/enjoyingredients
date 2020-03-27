@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import CenteredContent from "~components/layout/centeredContent";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
-import SiteLayout from "../../components/layout/siteLayout";
+import SiteLayout from "~components/layout/siteLayout";
 
 const Categories =  ({ data: { allCategories, allPosts}, location }) => {
     return (
