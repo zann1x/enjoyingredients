@@ -1,14 +1,15 @@
 import React from "react"
 import Helmet from "react-helmet";
 
-import config from "~utils/config";
 import CenteredContent from "~components/layout/centeredContent";
+import SiteLayout from "~components/layout/siteLayout";
+import config from "~utils/config";
 
 export default () => {
     const lang = 'de';
 
     return (
-        <>
+        <SiteLayout>
             <Helmet
                 htmlAttributes={{lang}}
                 title={`404 - ${config.siteTitle}`}
@@ -20,10 +21,10 @@ export default () => {
                 ]}
             />
             <CenteredContent>
-                <p className="text-center">
+                <p className="text-center text-2xl">
                     Diese Seite existiert nicht... ( •́ﻩ•̀ )
                 </p>
             </CenteredContent>
-        </>
+        </SiteLayout>
     );
 }
