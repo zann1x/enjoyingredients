@@ -1,37 +1,45 @@
 import React from "react";
 import { graphql } from "gatsby";
-
-import CenteredContent from "~components/layout/centeredContent.js";
-import SEO from "~components/seo.js";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import theme from "~styles/theme";
+
+import CenteredContent from "~components/layout/centeredContent";
 import CategoryButtonList from "~components/CategoryButtonList";
+import SEO from "~components/seo";
+import SiteLayout from "~components/layout/siteLayout";
+import theme from "~styles/theme"
+
+import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
 
 export const BlogPost = ({ data: { post }, location }) => {
     const categories = post.tags;
+    const header_image = post.feature_image !== null ? post.feature_image : FallbackFeatureImage;
 
     return (
-        <CenteredContent>
+        <SiteLayout>
             <SEO
                 title={post.title}
                 description={post.custom_excerpt || post.excerpt}
                 pathname={location.pathname}
             />
-            <article>
-                <header>
-                    <StyledPostHeading>{post.title}</StyledPostHeading>
-                    <StyledPublishingDate>{post.published_at_pretty}</StyledPublishingDate>
-                    {post.custom_excerpt &&
-                        <StyledPostExcerpt className="post-content">{post.custom_excerpt}</StyledPostExcerpt>
-                    }
-                </header>
-                <hr/>
-                <StyledPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
-                <StyledEndPostDiv />
-                <CategoryButtonList categories={categories} />
-            </article>
-        </CenteredContent>
+            
+            <StyledHeroImage style={{backgroundImage: `url(${header_image})`}} />
+            <CenteredContent>
+                <article>
+                    <header>
+                        <StyledPostHeading>{post.title}</StyledPostHeading>
+                        <StyledPublishingDate>{post.published_at_pretty}</StyledPublishingDate>
+                        {post.custom_excerpt &&
+                            <StyledPostExcerpt className="post-content">{post.custom_excerpt}</StyledPostExcerpt>
+                        }
+                    </header>
+                    <hr/>
+                    <StyledPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
+                    <StyledEndPostDiv />
+                    <CategoryButtonList categories={categories} />
+                </article>
+            </CenteredContent>
+        </SiteLayout>
     );
 }
 
@@ -48,6 +56,19 @@ export const pageQuery = graphql`
             ...GhostPostFields
         }
     }
+`;
+
+const StyledHeroImage = styled.div`
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 50vh;
+    width: 100vw;
+
+    display: block;
+    margin: 0 auto;
+    position: relative;
 `;
 
 const StyledPostHeading = styled.h1`
