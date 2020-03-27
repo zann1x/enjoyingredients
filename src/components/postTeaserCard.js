@@ -16,12 +16,12 @@ const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_ex
             <Link to={postUrl}>
                 <img className="w-full" alt="Teaser" src={img} />
             </Link>
-            <div className="px-6 py-4">
+            <div className="px-6 pt-4 pb-2">
                 <Link to={postUrl}>
                     <h2 className="font-bold text-2xl">
                         {title || slug}
                     </h2>
-                    <p className="text-gray-700 text-lg">
+                    <p className="pt-1 text-lg">
                         {description}
                     </p>
                 </Link>
