@@ -7,7 +7,7 @@ const Navbar = ({ siteTitle }) => {
     let [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-6">
+        <nav className="bg-gray-900 border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-6">
             <div className="flex items-center justify-between px-4 py-6 sm:p-0">
                 <div className="text-white">
                     <Link to="/"
@@ -34,13 +34,13 @@ const Navbar = ({ siteTitle }) => {
                 </div>
             </div>
 
-            <div className={`${isOpen ? "block" : "hidden"} px-2 pt-2 pb-4 sm:flex sm:p-0`}>
+            <div className={`${isOpen ? "block" : "hidden"} border-t border-green-500 sm:border-0 px-4 pt-4 pb-4 sm:flex sm:p-0`}>
                 <Link to="/blog/categories"
-                    className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
+                    className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
                     Kategorien
                 </Link>
                 <Link to="/about"
-                    className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">
+                    className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 mt-1 sm:mt-0 sm:ml-2">
                     Über mich
                 </Link>
             </div>
