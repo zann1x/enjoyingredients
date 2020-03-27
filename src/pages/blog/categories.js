@@ -22,7 +22,7 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
                         id={category.slug}
                         className="flex flex-wrap flex-col justify-center mt-6 first:mt-0"
                         >
-                        <h2 className="mx-auto pb-2 text-4xl">
+                        <h2 className="mx-auto pb-2 pt-1 text-4xl">
                             {category.name.toUpperCase()}
                         </h2>
                         <span className="border-t-2 border-gray-900 pb-8"></span>
