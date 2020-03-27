@@ -8,8 +8,14 @@ import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
 
 const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_excerpt, tags }}) => {
     const postUrl = createPathFromSlug(EUrlType.BLOG_POST, slug);
-    const description = custom_excerpt || excerpt;
     const img = feature_image !== null ? feature_image : FallbackFeatureImage;
+    let post_description = '';
+    if (custom_excerpt === null) {
+        post_description = excerpt.length > 250
+                            ? excerpt.substr(0, 250).trim().concat('...')
+                            : excerpt;
+    }
+    const description = custom_excerpt !== null ? custom_excerpt : post_description;
 
     return (
         <div className="rounded shadow-lg">
