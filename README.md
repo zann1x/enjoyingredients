@@ -17,7 +17,6 @@
 1. **Start the Blog**
 
     ```shell
-    cd ../enjoyingredients
     npm start
     ```
 
@@ -50,4 +49,4 @@
 
 1. **Update the Content API key**
 
-    Add a integration for Gatsby in Ghost and copy the generated Content API Key into .ghost.json. Also update the API URL in this file for the development config.
+    Add a integration for Gatsby in Ghost and copy the generated Content API Key into `.ghost.json`. Also update the API URL to `http://localhost:2368` in this file for the development config.
