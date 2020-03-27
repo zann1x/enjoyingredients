@@ -11,7 +11,7 @@ import config from '~utils/config';
 export const Index = ({ data: { site, latestPosts }}) => {
     return (
         <>
-            <SEO 
+            <SEO
                 title="The other food blog"
                 description={config.siteDescription}
                 pathname="/"

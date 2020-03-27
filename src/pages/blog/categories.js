@@ -1,10 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
+import PropTypes from "prop-types";
 
 import CenteredContent from "~components/layout/centeredContent";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
-import PropTypes from "prop-types";
 
 const Categories =  ({ data: { allCategories, allPosts}, location }) => {
     return (
@@ -17,17 +17,23 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
 
             {allCategories.nodes.map((category) => {
                 return (
-                    <div key={category.id} className="flex flex-wrap flex-col justify-center">
-                        <h2 id={`#${category.slug}`} className="mx-auto pb-2 text-4xl">
+                    <div
+                        key={category.id}
+                        id={category.slug}
+                        className="flex flex-wrap flex-col justify-center mt-6 first:mt-0"
+                        >
+                        <h2 className="mx-auto pb-2 text-4xl">
                             {category.name.toUpperCase()}
                         </h2>
                         <span className="border-t-2 border-gray-900 pb-8"></span>
 
                         {allPosts.nodes.map(post => {
                             const renderPost = post.tags.filter(tag => {
-                                return tag.id === category.id;
+                                // Category IDs always start with 'Ghost__Tag__' and end with numbers
+                                const categoryId = category.id.replace('Ghost__Tag__', '');
+                                return tag.id === categoryId;
                             });
-                            if (!renderPost)
+                            if (!renderPost.length)
                                 return null;
 
                             return (

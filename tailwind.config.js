@@ -4,6 +4,7 @@ module.exports = {
     },
     variants: {
         border: ['backgroundColor'],
+        margin: ['first'],
     },
     plugins: [],
 }

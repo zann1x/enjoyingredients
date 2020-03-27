@@ -4,14 +4,17 @@ import CategoryButton from "~components/categoryButton";
 import PropTypes from "prop-types";
 import { createPathFromSlug, EUrlType } from "~utils/createLinkFromSlug";
 
+import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
+
 const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_excerpt, tags }}) => {
     const postUrl = createPathFromSlug(EUrlType.BLOG_POST, slug);
     const description = custom_excerpt || excerpt;
+    const img = feature_image !== null ? feature_image : FallbackFeatureImage;
 
     return (
         <div className="rounded shadow-lg">
             <Link to={postUrl}>
-                <img className="w-full" alt="Teaser" src={feature_image} />
+                <img className="w-full" alt="Teaser" src={img} />
             </Link>
             <div className="px-6 py-4">
                 <Link to={postUrl}>
