@@ -3,20 +3,12 @@ import { graphql } from "gatsby";
 
 import CenteredContent from "~components/layout/centeredContent.js";
 import SEO from "~components/seo.js";
-//import { cleanInternalTags } from "~utils/cleanInternalTags";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import theme from "~styles/theme";
 import CategoryButtonList from "~components/CategoryButtonList";
 
 export const BlogPost = ({ data: { post }, location }) => {
-    // const categories = post.tags.filter(tag => {
-    //     if (tag.name.startsWith('cat-'))
-    //         return cleanInternalTags(tag, 'cat');
-    //     else
-    //         return null;
-    // });
-
     const categories = post.tags;
 
     return (
