@@ -7,11 +7,13 @@ export const StyledHeroImage = styled.div`
     background-size: cover;
 
     height: 50vh;
-    width: 100vw;
+    width: 100%;
 
-    display: block;
-    margin: 0 auto;
     position: relative;
+
+    &:before {
+        width: 100vh;
+    }
 `;
 
 export const StyledPostHeading = styled.h1`
