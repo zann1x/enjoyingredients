@@ -14,9 +14,16 @@ const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_ex
     const img = feature_image !== null ? feature_image : FallbackFeatureImage;
     let post_description = '';
     if (custom_excerpt === null) {
-        post_description = excerpt.length > 250
-                            ? excerpt.substr(0, 250).trim().concat('...')
-                            : excerpt;
+        if (excerpt.length > 250) {
+            post_description = excerpt.substr(0, 250);
+            const lastWhitespace = post_description.lastIndexOf(' ');
+            if (lastWhitespace !== -1 && lastWhitespace !== post_description.length) {
+                post_description = post_description.substr(0, lastWhitespace);
+            }
+            post_description = post_description.trim().concat('...');
+        } else {
+            post_description = excerpt;
+        }
     }
     const description = custom_excerpt !== null ? custom_excerpt : post_description;
 
