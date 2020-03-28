@@ -35,6 +35,19 @@ module.exports = {
         'gatsby-plugin-styled-components',
         'gatsby-transformer-sharp',
         {
+            resolve: `gatsby-plugin-intl`,
+            options: {
+                // language JSON resource path
+                path: `${__dirname}/src/i18n`,
+                // supported languages
+                languages: [`de`, `en`],
+                // language file path
+                defaultLanguage: `de`,
+                // option to redirect to `/de` when connecting `/`
+                redirect: true,
+            },
+        },
+        {
             resolve: 'gatsby-source-filesystem',
             options: {
                 path: path.join(__dirname, `content`, `pages`),
