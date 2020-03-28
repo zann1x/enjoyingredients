@@ -79,13 +79,15 @@ const StyledPostHeading = styled.h1`
 const StyledPublishingDate = styled.p`
     color: ${theme.color.gray700};
     font-size: ${theme.fontSize.sm};
-    padding-top: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
 `;
 
 const StyledPostExcerpt = styled.div`
     color: ${theme.color.gray600};
-    font-size: ${theme.fontSize.lg};
-    padding: 1rem 0 1.5rem 0;
+    font-size: ${theme.fontSize.md};
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
 `;
 
 const StyledEndPostDiv = styled.div`
@@ -96,8 +98,8 @@ const StyledEndPostDiv = styled.div`
 
 const StyledPostContent = styled.section`
     & {
-        font-size: ${theme.fontSize.md};
-        line-height: 1.5;
+        font-size: ${theme.fontSize.base};
+        line-height: 1.625;
         overflow-wrap: break-word;
         text-align: justify;
         hypens: auto;
