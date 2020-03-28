@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl";
 import styled from "styled-components";
 import theme from "~styles/theme";
 import { createIdPathFromSlug, EUrlType } from "~utils/createPathFromSlug";

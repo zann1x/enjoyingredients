@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl";
 import PropTypes from "prop-types";
 
 import { createIdPathFromSlug, EUrlType } from "~utils/createPathFromSlug";

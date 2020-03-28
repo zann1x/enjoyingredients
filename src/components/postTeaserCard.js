@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl";
 import CategoryButton from "~components/categoryButton";
 import PropTypes from "prop-types";
 import styled from "styled-components";
