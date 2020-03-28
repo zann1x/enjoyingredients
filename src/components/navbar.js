@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
+import { useIntl, Link } from "gatsby-plugin-intl";
 
 const Navbar = ({ siteTitle }) => {
     let [isOpen, setIsOpen] = useState(false);
+    const intl = useIntl();
 
     return (
         <nav className="bg-gray-900 border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-6">
@@ -12,7 +13,7 @@ const Navbar = ({ siteTitle }) => {
                 <div className="text-white">
                     <Link to="/"
                         className="font-semibold text-xl hover:bg-gray-800 rounded px-2 py-1 block">
-                        {siteTitle}
+                        {intl.formatMessage({ id: "site_title" })}
                     </Link>
                 </div>
                 <div className="sm:hidden">
@@ -37,11 +38,11 @@ const Navbar = ({ siteTitle }) => {
             <div className={`${isOpen ? "block" : "hidden"} border-t border-green-500 sm:border-0 px-4 pt-4 pb-4 sm:flex sm:p-0`}>
                 <Link to="/blog/categories"
                     className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
-                    Kategorien
+                    {intl.formatMessage({ id: "navbar_categories" })}
                 </Link>
                 <Link to="/about"
                     className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 mt-1 sm:mt-0 sm:ml-2">
-                    Über mich
+                    {intl.formatMessage({ id: "navbar_about" })}
                 </Link>
             </div>
         </nav>
