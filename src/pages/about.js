@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { useIntl } from "gatsby-plugin-intl";
 import styled from "styled-components";
 
 import CenteredContent from "~components/layout/centeredContent";
@@ -8,7 +9,11 @@ import SEO from "~components/seo";
 import theme from "~styles/theme";
 
 export default ({ data, location }) => {
-    const { content } = data;
+    const { aboutTranslations } = data;
+
+    // Get the content in the language we are currently visiting the site with
+    const intl = useIntl();
+    const content = aboutTranslations.nodes.filter(page => intl.locale === page.frontmatter.language)[0];
 
     return (
         <SiteLayout>
@@ -28,18 +33,25 @@ export default ({ data, location }) => {
 
 export const pageQuery = graphql`
     query {
-        content: markdownRemark(
-            fields: {
-                slug: {
-                    eq: "/about/"
+        aboutTranslations: allMarkdownRemark(
+            filter: {
+                fields: {
+                    slug: {
+                        regex: "//about//"
+                    }
                 }
             }) {
-            id
-            frontmatter {
-                title
-                description
+            nodes {
+                fields {
+                    slug
+                }
+                frontmatter {
+                    title
+                    description
+                    language
+                }
+                html
             }
-            html
         }
     }
 `;

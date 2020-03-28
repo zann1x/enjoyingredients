@@ -1,6 +1,7 @@
 ---
 title: 'Über EnjoyIngredients'
 description: 'Was ist EnjoyIngredients?'
+language: 'de'
 ---
 Hey, mein Name ist Evi und ich bin Deine Reiseführerin durch das riesige Land des Essens!
 Hier entdecken wir alles rund um bewusste und gesunde Ernährung, denn wir wollen lecker für große und kleine Abenteurer kochen!

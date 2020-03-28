@@ -1,5 +1,6 @@
 {
-    "site_title": "EnjoyIngredients",
     "navbar_categories": "Kategorien",
-    "navbar_about": "Über mich"
+    "navbar_about": "Über mich",
+
+    "footer_made_with_hunger": "Mit Hunger gemacht"
 }

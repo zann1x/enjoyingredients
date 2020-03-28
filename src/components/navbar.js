@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import PropTypes from "prop-types";
-import { useIntl, Link } from "gatsby-plugin-intl";
+import { Link, useIntl } from "gatsby-plugin-intl";
+
+import { EUrlType } from "~utils/createPathFromSlug";
 
 const Navbar = ({ siteTitle }) => {
     let [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = ({ siteTitle }) => {
                 <div className="text-white">
                     <Link to="/"
                         className="font-semibold text-xl hover:bg-gray-800 rounded px-2 py-1 block">
-                        {intl.formatMessage({ id: "site_title" })}
+                        {siteTitle}
                     </Link>
                 </div>
                 <div className="sm:hidden">
@@ -36,11 +37,11 @@ const Navbar = ({ siteTitle }) => {
             </div>
 
             <div className={`${isOpen ? "block" : "hidden"} border-t border-green-500 sm:border-0 px-4 pt-4 pb-4 sm:flex sm:p-0`}>
-                <Link to="/blog/categories"
+                <Link to={EUrlType.BLOG_CATEGORY}
                     className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
                     {intl.formatMessage({ id: "navbar_categories" })}
                 </Link>
-                <Link to="/about"
+                <Link to={EUrlType.ABOUT}
                     className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 mt-1 sm:mt-0 sm:ml-2">
                     {intl.formatMessage({ id: "navbar_about" })}
                 </Link>
@@ -48,9 +49,5 @@ const Navbar = ({ siteTitle }) => {
         </nav>
     );
 }
-
-Navbar.propTypes = {
-    siteTitle: PropTypes.string.isRequired,
-};
 
 export default Navbar;

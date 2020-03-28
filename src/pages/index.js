@@ -16,7 +16,7 @@ export const Index = ({ data: { site, latestPosts }}) => {
                 description={config.siteDescription}
                 pathname="/"
             />
-            <Navbar siteTitle={site.siteMetadata.title}></Navbar>
+            <Navbar siteTitle={site.siteMetadata.title} />
 
             <div className="container mx-auto px-2 py-6 w-11/12">
                 {latestPosts.nodes.map((post) => {
