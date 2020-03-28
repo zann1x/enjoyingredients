@@ -1,9 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
+import styled from "styled-components";
 
 import CenteredContent from "~components/layout/centeredContent";
 import SiteLayout from "~components/layout/siteLayout";
 import SEO from "~components/seo";
+import theme from "~styles/theme";
 
 export default ({ data, location }) => {
     const { content } = data;
@@ -16,7 +18,7 @@ export default ({ data, location }) => {
                 pathname={location.pathname} />
             <CenteredContent>
                 <div>
-                    <h1 className="text-3xl font-bold pb-2">{content.frontmatter.title}</h1>
+                    <StyledHeading>{content.frontmatter.title}</StyledHeading>
                     <section className="leading-relaxed text-justify" dangerouslySetInnerHTML={{ __html: content.html }}></section>
                 </div>
             </CenteredContent>
@@ -40,4 +42,11 @@ export const pageQuery = graphql`
             html
         }
     }
+`;
+
+const StyledHeading = styled.h1`
+    font-size: ${theme.fontSize.h1};
+    font-weight: ${theme.fontWeight.f700};
+
+    padding-bottom: 0.5rem;
 `;

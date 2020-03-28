@@ -1,11 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import CenteredContent from "~components/layout/centeredContent";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
 import SiteLayout from "~components/layout/siteLayout";
+import theme from "~styles/theme";
 
 const Categories =  ({ data: { allCategories, allPosts}, location }) => {
     return (
@@ -24,9 +26,9 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
                             id={category.slug}
                             className="flex flex-wrap flex-col justify-center mt-6 first:mt-0"
                             >
-                            <h2 className="mx-auto pb-2 pt-1 text-4xl">
+                            <StyledHeading>
                                 {category.name.toUpperCase()}
-                            </h2>
+                            </StyledHeading>
                             <span className="border-t-2 border-gray-900 pb-8"></span>
 
                             {allPosts.nodes.map(post => {
@@ -95,4 +97,14 @@ export const pageQuery = graphql`
             }
         }
     }
+`;
+
+const StyledHeading = styled.h1`
+    font-size: ${theme.fontSize.h1};
+    font-weight: ${theme.fontWeight.f500};
+
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
 `;

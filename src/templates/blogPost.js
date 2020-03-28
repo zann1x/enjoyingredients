@@ -7,7 +7,7 @@ import CenteredContent from "~components/layout/centeredContent";
 import CategoryButtonList from "~components/CategoryButtonList";
 import SEO from "~components/seo";
 import SiteLayout from "~components/layout/siteLayout";
-import theme from "~styles/theme"
+import theme from "~styles/theme";
 
 import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
 
@@ -22,7 +22,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                 description={post.custom_excerpt || post.excerpt}
                 pathname={location.pathname}
             />
-            
+
             <StyledHeroImage style={{backgroundImage: `url(${header_image})`}} />
             <CenteredContent>
                 <article>
@@ -72,8 +72,8 @@ const StyledHeroImage = styled.div`
 `;
 
 const StyledPostHeading = styled.h1`
-    font-size: ${theme.fontSize.xl4};
-    font-weight: 600;
+    font-size: ${theme.fontSize.h1};
+    font-weight: ${theme.fontWeight.f600};
 `;
 
 const StyledPublishingDate = styled.p`
@@ -105,16 +105,16 @@ const StyledPostContent = styled.section`
     }
 
     h2 {
-        font-size: ${theme.fontSize.xl2};
-        font-weight: 500;
+        font-size: ${theme.fontSize.h2};
+        font-weight: ${theme.fontWeight.f500};
         padding: 2rem 0 0.3rem 0;
         &:first-of-type {
             padding-top: 1rem;
         }
     }
     h3 {
-        font-size: ${theme.fontSize.xl};
-        font-weight: 500;
+        font-size: ${theme.fontSize.h3};
+        font-weight: ${theme.fontWeight.f500};
         padding: 1.125rem 0 0.3rem 0;
     }
 
@@ -166,7 +166,7 @@ const StyledPostContent = styled.section`
                     }
     
                     div.kg-bookmark-title {
-                        font-weight: 600;
+                        font-weight: ${theme.fontWeight.f600};
                         font-size: ${theme.fontSize.base};
 
                         @media (max-width: 500px) {
@@ -179,7 +179,7 @@ const StyledPostContent = styled.section`
                         max-height: 48px;
                         color: #5d7179;
                         line-height: 1.5em;
-                        font-weight: 400;
+                        font-weight: ${theme.fontWeight.f400};
                         font-size: ${theme.fontSize.base};
 
                         @media (max-width: 500px) {
@@ -193,7 +193,7 @@ const StyledPostContent = styled.section`
                         margin-top: 14px;
                         color: #5d7179;
                         font-size: ${theme.fontSize.base};
-                        font-weight: 400;
+                        font-weight: ${theme.fontWeight.f400};
 
                         @media (max-width: 500px) {
                             font-size: ${theme.fontSize.sm};
@@ -268,7 +268,7 @@ const StyledPostContent = styled.section`
         padding: 0 5px 2px;
         font-size: ${theme.fontSize.sm};
         line-height: 1em;
-        font-weight: 400!important;
+        font-weight: ${theme.fontWeight.f400} !important;
         background: ${theme.color.gray300};
         border-radius: 3px;
     }

@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "gatsby";
 import CategoryButton from "~components/categoryButton";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+import theme from "~styles/theme";
 import { createPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
 
 import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
@@ -24,12 +27,12 @@ const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_ex
             </Link>
             <div className="px-6 pt-4 pb-2">
                 <Link to={postUrl}>
-                    <h2 className="font-bold text-2xl">
+                    <StyledHeading>
                         {title || slug}
-                    </h2>
-                    <p className="pt-1 text-lg">
+                    </StyledHeading>
+                    <StyledExcerpt>
                         {description}
-                    </p>
+                    </StyledExcerpt>
                 </Link>
             </div>
 
@@ -52,3 +55,14 @@ PostTeaserCard.propTypes = {
 };
 
 export default PostTeaserCard;
+
+const StyledHeading = styled.p`
+    font-size: ${theme.fontSize.xl};
+    font-weight: ${theme.fontWeight.f700};
+`;
+
+const StyledExcerpt = styled.p`
+    font-size: ${theme.fontSize.base};
+
+    padding-top: 0.25rem;
+`;
