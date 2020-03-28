@@ -4,7 +4,7 @@ const { createPathFromSlug, EUrlType } = require("./src/utils/createPathFromSlug
 
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
-    const blogPost = path.resolve(`./src/templates/blogPost.js`);
+    const blogPost = path.resolve(`./src/templates/blogPost/index.js`);
 
     const result = await graphql(`
         {

@@ -1,64 +1,7 @@
-import React from "react";
-import { graphql } from "gatsby";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-
-import CenteredContent from "~components/layout/centeredContent";
-import CategoryButtonList from "~components/CategoryButtonList";
-import SEO from "~components/seo";
-import SiteLayout from "~components/layout/siteLayout";
 import theme from "~styles/theme";
 
-import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
-
-export const BlogPost = ({ data: { post }, location }) => {
-    const categories = post.tags;
-    const header_image = post.feature_image !== null ? post.feature_image : FallbackFeatureImage;
-
-    return (
-        <SiteLayout>
-            <SEO
-                title={post.title}
-                description={post.custom_excerpt || post.excerpt}
-                pathname={location.pathname}
-            />
-
-            <StyledHeroImage style={{backgroundImage: `url(${header_image})`}} />
-            <CenteredContent>
-                <article>
-                    <header>
-                        <StyledPostHeading>{post.title}</StyledPostHeading>
-                        <StyledPublishingDate>{post.published_at_pretty}</StyledPublishingDate>
-                        {post.custom_excerpt &&
-                            <StyledPostExcerpt className="post-content">{post.custom_excerpt}</StyledPostExcerpt>
-                        }
-                    </header>
-                    <hr/>
-                    <StyledPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
-                    <StyledEndPostDiv />
-                    <CategoryButtonList categories={categories} />
-                </article>
-            </CenteredContent>
-        </SiteLayout>
-    );
-}
-
-BlogPost.propTypes = {
-    post: PropTypes.object,
-    location: PropTypes.object,
-};
-
-export default BlogPost;
-
-export const pageQuery = graphql`
-    query ($slug: String!) {
-        post: ghostPost(slug: {eq: $slug} ) {
-            ...GhostPostFields
-        }
-    }
-`;
-
-const StyledHeroImage = styled.div`
+export const StyledHeroImage = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -71,32 +14,32 @@ const StyledHeroImage = styled.div`
     position: relative;
 `;
 
-const StyledPostHeading = styled.h1`
+export const StyledPostHeading = styled.h1`
     font-size: ${theme.fontSize.h1};
     font-weight: ${theme.fontWeight.f600};
 `;
 
-const StyledPublishingDate = styled.p`
+export const StyledPublishingDate = styled.p`
     color: ${theme.color.gray700};
     font-size: ${theme.fontSize.sm};
     padding-top: 1rem;
     padding-bottom: 0.5rem;
 `;
 
-const StyledPostExcerpt = styled.div`
+export const StyledPostExcerpt = styled.div`
     color: ${theme.color.gray600};
     font-size: ${theme.fontSize.md};
     padding-top: 1rem;
     padding-bottom: 1.5rem;
 `;
 
-const StyledEndPostDiv = styled.div`
+export const StyledEndPostDiv = styled.div`
     border-top: 1px solid #a6a5a5;
     content: " ";
     width: 30px;
 `;
 
-const StyledPostContent = styled.section`
+export const StyledPostContent = styled.section`
     & {
         font-size: ${theme.fontSize.base};
         line-height: 1.625;
