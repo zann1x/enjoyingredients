@@ -1,4 +1,12 @@
 {
+    "category_desserts": "Desserts",
+    "category_fish_and_meat": "Fish & meat",
+    "category_breakfast": "Breakfast",
+    "category_pastries": "Pastries",
+    "category_drinks": "Drinks",
+    "category_pasta_and_pizza": "Pasta & pizza",
+    "category_appetizers": "Appetizers",
+
     "navbar_categories": "Categories",
     "navbar_about": "About me",
 
