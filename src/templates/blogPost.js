@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 
 import * as Style from "./style";
 
-import CenteredContent from "~components/layout/centeredContent";
-import CategoryButtonList from "~components/CategoryButtonList";
+import CategoryButton from "~components/categoryButton";
 import SEO from "~components/seo";
+import CenteredContent from "~components/layout/centeredContent";
 import SiteLayout from "~components/layout/siteLayout";
 
 import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
@@ -38,7 +38,17 @@ export const BlogPost = ({ data: { post }, location }) => {
                     <hr/>
                     <Style.StyledPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
                     <Style.StyledEndPostDiv />
-                    <CategoryButtonList categories={categories} />
+                    {/* <CategoryButtonList categories={categories} /> */}
+                    <div className="py-4">
+                        {categories.map(category => {
+                            return (
+                                <CategoryButton
+                                    key={category.id}
+                                    category={category}
+                                ></CategoryButton>
+                            );
+                        })}
+                    </div>
                 </article>
             </CenteredContent>
         </SiteLayout>
