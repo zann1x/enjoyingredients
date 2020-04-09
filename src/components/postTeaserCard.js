@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "gatsby-plugin-intl";
-import CategoryButton from "~components/categoryButton";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import CategoryButton from "~components/categoryButton";
 import theme from "~styles/theme";
 import { createPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
 
@@ -29,7 +29,7 @@ const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_ex
     const description = custom_excerpt !== null ? custom_excerpt : post_description;
 
     return (
-        <div className="rounded shadow-lg">
+        <div className="rounded shadow-lg hover:bg-gray-100">
             <Link to={postUrl}>
                 <img className="w-full" alt="Teaser" src={img} />
             </Link>

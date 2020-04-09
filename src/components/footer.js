@@ -10,7 +10,7 @@ export const Footer = () => {
     return (
         <StyledFooter>
             <p>
-                © {new Date().getFullYear()} | <a href="https://lukaszanner.de">{intl.formatMessage({ id: "footer_made_with_hunger" })}</a>
+                © {new Date().getFullYear()} | <a className="hover:text-indigo-800" href="https://lukaszanner.de">{intl.formatMessage({ id: "footer_made_with_hunger" })}</a>
             </p>
         </StyledFooter>
     );
