@@ -6,9 +6,15 @@
     "category_drinks": "Drinks",
     "category_pasta_and_pizza": "Pasta & pizza",
     "category_appetizers": "Appetizers",
+    "category_getting_started": "Getting Started",
 
     "navbar_categories": "Categories",
     "navbar_about": "About me",
 
-    "footer_made_with_hunger": "Made with hunger"
+    "startpage_more_posts": "More posts",
+
+    "footer_made_with_hunger": "Made with hunger",
+
+    "seo_categories_title": "Category overview",
+    "seo_categories_description": "An overview of all posts and categories where you will always find a tasty recipe"
 }

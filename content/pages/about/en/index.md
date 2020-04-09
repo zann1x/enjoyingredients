@@ -1,6 +1,6 @@
 ---
-title: 'About EnjoyIngredients'
-description: 'What is EnjoyIngredients?'
+title: 'About me'
+description: 'Everything you need to know about EnjoyIngredients and the person behind it'
 language: 'en'
 ---
 Hey, my name is Evi and I am your guide through the vast land of food!

@@ -1,6 +1,6 @@
 ---
-title: 'Über EnjoyIngredients'
-description: 'Was ist EnjoyIngredients?'
+title: 'Über mich'
+description: 'Alles, was du über EnjoyIngredients und die Person dahinter wissen musst'
 language: 'de'
 ---
 Hey, mein Name ist Evi und ich bin Deine Reiseführerin durch das riesige Land des Essens!
