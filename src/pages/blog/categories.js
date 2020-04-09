@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { useIntl } from "gatsby-plugin-intl";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -7,19 +8,23 @@ import CenteredContent from "~components/layout/centeredContent";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
 import SiteLayout from "~components/layout/siteLayout";
+import { mapCategoryNameToI18nKey } from "~utils/mapCategoryNameToI18nKey";
 import theme from "~styles/theme";
 
 const Categories =  ({ data: { allCategories, allPosts}, location }) => {
+    const intl = useIntl();
+
     return (
         <SiteLayout>
             <SEO
-                title={'Kategorieübersicht'}
-                description={'Übersicht aller Kategorien'}
+                title={intl.formatMessage({ id: 'seo_categories_title' })}
+                description={intl.formatMessage({ id: 'seo_categories_description' })}
                 pathname={location.pathname}
             />
 
             <CenteredContent>
                 {allCategories.nodes.map((category) => {
+                    const i18nCategoryName = mapCategoryNameToI18nKey(category.name);
                     return (
                         <div
                             key={category.id}
@@ -27,7 +32,7 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
                             className="flex flex-wrap flex-col justify-center mt-6 first:mt-0"
                             >
                             <StyledHeading>
-                                {category.name.toUpperCase()}
+                                {intl.formatMessage({ id: i18nCategoryName }).toUpperCase()}
                             </StyledHeading>
                             <span className="border-t-2 border-gray-900 pb-8"></span>
 
