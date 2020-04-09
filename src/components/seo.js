@@ -40,10 +40,10 @@ const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) =>
                     name: 'description',
                     content: metaDescription,
                 },
-                {
-                    name: 'author',
-                    content: config.creator.name,
-                },
+                // {
+                //     name: 'author',
+                //     content: config.creator.name,
+                // },
                 {
                     property: 'og:title',
                     content: title,
@@ -64,10 +64,10 @@ const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) =>
                     name: 'twitter:card',
                     content: 'summary',
                 },
-                {
-                    name: 'twitter:creator',
-                    content: config.creator.twitterHandle,
-                },
+                // {
+                //     name: 'twitter:creator',
+                //     content: config.creator.twitterHandle,
+                // },
                 {
                     name: 'twitter:title',
                     content: title,
