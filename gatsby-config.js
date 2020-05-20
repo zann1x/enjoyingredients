@@ -40,7 +40,7 @@ module.exports = {
                 // language JSON resource path
                 path: `${__dirname}/src/i18n`,
                 // supported languages
-                languages: [`de`, `en`],
+                languages: [`de`],
                 // language file path
                 defaultLanguage: `de`,
                 // option to redirect to `/de` when connecting `/`
