@@ -17,6 +17,6 @@ export function mapCategoryNameToI18nKey(categoryName) {
         case 'Getting Started':
             return 'category_getting_started';
         default:
-            return '';
+            return 'category_none';
     }
 }
