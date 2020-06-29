@@ -6,12 +6,19 @@ import Footer from "~components/footer";
 import Navbar from "~components/navbar";
 
 export const SiteLayout = ({children}) => {
-    const { site } = useStaticQuery(
+    const data = useStaticQuery(
         graphql`
             query {
                 site {
                     siteMetadata {
                         title
+                    }
+                }
+                file(relativePath: {eq: "logo.png"}) {
+                    childImageSharp {
+                        fixed(width: 200) {
+                            ...GatsbyImageSharpFixed
+                        }
                     }
                 }
             }
@@ -20,7 +27,7 @@ export const SiteLayout = ({children}) => {
 
     return (
         <StyledSiteWrapper>
-            <Navbar siteTitle={site.siteMetadata.title} />
+            <Navbar siteTitle={data.site.siteMetadata.title} logo={data.file} />
                 {children}
             <Footer />
         </StyledSiteWrapper>
