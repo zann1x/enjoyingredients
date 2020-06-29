@@ -14,20 +14,13 @@ export const SiteLayout = ({children}) => {
                         title
                     }
                 }
-                file(relativePath: {eq: "logo.png"}) {
-                    childImageSharp {
-                        fixed(width: 200) {
-                            ...GatsbyImageSharpFixed
-                        }
-                    }
-                }
             }
         `
     );
 
     return (
         <StyledSiteWrapper>
-            <Navbar siteTitle={data.site.siteMetadata.title} logo={data.file} />
+            <Navbar siteTitle={data.site.siteMetadata.title} />
                 {children}
             <Footer />
         </StyledSiteWrapper>
