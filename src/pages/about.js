@@ -22,10 +22,8 @@ export default ({ data, location }) => {
                 description={content.frontmatter.description}
                 pathname={location.pathname} />
             <CenteredContent>
-                <div>
-                    <StyledHeading>{content.frontmatter.title}</StyledHeading>
-                    <section className="leading-relaxed text-justify" dangerouslySetInnerHTML={{ __html: content.html }}></section>
-                </div>
+                <StyledHeading>{content.frontmatter.title}</StyledHeading>
+                <section className="leading-relaxed text-justify" dangerouslySetInnerHTML={{ __html: content.html }}></section>
             </CenteredContent>
         </SiteLayout>
     );
