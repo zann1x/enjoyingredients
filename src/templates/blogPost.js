@@ -36,7 +36,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                         }
                     </header>
                     <hr/>
-                    <Style.StyledPostContent dangerouslySetInnerHTML={{ __html: post.html }} />
+                    <Style.StyledPostContent className="load-external-scripts" dangerouslySetInnerHTML={{ __html: post.html }} />
                     <Style.StyledEndPostDiv />
                     {/* <CategoryButtonList categories={categories} /> */}
                     <div className="py-4">
