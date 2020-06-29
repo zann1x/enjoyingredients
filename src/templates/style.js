@@ -195,16 +195,9 @@ export const StyledPostContent = styled.section`
     }
 
     blockquote {
-        border-left: 3px solid #3eb0ef;
+        border-left: 3px solid #3f3f3f;
         margin: 1.5rem 0;
         padding: 0 0 0 1.5rem;
-        
-        &:before {
-            content: open-quote;
-        }
-        &:after {
-            content:close-quote;
-        }
     }
 
     pre {
