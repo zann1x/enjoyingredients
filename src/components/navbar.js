@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import Img from "gatsby-image";
 import { Link, useIntl } from "gatsby-plugin-intl";
 
 import { EUrlType } from "~utils/createPathFromSlug";
 
-const Navbar = ({ siteTitle, logo }) => {
+import logo from "~content/img/logo.png";
+
+const Navbar = ({ siteTitle }) => {
     let [isOpen, setIsOpen] = useState(false);
     const intl = useIntl();
 
@@ -15,7 +16,7 @@ const Navbar = ({ siteTitle, logo }) => {
                 <div className="text-white">
                     <Link to="/"
                         className="hover:bg-gray-800 rounded px-2 py-2 block flex">
-                        <Img fixed={logo.childImageSharp.fixed} alt={siteTitle} />
+                            <img src={logo} alt={siteTitle} width="200px" />
                     </Link>
                 </div>
                 <div className="sm:hidden">
