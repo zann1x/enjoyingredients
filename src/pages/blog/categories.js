@@ -70,7 +70,8 @@ export const pageQuery = graphql`
     query {
         allCategories: allGhostTag(
             filter: {
-                postCount: { gt: 0 }
+                postCount: { gt: 0 },
+                slug: { ne: "data-schema" }
             }
         ) {
             nodes {
@@ -85,6 +86,9 @@ export const pageQuery = graphql`
             sort: {
                 fields: published_at
                 order: DESC
+            },
+            filter: {
+                slug: { ne: "data-schema" }
             }
         ) {
             nodes {
