@@ -4,14 +4,12 @@ import styled from "styled-components";
 
 import theme from "~styles/theme";
 
-export const Footer = () => {
+export const Footer = ({ siteTitle }) => {
     const intl = useIntl();
 
     return (
         <StyledFooter>
-            <p>
-                © {new Date().getFullYear()} | <a className="hover:text-indigo-800" href="https://lukaszanner.de">{intl.formatMessage({ id: "footer_made_with_hunger" })}</a>
-            </p>
+            {siteTitle} | <a className="hover:text-indigo-800" href="https://lukaszanner.de">{intl.formatMessage({ id: "footer_made_with_hunger" })}</a>
         </StyledFooter>
     );
 }

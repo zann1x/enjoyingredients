@@ -22,7 +22,7 @@ export const SiteLayout = ({children}) => {
         <StyledSiteWrapper>
             <Navbar siteTitle={data.site.siteMetadata.title} />
                 {children}
-            <Footer />
+            <Footer siteTitle={data.site.siteMetadata.title} />
         </StyledSiteWrapper>
     );
 }
