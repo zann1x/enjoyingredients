@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { useIntl } from "gatsby-plugin-intl";
 import PropTypes from "prop-types";
 
-import * as Style from "./style";
+import * as Style from "./blogPost.style";
 
 import CategoryButton from "~components/categoryButton";
 import SEO from "~components/seo";
