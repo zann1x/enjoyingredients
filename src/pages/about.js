@@ -22,7 +22,6 @@ export default ({ location }) => {
             }
         }
     `);
-    console.log(qdata);
 
     // const { aboutTranslations } = data;
 
