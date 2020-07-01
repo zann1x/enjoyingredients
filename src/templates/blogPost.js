@@ -8,7 +8,7 @@ import * as Style from "./style";
 import CategoryButton from "~components/categoryButton";
 import SEO from "~components/seo";
 import CenteredContent from "~components/layout/centeredContent";
-import SiteLayout from "~components/layout/siteLayout";
+import SiteLayout from "~layouts/siteLayout";
 
 import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
 

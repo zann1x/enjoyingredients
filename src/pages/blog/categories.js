@@ -7,7 +7,7 @@ import styled from "styled-components";
 import CenteredContent from "~components/layout/centeredContent";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
-import SiteLayout from "~components/layout/siteLayout";
+import SiteLayout from "~layouts/siteLayout";
 import { mapCategoryNameToI18nKey } from "~utils/mapCategoryNameToI18nKey";
 import theme from "~styles/theme";
 

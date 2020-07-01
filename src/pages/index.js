@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
-import SiteLayout from "~components/layout/siteLayout";
+import SiteLayout from "~layouts/siteLayout";
 import config from '~utils/config';
 import { EUrlType } from '~utils/createPathFromSlug';
 import theme from '~styles/theme';

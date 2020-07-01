@@ -2,7 +2,7 @@ import React from "react"
 import Helmet from "react-helmet";
 
 import CenteredContent from "~components/layout/centeredContent";
-import SiteLayout from "~components/layout/siteLayout";
+import SiteLayout from "~layouts/siteLayout";
 import config from "~utils/config";
 
 export default () => {

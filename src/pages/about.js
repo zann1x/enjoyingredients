@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 
 import CenteredContent from "~components/layout/centeredContent";
-import SiteLayout from "~components/layout/siteLayout";
+import SiteLayout from "~layouts/siteLayout";
 import SEO from "~components/seo";
 
 import * as Styled from "./about.styled";
