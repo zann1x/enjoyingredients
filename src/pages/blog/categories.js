@@ -4,7 +4,7 @@ import { useIntl } from "gatsby-plugin-intl";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import CenteredContent from "~components/layout/centeredContent";
+import CenteredContent from "~layouts/centeredContent";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
 import SiteLayout from "~layouts/siteLayout";

@@ -1,7 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet";
 
-import CenteredContent from "~components/layout/centeredContent";
+import CenteredContent from "~layouts/centeredContent";
 import SiteLayout from "~layouts/siteLayout";
 import config from "~utils/config";
 

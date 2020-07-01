@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 
-import CenteredContent from "~components/layout/centeredContent";
+import CenteredContent from "~layouts/centeredContent";
 import SiteLayout from "~layouts/siteLayout";
 import SEO from "~components/seo";
 
