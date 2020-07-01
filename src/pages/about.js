@@ -8,7 +8,7 @@ import SEO from "~components/seo";
 import theme from "~styles/theme";
 
 export default ({ location }) => {
-    const qdata = useStaticQuery(graphql`
+    const data = useStaticQuery(graphql`
         query {
             ghostPage(
                 slug: { eq: "ueber-mich" },
@@ -28,7 +28,7 @@ export default ({ location }) => {
     // Get the content in the language we are currently visiting the site with
     // const intl = useIntl();
     // const content = aboutTranslations.nodes.filter(page => intl.locale === page.frontmatter.language)[0];
-    const content = qdata.ghostPage;
+    const content = data.ghostPage;
 
     return (
         <SiteLayout>
