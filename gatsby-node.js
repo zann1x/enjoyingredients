@@ -4,20 +4,33 @@ const { createPathFromSlug, EUrlType } = require("./src/utils/createPathFromSlug
 
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
-    const blogPost = path.resolve(`./src/templates/blogPost.js`);
+    const blogPostTemplate = path.resolve(`./src/templates/blogPost.js`);
+    const pageTemplate = path.resolve(`./src/templates/page.js`);
 
     const result = await graphql(`
         {
             posts: allGhostPost(
-                sort: {
-                    order: DESC,
-                    fields: [published_at]
-                }
+                filter: {slug: {ne: "data-schema"}},
+                sort: {order: DESC, fields: [published_at]}
                 ) {
                 edges {
                     node {
                         slug
                     }
+                }
+            }
+            tags: allGhostTag(
+                filter: {slug: {ne: "data-schema"}}
+                ) {
+                nodes {
+                    slug
+                }
+            }
+            pages: allGhostPage(
+                filter: {slug: {ne: "data-schema-page"}}
+                ) {
+                nodes {
+                    slug
                 }
             }
         }
@@ -27,15 +40,41 @@ exports.createPages = async ({ actions, graphql }) => {
         throw result.errors;
     }
 
+    // TODO: filter out pages for paths not fitting to the language of the site
+    //       (e.g. pages with tag #de should not appear under .com/en/)
+
     // Create blog posts pages
     const { posts } = result.data;
     if (posts) {
         posts.edges.forEach(({ node }) => {
             createPage({
                 path: createPathFromSlug(EUrlType.BLOG_POST, node.slug),
-                component: blogPost,
+                component: blogPostTemplate,
                 context: {
                     slug: node.slug,
+                },
+            });
+        });
+    }
+
+    // Create category page
+    const { tags } = result.data;
+    // if (tags) {
+    //     createPage({
+    //         path: createPathFromSlug(EUrlType.BLOG_CATEGORY, ''),
+    //         component: blogCategoriesTemplate
+    //     });
+    // }
+
+    // Create individual pages (e.g. /about)
+    const { pages } = result.data;
+    if (pages) {
+        pages.nodes.forEach((page) => {
+            createPage({
+                path: createPathFromSlug(EUrlType.PAGE, page.slug),
+                component: pageTemplate,
+                context: {
+                    slug: page.slug,
                 },
             });
         });
