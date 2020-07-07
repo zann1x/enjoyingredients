@@ -24,7 +24,7 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
 
             <CenteredContent>
                 {allCategories.nodes.map((category) => {
-                    const i18nCategoryName = mapCategoryNameToI18nKey(category.name);
+                    const i18nCategoryName = mapCategoryNameToI18nKey(category.name, intl.locale);
                     return (
                         <StyledContent
                             key={category.id}

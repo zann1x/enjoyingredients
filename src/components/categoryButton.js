@@ -9,7 +9,8 @@ import styled from "styled-components";
 const CategoryButton = ({ category }) => {
     const intl = useIntl();
     const categoryPath = createIdPathFromSlug(EUrlType.BLOG_CATEGORY, category.slug);
-    const i18nCategoryName = mapCategoryNameToI18nKey(category.name);
+    const i18nCategoryName = mapCategoryNameToI18nKey(category.name, intl.locale);
+
     if (i18nCategoryName !== '') {
         return (
             <StyledLink to={categoryPath}>
