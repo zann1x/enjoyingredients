@@ -93,7 +93,7 @@ export const StyledPostContent = styled.section`
         font-size: ${theme.fontSize.base};
         line-height: 1.625;
         overflow-wrap: break-word;
-        text-align: justify;
+        text-align: left;
         hypens: auto;
         margin-bottom: 3em;
     }
