@@ -1,10 +1,10 @@
 {
     "development": {
         "apiUrl": "https://cms.enjoyingredients.com",
-        "contentApiKey": "45b5922dffc9cb05033f8b0fc3"
+        "contentApiKey": "44e33786b20d857f95dc2f1925"
     },
     "production": {
         "apiUrl": "https://cms.enjoyingredients.com",
-        "contentApiKey": "45b5922dffc9cb05033f8b0fc3"
+        "contentApiKey": "44e33786b20d857f95dc2f1925"
     }
 }
