@@ -38,8 +38,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                     <hr/>
                     <StyledPostContent className="ghost-content load-external-scripts" dangerouslySetInnerHTML={{ __html: post.html }} />
                     <StyledEndPostDiv />
-                    {/* <CategoryButtonList categories={categories} /> */}
-                    <div className="py-4">
+                    <StyledCategoryButtonList>
                         {categories.map(category => {
                             return (
                                 <CategoryButton
@@ -48,7 +47,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                                 ></CategoryButton>
                             );
                         })}
-                    </div>
+                    </StyledCategoryButtonList>
 
                     <div>
                         <p>Schreib uns unter <a href="mailto:mail@enjoyingredients.com" className="underline hover:ease-in hover:duration-200 hover:text-blue-500">mail@enjoyingredients.com</a>!</p>
@@ -113,6 +112,11 @@ export const StyledEndPostDiv = styled.div`
     border-top: 1px solid #a6a5a5;
     content: " ";
     width: 30px;
+`;
+
+const StyledCategoryButtonList = styled.div`
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 `;
 
 export const StyledPostContent = styled.section`
