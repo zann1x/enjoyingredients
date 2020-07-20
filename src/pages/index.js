@@ -22,20 +22,18 @@ export const Index = ({ data: { latestPosts }}) => {
                 pathname="/"
             />
 
-            <div className="container mx-auto px-2 py-6 w-11/12">
+            <StyledContent>
                 {latestPosts.nodes.map((post) => {
                     return (
-                        <div key={post.id} className="max-w-xl mb-6 mx-auto">
+                        <StyledTeaserCardArea key={post.id}>
                             <PostTeaserCard post={post}></PostTeaserCard>
-                        </div>
+                        </StyledTeaserCardArea>
                     );
                 })}
-            </div>
+            </StyledContent>
 
             <StyledMoreButton to={EUrlType.BLOG_CATEGORY}>
-                {/* <Link to={EUrlType.BLOG_CATEGORY}> */}
-                    {intl.formatMessage({ id: 'startpage_more_posts' })}
-                {/* </Link> */}
+                {intl.formatMessage({ id: 'startpage_more_posts' })}
             </StyledMoreButton>
         </SiteLayout>
     );
@@ -71,6 +69,33 @@ export const pageQuery = graphql`
             }
         }
     }
+`;
+
+const StyledContent = styled.div`
+    width: 91.666667%;
+    @media (min-width: 640px) {
+        max-width: 640px;
+    }
+    @media (min-width: 768px) {
+        max-width: 768px;
+    }
+    @media (min-width: 1024px) {
+        max-width: 1024px;
+    }
+    @media (min-width: 1280px) {
+        max-width: 1280px;
+    }
+
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1.5rem 0.5rem;
+`;
+
+const StyledTeaserCardArea = styled.div`
+    max-width: 36rem;
+    margin-bottom: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
 `;
 
 const StyledMoreButton = styled(Link)`
