@@ -29,11 +29,11 @@ const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_ex
     const description = custom_excerpt !== null ? custom_excerpt : post_description;
 
     return (
-        <div className="rounded shadow-lg hover:bg-gray-100">
+        <StyledTeaserBox>
             <Link to={postUrl}>
-                <img className="w-full" alt="Teaser" src={img} />
+                <StyledTeaserImage alt="Teaser" src={img} />
             </Link>
-            <div className="px-6 pt-4 pb-2">
+            <StyledTextArea>
                 <Link to={postUrl}>
                     <StyledHeading>
                         {title || slug}
@@ -42,9 +42,9 @@ const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_ex
                         {description}
                     </StyledExcerpt>
                 </Link>
-            </div>
+            </StyledTextArea>
 
-            <div className="px-5 py-4">
+            <StyledCategoryButtons>
                 {tags.map(category => {
                     return (
                         <CategoryButton
@@ -53,8 +53,8 @@ const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_ex
                         ></CategoryButton>
                     );
                 })}
-            </div>
-        </div>
+            </StyledCategoryButtons>
+        </StyledTeaserBox>
     );
 }
 
@@ -73,4 +73,24 @@ const StyledExcerpt = styled.p`
     font-size: ${theme.fontSize.base};
 
     padding-top: 0.25rem;
+`;
+
+const StyledTextArea = styled.div`
+    padding: 1rem 1.5rem 0.5rem;
+`;
+
+const StyledCategoryButtons = styled.div`
+    padding: 1rem 1.25rem;
+`;
+
+const StyledTeaserImage = styled.img`
+    width: 100%;
+`;
+
+const StyledTeaserBox = styled.div`
+    border-radius: 0.25rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    &:hover {
+        background-color: #f7fafc;
+    }
 `;
