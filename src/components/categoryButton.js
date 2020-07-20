@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import { createIdPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
 import { mapCategoryNameToI18nKey } from "~utils/mapCategoryNameToI18nKey";
+import styled from "styled-components";
 
 const CategoryButton = ({ category }) => {
     const intl = useIntl();
@@ -11,10 +12,9 @@ const CategoryButton = ({ category }) => {
     const i18nCategoryName = mapCategoryNameToI18nKey(category.name);
     if (i18nCategoryName !== '') {
         return (
-            <Link to={categoryPath}
-                className="inline-block rounded-full px-3 py-1 m-1 text-sm font-semibold text-gray-700 bg-gray-200 hover:bg-gray-300">
+            <StyledLink to={categoryPath}>
                 {intl.formatMessage({ id: i18nCategoryName })}
-            </Link>
+            </StyledLink>
         );
     } else {
         // TODO: log somewhere
@@ -30,3 +30,17 @@ CategoryButton.propTypes = {
 };
 
 export default CategoryButton;
+
+const StyledLink = styled(props => <Link {...props} />)`
+    display: inline-block;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    margin: 0.25rem;
+    font-size: .875rem;
+    font-weight: 600;
+    color: #4a5568;
+    background-color: #edf2f7;
+    &:hover {
+        background-color: #e2e8f0;
+    }
+`;
