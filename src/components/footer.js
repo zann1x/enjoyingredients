@@ -10,7 +10,7 @@ export const Footer = ({ siteTitle }) => {
 
     return (
         <StyledFooter>
-            <Link to="/" className="hover:text-blue-500">{siteTitle}</Link> || <a className="hover:text-blue-500" href="https://lukaszanner.de">{made_with_love}</a>
+            <StyledLink to="/">{siteTitle}</StyledLink> - <StyledExtLink href="https://lukaszanner.de">{made_with_love}</StyledExtLink>
         </StyledFooter>
     );
 }
@@ -21,4 +21,16 @@ const StyledFooter = styled.footer`
     font-size: ${theme.fontSize.sm};
     padding: 1em 0;
     text-align: center;
+`;
+
+const StyledLink = styled(props => <Link {...props} />)`
+    &:hover {
+        color: #4299e1;
+    }
+`;
+
+const StyledExtLink = styled.a`
+    &:hover {
+        color: #4299e1;
+    }
 `;
