@@ -1,16 +1,42 @@
 import React from "react";
 
 import GlobalStyle from "~styles/globalStyle";
+import styled from "styled-components";
 
 export const CenteredContent = ({children}) => {
     return (
         <>
             <GlobalStyle />
-            <div className="container mx-auto flex-grow px-2 py-4 w-11/12 sm:w-10/12 md:w-8/12 lg:w-7/12 xl:w-6/12">
+            <StyledContainer>
                 {children}
-            </div>
+            </StyledContainer>
         </>
     );
 }
 
 export default CenteredContent;
+
+const StyledContainer = styled.div`
+    width: 91.666667%;
+    @media (min-width: 640px) {
+        width: 83.333333%;
+        max-width: 640px;
+    }
+    @media (min-width: 768px) {
+        width: 66.666667%;
+        max-width: 768px;
+    }
+    @media (min-width: 1024px) {
+        width: 58.333333%;
+        max-width: 1024px;
+    }
+    @media (min-width: 1280px) {
+        width: 50%;
+        max-width: 1280px;
+    }
+
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1rem 0.5rem;
+    flex-grow: 1;
+`;
