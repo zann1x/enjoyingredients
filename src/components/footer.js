@@ -25,12 +25,16 @@ const StyledFooter = styled.footer`
 
 const StyledLink = styled(props => <Link {...props} />)`
     &:hover {
+        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+        transition-duration: 200ms;
         color: #4299e1;
     }
 `;
 
 const StyledExtLink = styled.a`
     &:hover {
+        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+        transition-duration: 200ms;
         color: #4299e1;
     }
 `;
