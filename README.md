@@ -50,3 +50,15 @@
 1. **Update the Content API key**
 
     Add a integration for Gatsby in Ghost and copy the generated Content API Key into `.ghost.json`. Also update the API URL to `http://localhost:2368` in this file for the development config.
+
+## 📝 Notes
+
+The favicon was generated via https://favicon.io/favicon-generator/.
+The logo was generated via https://logohub.io/.
+
+Parameters used:
+- Font Family: Roboto Slab
+- Brand Name Font Color: #FFF
+- Icon Font Size: 60
+- Icon Font Color: #363636
+- Icon Background Color: #5FA
