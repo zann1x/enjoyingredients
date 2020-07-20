@@ -16,6 +16,7 @@ export const BlogPost = ({ data: { post }, location }) => {
     const intl = useIntl();
     const categories = post.tags;
     const header_image = post.feature_image !== null ? post.feature_image : FallbackFeatureImage;
+    const contact_us = intl.formatMessage({ id: "contact_us_via_mail" });
 
     return (
         <SiteLayout>
@@ -50,7 +51,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                     </StyledCategoryButtonList>
 
                     <div>
-                        <p>Schreib uns unter <a href="mailto:mail@enjoyingredients.com" className="underline hover:ease-in hover:duration-200 hover:text-blue-500">mail@enjoyingredients.com</a>!</p>
+                        <p>{ contact_us } <StyledExtLink href="mailto:mail@enjoyingredients.com">mail@enjoyingredients.com</StyledExtLink>!</p>
                     </div>
                 </article>
             </CenteredContent>
@@ -117,6 +118,15 @@ export const StyledEndPostDiv = styled.div`
 const StyledCategoryButtonList = styled.div`
     padding-top: 1rem;
     padding-bottom: 1rem;
+`;
+
+const StyledExtLink = styled.a`
+    text-decoration: underline;
+    &:hover {
+        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+        transition-duration: 200ms;
+        color: #4299e1;
+    }
 `;
 
 export const StyledPostContent = styled.section`
