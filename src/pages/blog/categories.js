@@ -26,15 +26,14 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
                 {allCategories.nodes.map((category) => {
                     const i18nCategoryName = mapCategoryNameToI18nKey(category.name);
                     return (
-                        <div
+                        <StyledContent
                             key={category.id}
                             id={category.slug}
-                            className="flex flex-wrap flex-col justify-center mt-6 first:mt-0"
                             >
                             <StyledHeading>
                                 {intl.formatMessage({ id: i18nCategoryName }).toUpperCase()}
                             </StyledHeading>
-                            <span className="border-t-2 border-gray-900 pb-8"></span>
+                            <StyledSeparator></StyledSeparator>
 
                             {allPosts.nodes.map(post => {
                                 const renderPost = post.tags.filter(tag => {
@@ -46,12 +45,12 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
                                     return null;
 
                                 return (
-                                    <div key={post.id} className="max-w-xl mb-6 mx-auto">
+                                    <StyledTeaserCardArea key={post.id}>
                                         <PostTeaserCard post={post}></PostTeaserCard>
-                                    </div>
+                                    </StyledTeaserCardArea>
                                 );
                             })}
-                        </div>
+                        </StyledContent>
                     );
                 })}
             </CenteredContent>
@@ -116,4 +115,28 @@ const StyledHeading = styled.h1`
     margin-left: auto;
     padding-top: 0.25rem;
     padding-bottom: 0.5rem;
+`;
+
+const StyledSeparator = styled.span`
+    border-top-width: 2px;
+    border-color: #1a202c;
+    padding-bottom: 2rem;
+`;
+
+const StyledContent = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1.5rem;
+    &:first-child {
+        margin-top: 0;
+    }
+`;
+
+const StyledTeaserCardArea = styled.div`
+    max-width: 36rem;
+    margin-bottom: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
 `;
