@@ -10,7 +10,7 @@ export const Footer = ({ siteTitle }) => {
 
     return (
         <StyledFooter>
-            <StyledLink to="/">{siteTitle}</StyledLink> - <StyledExtLink href="https://lukaszanner.de">{made_with_love}</StyledExtLink>
+            <StyledLink to="/">{siteTitle}</StyledLink> - <StyledExtLink href="https://lukaszanner.de" target="_blank">{made_with_love}</StyledExtLink>
         </StyledFooter>
     );
 }
