@@ -4,8 +4,10 @@ import Helmet from "react-helmet";
 import CenteredContent from "~layouts/centeredContent";
 import SiteLayout from "~layouts/siteLayout";
 import config from "~utils/config";
+import styled from "styled-components";
 
 export default () => {
+    // TODO: detect language
     const lang = 'de';
 
     return (
@@ -21,10 +23,15 @@ export default () => {
                 ]}
             />
             <CenteredContent>
-                <p className="text-center text-2xl">
+                <StyledText>
                     Diese Seite existiert nicht... ( •́ﻩ•̀ )
-                </p>
+                </StyledText>
             </CenteredContent>
         </SiteLayout>
     );
 }
+
+const StyledText = styled.p`
+    text-align: center;
+    font-size: 1.5rem;
+`;
