@@ -5,22 +5,22 @@ import { createPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
 
 const SwitchPostNavigation = ({ previousPost, nextPost }) => {
     return (
-        <ul className="flex flex-row justify-around mt-10">
+        <StyledList>
             {previousPost && (
-                <li className="text-xl p-3 hover:bg-gray-200 rounded">
+                <StyledListItem>
                     <Link to={createPathFromSlug(EUrlType.BLOG_POST, previousPost.slug)} rel="prev">
                         ← {previousPost.title}
                     </Link>
-                </li>
+                </StyledListItem>
             )}
             {nextPost && (
-                <li className="text-xl p-3 hover:bg-gray-200 rounded">
+                <StyledListItem>
                     <Link to={createPathFromSlug(EUrlType.BLOG_POST, nextPost.slug)} rel="next">
                         {nextPost.title} →
                     </Link>
-                </li>
+                </StyledListItem>
             )}
-        </ul>
+        </StyledList>
     );
 }
 
@@ -30,3 +30,20 @@ SwitchPostNavigation.propTypes = {
 };
 
 export default SwitchPostNavigation;
+
+
+const StyledList = styled.ul`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2.5rem;
+`;
+
+const StyledListItem = styled.li`
+    font-size: 1.25rem;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    &:hover {
+        background-color: #edf2f7;
+    }
+`;
