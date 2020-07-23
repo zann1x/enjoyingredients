@@ -93,6 +93,7 @@ export const StyledHeroImage = styled.div`
 export const StyledPostHeading = styled.h1`
     font-size: ${theme.fontSize.h1};
     font-weight: ${theme.fontWeight.f600};
+    text-align: center;
 `;
 
 export const StyledPublishingDate = styled.p`
@@ -100,6 +101,7 @@ export const StyledPublishingDate = styled.p`
     font-size: ${theme.fontSize.sm};
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    text-align: center;
 `;
 
 export const StyledPostExcerpt = styled.div`
