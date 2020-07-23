@@ -11,7 +11,7 @@ const theme = {
         xl4: '3rem',
         xl5: '4rem',
 
-        h1: '3rem',
+        h1: '2.75rem',
         h2: '1.875rem',
         h3: '1.5rem',
     },
