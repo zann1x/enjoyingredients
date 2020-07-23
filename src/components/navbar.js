@@ -4,25 +4,25 @@ import { Link, useIntl } from "gatsby-plugin-intl";
 
 import { EUrlType } from "~utils/createPathFromSlug";
 
-import logo from "~content/img/logo.png";
+import logo from "~content/img/new_logo_oneline.png";
 
 const Navbar = ({ siteTitle }) => {
     let [isOpen, setIsOpen] = useState(false);
     const intl = useIntl();
 
     return (
-        <nav className="bg-gray-900 border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-6">
-            <div className="flex items-center justify-between px-4 py-6 sm:p-0">
+        <nav className="border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-4">
+            <div className="flex items-center justify-between px-4 py-4 sm:p-0">
                 <div className="text-white">
                     <Link to="/"
-                        className="hover:bg-gray-800 rounded px-2 py-2 block flex">
+                        className="hover:bg-gray-300 rounded px-2 py-2 block flex">
                             <img src={logo} alt={siteTitle} width="200px" />
                     </Link>
                 </div>
                 <div className="sm:hidden">
                     <button type="button"
                         onClick={() => setIsOpen(!isOpen)}
-                        className="block px-1 py-1 rounded text-gray-500 hover:bg-gray-800 hover:text-white focus:text-white focus:outline-none">
+                        className="block px-1 py-1 rounded text-gray-900 hover:bg-gray-300 focus:outline-none">
                         <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
                             {isOpen ? (
                                 // Closed burger menu displaying the three dashes
@@ -40,11 +40,11 @@ const Navbar = ({ siteTitle }) => {
 
             <div className={`${isOpen ? "block" : "hidden"} border-t border-green-500 sm:border-0 px-4 pt-4 pb-4 sm:flex sm:p-0`}>
                 <Link to={EUrlType.BLOG_CATEGORY}
-                    className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">
+                    className="block px-2 py-1 text-black font-semibold rounded hover:bg-gray-300">
                     {intl.formatMessage({ id: "navbar_categories" })}
                 </Link>
                 <Link to={EUrlType.ABOUT}
-                    className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 mt-1 sm:mt-0 sm:ml-2">
+                    className="block px-2 py-1 text-black font-semibold rounded hover:bg-gray-300 mt-1 sm:mt-0 sm:ml-2">
                     {intl.formatMessage({ id: "navbar_about" })}
                 </Link>
             </div>
