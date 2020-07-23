@@ -22,7 +22,6 @@ export const Page = ({ data: { page }, location }) => {
                     <header>
                         <StyledPostHeading>{page.title}</StyledPostHeading>
                     </header>
-                    <hr/>
                     <StyledPostContent className="ghost-content load-external-scripts" dangerouslySetInnerHTML={{ __html: page.html }} />
                 </article>
             </CenteredContent>
@@ -64,7 +63,7 @@ export const StyledHeroImage = styled.div`
 export const StyledPostHeading = styled.h1`
     font-size: ${theme.fontSize.h1};
     font-weight: ${theme.fontWeight.f600};
-
+    text-align: center;
     margin-bottom: 1rem;
 `;
 
