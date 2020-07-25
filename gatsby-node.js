@@ -13,10 +13,8 @@ exports.createPages = async ({ actions, graphql }) => {
                 filter: {slug: {ne: "data-schema"}},
                 sort: {order: DESC, fields: [published_at]}
                 ) {
-                edges {
-                    node {
-                        slug
-                    }
+                nodes {
+                    slug
                 }
             }
             tags: allGhostTag(
@@ -45,13 +43,13 @@ exports.createPages = async ({ actions, graphql }) => {
 
     // Create blog posts pages
     const { posts } = result.data;
-    if (posts) {
-        posts.edges.forEach(({ node }) => {
+    if (posts && Array.isArray(posts.nodes) && posts.nodes.length) {
+        posts.nodes.forEach((post) => {
             createPage({
-                path: createPathFromSlug(EUrlType.BLOG_POST, node.slug),
+                path: createPathFromSlug(EUrlType.BLOG_POST, post.slug),
                 component: blogPostTemplate,
                 context: {
-                    slug: node.slug,
+                    slug: post.slug,
                 },
             });
         });
@@ -68,7 +66,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
     // Create individual pages (e.g. /about)
     const { pages } = result.data;
-    if (pages) {
+    if (pages && Array.isArray(pages.nodes) && pages.nodes.length) {
         pages.nodes.forEach((page) => {
             createPage({
                 path: createPathFromSlug(EUrlType.PAGE, page.slug),
