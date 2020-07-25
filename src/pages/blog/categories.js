@@ -8,7 +8,7 @@ import CenteredContent from "~layouts/centeredContent";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
 import SiteLayout from "~layouts/siteLayout";
-import { mapCategoryNameToI18nKey } from "~utils/mapCategoryNameToI18nKey";
+import { mapCategorySlugToI18nKey } from "~utils/mapCategorySlugToI18nKey";
 import theme from "~styles/theme";
 
 const Categories =  ({ data: { allCategories, allPosts}, location }) => {
@@ -24,7 +24,7 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
 
             <CenteredContent>
                 {allCategories.nodes.map((category) => {
-                    const i18nCategoryName = mapCategoryNameToI18nKey(category.name, intl.locale);
+                    const i18nCategoryName = mapCategorySlugToI18nKey(category.slug);
                     return (
                         <StyledContent
                             key={category.id}

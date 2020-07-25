@@ -3,13 +3,13 @@ import { Link, useIntl } from "gatsby-plugin-intl";
 import PropTypes from "prop-types";
 
 import { createIdPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
-import { mapCategoryNameToI18nKey } from "~utils/mapCategoryNameToI18nKey";
+import { mapCategorySlugToI18nKey } from "~utils/mapCategorySlugToI18nKey";
 import styled from "styled-components";
 
 const CategoryButton = ({ category }) => {
     const intl = useIntl();
     const categoryPath = createIdPathFromSlug(EUrlType.BLOG_CATEGORY, category.slug);
-    const i18nCategoryName = mapCategoryNameToI18nKey(category.name, intl.locale);
+    const i18nCategoryName = mapCategorySlugToI18nKey(category.slug);
 
     if (i18nCategoryName !== '') {
         return (
