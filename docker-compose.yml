@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  ghost:
+    image: ghost:3-alpine
+    restart: always
+    volumes:
+      - ghost_content:/var/www/ghost/content
+    environment:
+      url: http://localhost:3000
+      database__client: mysql
+      database__connection__host: ghost-db
+      database__connection__user: root
+      database__connection__password: example
+      database__connection__database: ghost
+    labels:
+      - traefik.backend=ghost
+      - traefik.frontend.rule=Host:localhost:8000
+      - traefik.docker.network=internal
+      - traefik.port=2368
+    networks:
+      - internal
+
+  ghost-db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    networks:
+      - internal
+
+  reverse-proxy:
+    image: traefik:2.2
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - ./traefik.toml:/etc/traefik/traefik.toml
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - traefik.port=8080
+      - traefik.backend=traefik
+      - traefik.frontend.rule=Host:monitor.localhost:8000
+    networks:
+      - internal
+
+volumes:
+  ghost_content:
+    driver: local
+
+networks:
+  internal:
+    driver: bridge
