@@ -8,15 +8,13 @@ const Navbar = ({ siteTitle }) => {
     let [isOpen, setIsOpen] = useState(false);
     const intl = useIntl();
 
-    console.log(window.location.pathname);
-
     return (
-        <nav className="border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-4">
+        <nav className="border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-4 h-22">
             <div className="flex items-center justify-between px-4 py-4 sm:p-0">
                 <div className="text-white">
                     <Link to="/"
                         className="hover:bg-gray-300 rounded px-2 py-2 block flex">
-                            <img style={{color:"black"}} src={'/img/logo_oneline.png'} alt={siteTitle} width="200px" />
+                            <img style={{color:"black", maxWidth:"200px"}} src={'/img/logo_oneline.png'} alt={siteTitle} />
                     </Link>
                 </div>
                 <div className="sm:hidden">
