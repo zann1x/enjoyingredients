@@ -4,8 +4,6 @@ import { Link, useIntl } from "gatsby-plugin-intl";
 
 import { EUrlType } from "~utils/createPathFromSlug";
 
-import logo from "~content/img/new_logo_oneline.png";
-
 const Navbar = ({ siteTitle }) => {
     let [isOpen, setIsOpen] = useState(false);
     const intl = useIntl();
@@ -16,7 +14,7 @@ const Navbar = ({ siteTitle }) => {
                 <div className="text-white">
                     <Link to="/"
                         className="hover:bg-gray-300 rounded px-2 py-2 block flex">
-                            <img src={logo} alt={siteTitle} width="200px" />
+                            <img style={{color:"black"}} src={'/img/logo_oneline.png'} alt={siteTitle} width="200px" />
                     </Link>
                 </div>
                 <div className="sm:hidden">
