@@ -1,0 +1,10 @@
+- Kleinere Schriftgröße
+- Blockschrift??
+
+- Kategorien: herzhaftes Gebäck & süßes Gebäck
+
+- Foto auf über mich Seite
+
+- Button für Speichern als PDF ohne Fotos und Schnickschnack
+
+- Wenn mehr Posts in mehr Kategorien hinzukommen -> Dropdown für Kategorien
