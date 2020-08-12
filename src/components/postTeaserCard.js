@@ -83,6 +83,7 @@ const StyledCategoryButtons = styled.div`
     padding: 1rem 1.25rem;
 `;
 
+// TODO: set it to a fixed height and make it a background centered image so bigger ones are placed correctly
 const StyledTeaserImage = styled.img`
     width: 100%;
 `;
