@@ -1,3 +1,10 @@
+https://hub.docker.com/_/ghost/
+https://myedes.io/ghost-on-docker/
+https://github.com/acheremisov/ghost-commento-traefik-in-docker/blob/master/docker-compose.yml
+https://blog.alexellis.io/keeping-shipping-your-blog/
+
+---
+
 - Kleinere Schriftgröße
 - Blockschrift??
 

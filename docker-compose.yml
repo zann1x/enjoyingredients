@@ -3,16 +3,18 @@ version: '3'
 services:
   ghost:
     image: ghost:3-alpine
-    restart: always
+    restart: unless-stopped
     volumes:
-      - ghost_content:/var/www/ghost/content
+      - type: volume
+        source: ghost_content
+        target: /var/lib/ghost/content
     environment:
-      url: http://localhost:3000
+      url: {BLOG_URL:-http://localhost:3000}
       database__client: mysql
       database__connection__host: ghost-db
-      database__connection__user: root
-      database__connection__password: example
-      database__connection__database: ghost
+      database__connection__user: {DB_CON_USER:-root}
+      database__connection__password: {DB_CON_PWD:-example}
+      database__connection__database: {DB_CON_DB:-ghost}
     labels:
       - traefik.backend=ghost
       - traefik.frontend.rule=Host:localhost:8000
@@ -25,7 +27,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: {DB_ROOT_PWD:-example}
     networks:
       - internal
 
