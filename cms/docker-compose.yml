@@ -58,7 +58,7 @@ services:
       - traefiknet
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${PWD}/config/letsencrypt:/letsencrypt
+      - ./config/letsencrypt:/letsencrypt
 
 ##############################
 # Watchtower
@@ -149,8 +149,8 @@ services:
   #     - internal
   #     - traefiknet
   #   volumes:
-  #     - ${PWD}/config/matomo/matomo:/var/www/html/config:rw
-  #     - ${PWD}/confg/matomo/php.ini:/usr/local/etc/php/php.ini
+  #     - ./config/matomo/matomo:/var/www/html/config:rw
+  #     - ./confg/matomo/php.ini:/usr/local/etc/php/php.ini
 
 ##############################
 # Mail service
