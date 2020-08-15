@@ -129,6 +129,28 @@ services:
       mail__options__host: mail
       mail__options__port: 25
 
+##############################
+# Matomo
+# https://hub.docker.com/_/matomo
+##############################
+  # matomo:
+  #   image: matomo:3.14
+  #   restart: unless-stopped
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.routers.matomo.rule=Host(`${DOMAINS_MATOMO}`)"
+  #     - "traefik.http.routers.matomo.entrypoints=websecure"
+  #     - "traefik.http.routers.matomo.tls=true"
+  #     - "traefik.http.routers.matomo.tls.certresolver=lencrypt"
+  #   depends_on:
+  #     - db
+  #     - mail
+  #   networks:
+  #     - internal
+  #     - traefiknet
+  #   volumes:
+  #     - ${PWD}/config/matomo/matomo:/var/www/html/config:rw
+  #     - ${PWD}/confg/matomo/php.ini:/usr/local/etc/php/php.ini
 
 ##############################
 # Mail service
