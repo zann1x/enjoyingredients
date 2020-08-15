@@ -17,6 +17,7 @@ node_modules/
 
 # dotenv environment variable files
 .env*
+!.env.sample
 
 # gatsby files
 .cache/
