@@ -26,7 +26,6 @@ const CategoryButton = ({ category }) => {
 CategoryButton.propTypes = {
     category: PropTypes.shape({
         slug: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
     }),
 };
 

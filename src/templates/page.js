@@ -36,11 +36,13 @@ Page.propTypes = {
 
 export default Page;
 
-// TODO: only source data that is really need
 export const pageQuery = graphql`
     query ($slug: String!) {
         page: ghostPage(slug: {eq: $slug} ) {
-            ...GhostPageFields
+            title
+            custom_excerpt
+            excerpt
+            html
         }
     }
 `;

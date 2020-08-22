@@ -69,11 +69,18 @@ BlogPost.propTypes = {
 
 export default BlogPost;
 
-// TODO: only source data that is really need
 export const pageQuery = graphql`
     query ($slug: String!) {
         post: ghostPost(slug: {eq: $slug} ) {
-            ...GhostPostFields
+            title
+            custom_excerpt
+            excerpt
+            feature_image
+            html
+            tags {
+                id
+                slug
+            }
         }
     }
 `;
