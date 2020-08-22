@@ -116,7 +116,7 @@ const StyledMoreButton = styled(Link)`
     text-align: center;
 
     &:hover {
-        background-color: ${theme.color.gray100};
+        background-color: ${theme.color.gray300};
 
         &:focus {
             background-color: ${theme.color.gray200};
