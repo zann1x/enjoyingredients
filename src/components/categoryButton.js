@@ -31,16 +31,16 @@ CategoryButton.propTypes = {
 
 export default CategoryButton;
 
-const StyledLink = styled(props => <Link {...props} />)`
+const StyledLink = styled(Link)`
     display: inline-block;
     border-radius: 9999px;
     padding: 0.25rem 0.75rem;
     margin: 0.25rem;
     font-size: .875rem;
     font-weight: 600;
-    color: #4a5568;
-    background-color: #edf2f7;
+    color: #2d3748;
+    background-color: #e2e8f0;
     &:hover {
-        background-color: #e2e8f0;
+        background-color: #cbd5e0;
     }
 `;
