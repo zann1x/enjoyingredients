@@ -20,8 +20,9 @@ const Navbar = ({ siteTitle }) => {
                 </div>
                 <div className="sm:hidden">
                     <button type="button"
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="block px-1 py-1 rounded text-gray-900 hover:bg-gray-300 focus:outline-none">
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="block px-1 py-1 rounded text-gray-900 hover:bg-gray-300 focus:outline-none"
+                      aria-label="Toggle burger menu">
                         <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
                             {isOpen ? (
                                 // Closed burger menu displaying the three dashes
