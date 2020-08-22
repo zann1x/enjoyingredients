@@ -14,7 +14,7 @@ const Navbar = ({ siteTitle }) => {
             <div className="flex items-center justify-between px-4 py-4 sm:p-0">
                 <div className="text-white">
                     <Link to="/"
-                        className="hover:bg-gray-300 rounded px-2 py-2 block flex">
+                        className="hover:bg-gray-300 rounded block flex">
                             <img style={{color:"black", maxWidth:"200px"}} src={'/img/logo_oneline.png'} alt={siteTitle} />
                     </Link>
                 </div>
