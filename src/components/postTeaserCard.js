@@ -1,4 +1,5 @@
 import React from "react";
+import Img from "gatsby-image"
 import { Link } from "gatsby-plugin-intl";
 import PropTypes from "prop-types";
 import styled from "styled-components";
@@ -7,15 +8,13 @@ import CategoryButton from "~components/categoryButton";
 import theme from "~styles/theme";
 import { createPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
 
-import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
-
-const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_excerpt, tags }}) => {
+const PostTeaserCard = ({ post: { slug, title, featureImageSharp, excerpt, custom_excerpt, tags }}) => {
     const postUrl = createPathFromSlug(EUrlType.BLOG_POST, slug);
-    const img = feature_image !== null ? feature_image : FallbackFeatureImage;
 
     let post_description = '';
     if (custom_excerpt === null) {
         if (excerpt.length > 250) {
+            // TODO: cut the text off a little more gentle at a full stop
             post_description = excerpt.substr(0, 250);
             const lastWhitespace = post_description.lastIndexOf(' ');
             if (lastWhitespace !== -1 && lastWhitespace !== post_description.length) {
@@ -30,9 +29,12 @@ const PostTeaserCard = ({ post: { slug, title, feature_image, excerpt, custom_ex
 
     return (
         <StyledTeaserBox>
-            <Link to={postUrl}>
-                <StyledTeaserImage alt="Teaser" src={img} />
-            </Link>
+            {featureImageSharp && (
+                <Link to={postUrl}>
+                    {/* TODO: center image so that long ones don't stretch over a whole page but get centered */}
+                    <Img alt="Teaser" fluid={featureImageSharp.childImageSharp.fluid} />
+                </Link>
+            )}
             <StyledTextArea>
                 <Link to={postUrl}>
                     <StyledHeading>
@@ -81,11 +83,6 @@ const StyledTextArea = styled.div`
 
 const StyledCategoryButtons = styled.div`
     padding: 1rem 1.25rem;
-`;
-
-// TODO: set it to a fixed height and make it a background centered image so bigger ones are placed correctly
-const StyledTeaserImage = styled.img`
-    width: 100%;
 `;
 
 const StyledTeaserBox = styled.div`

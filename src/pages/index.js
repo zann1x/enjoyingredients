@@ -62,6 +62,13 @@ export const pageQuery = graphql`
                 slug
                 title
                 feature_image
+                featureImageSharp {
+                    childImageSharp {
+                        fluid(maxWidth: 1920) {
+                            ...GatsbyImageSharpFluid_withWebp
+                        }
+                    }
+                }
                 excerpt
                 custom_excerpt
                 tags {
