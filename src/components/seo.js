@@ -20,6 +20,7 @@ const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) =>
     canonical = canonical ? canonical : `${config.siteUrl}${pathname}`;
 
     // TODO: potentially add hreflang
+    // TODO: detect lang
     return (
         <Helmet
             htmlAttributes={{

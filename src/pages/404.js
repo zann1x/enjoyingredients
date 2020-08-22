@@ -1,4 +1,5 @@
 import React from "react"
+import { useIntl } from "gatsby-plugin-intl";
 import Helmet from "react-helmet";
 
 import CenteredContent from "~layouts/centeredContent";
@@ -8,12 +9,12 @@ import styled from "styled-components";
 
 export default () => {
     // TODO: detect language
-    const lang = 'de';
+    const intl = useIntl();
 
     return (
         <SiteLayout>
             <Helmet
-                htmlAttributes={{lang}}
+                htmlAttributes={{'de'}}
                 title={`404 - ${config.siteTitle}`}
                 meta={[
                     {
@@ -24,7 +25,7 @@ export default () => {
             />
             <CenteredContent>
                 <StyledText>
-                    Diese Seite existiert nicht... ( •́ﻩ•̀ )
+                    {intl.formatMessage({ id: '404_not_found' })}
                 </StyledText>
             </CenteredContent>
         </SiteLayout>
