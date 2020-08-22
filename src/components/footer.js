@@ -10,7 +10,7 @@ export const Footer = () => {
 
     return (
         <StyledFooter>
-            <StyledExtLink href="https://lukaszanner.de" target="_blank">{made_with_love}</StyledExtLink>
+            <StyledExtLink href="https://lukaszanner.de" target="_blank" rel="noopener">{made_with_love}</StyledExtLink>
         </StyledFooter>
     );
 }
