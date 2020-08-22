@@ -124,7 +124,7 @@ export const ghostPostFields = graphql`
         url
         canonical_url
         uuid
-        page
+        #page
         codeinjection_foot
         codeinjection_head
         codeinjection_styles
