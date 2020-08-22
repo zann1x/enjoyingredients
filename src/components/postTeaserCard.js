@@ -76,6 +76,7 @@ const StyledHeading = styled.p`
 `;
 
 const StyledFeatureImg = styled(Img)`
+    border-radius: 0.5rem 0.5rem 0 0;
     max-height: 350px;
 `;
 
@@ -94,9 +95,10 @@ const StyledCategoryButtons = styled.div`
 `;
 
 const StyledTeaserBox = styled.div`
-    border-radius: 0.25rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    box-shadow: 0 0px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
     &:hover {
         background-color: #f7fafc;
+        box-shadow: 0 0px 20px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.7);
     }
 `;
