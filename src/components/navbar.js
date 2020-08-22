@@ -12,12 +12,10 @@ const Navbar = ({ siteTitle }) => {
     return (
         <nav className="border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-4 h-22">
             <div className="flex items-center justify-between px-4 py-4 sm:p-0">
-                <div className="text-white">
-                    <Link to="/"
-                        className="hover:bg-gray-300 rounded block flex">
-                            <img style={{color:"black", maxWidth:"200px"}} src={'/img/logo_oneline.png'} alt={siteTitle} />
-                    </Link>
-                </div>
+                <Link to="/"
+                  className="flex">
+                    <img style={{color:"black", maxWidth:"200px"}} src={'/img/logo_oneline.svg'} alt={siteTitle} />
+                </Link>
                 <div className="sm:hidden">
                     <button type="button"
                       onClick={() => setIsOpen(!isOpen)}
@@ -27,11 +25,11 @@ const Navbar = ({ siteTitle }) => {
                             {isOpen ? (
                                 // Closed burger menu displaying the three dashes
                                 <path fillRule="evenodd"
-                                    d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
+                                  d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
                             ) : (
                                 // Opened burger menu displaying an X
                                 <path fillRule="evenodd"
-                                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+                                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
                             )}
                         </svg>
                     </button>
