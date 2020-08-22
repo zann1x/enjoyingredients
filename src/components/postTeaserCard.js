@@ -31,8 +31,12 @@ const PostTeaserCard = ({ post: { slug, title, featureImageSharp, excerpt, custo
         <StyledTeaserBox>
             {featureImageSharp && (
                 <Link to={postUrl}>
-                    {/* TODO: center image so that long ones don't stretch over a whole page but get centered */}
-                    <Img alt="Teaser" fluid={featureImageSharp.childImageSharp.fluid} />
+                    <StyledFeatureImg
+                      alt="Teaser"
+                      fluid={featureImageSharp.childImageSharp.fluid}
+                      objectFit="cover"
+                      objectPosition="50% 50%"
+                    />
                 </Link>
             )}
             <StyledTextArea>
@@ -69,6 +73,10 @@ export default PostTeaserCard;
 const StyledHeading = styled.p`
     font-size: ${theme.fontSize.xl};
     font-weight: ${theme.fontWeight.f700};
+`;
+
+const StyledFeatureImg = styled(Img)`
+    max-height: 350px;
 `;
 
 const StyledExcerpt = styled.p`
