@@ -15,6 +15,7 @@ export const BlogPost = ({ data: { post }, location }) => {
     const intl = useIntl();
     const categories = post.tags;
     const contact_us = intl.formatMessage({ id: "contact_us_via_mail" });
+    const publish_date = intl.formatDate(post.published_at, { day: 'numeric', month: 'long', year: 'numeric' });
 
     return (
         <SiteLayout>
@@ -37,7 +38,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                 <article>
                     <header>
                         <StyledPostHeading>{post.title}</StyledPostHeading>
-                        <StyledPublishingDate>{intl.formatDate(post.published_at, { day: 'numeric', month: 'long', year: 'numeric' })}</StyledPublishingDate>
+                        <StyledPublishingDate>{publish_date}</StyledPublishingDate>
                         {post.custom_excerpt &&
                             <StyledPostExcerpt className="post-content">{post.custom_excerpt}</StyledPostExcerpt>
                         }
@@ -76,6 +77,7 @@ export const pageQuery = graphql`
     query ($slug: String!) {
         post: ghostPost(slug: {eq: $slug} ) {
             title
+            published_at
             custom_excerpt
             excerpt
             featureImageSharp {
