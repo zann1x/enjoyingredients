@@ -23,6 +23,7 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
             />
 
             <CenteredContent>
+                {/* TODO: not all posts are necessarily in a category */}
                 {allCategories.nodes.map((category) => {
                     const i18nCategoryName = mapCategorySlugToI18nKey(category.slug);
                     return (
@@ -41,8 +42,9 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
                                     const categoryId = category.id.replace('Ghost__Tag__', '');
                                     return tag.id === categoryId;
                                 });
-                                if (!renderPost.length)
+                                if (!renderPost.length) {
                                     return null;
+                                }
 
                                 return (
                                     <StyledTeaserCardArea key={post.id}>
