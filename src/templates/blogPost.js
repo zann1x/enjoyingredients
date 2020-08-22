@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Img from "gatsby-image";
 import { useIntl } from "gatsby-plugin-intl";
 import PropTypes from "prop-types";
 import styled from "styled-components";
@@ -10,12 +11,9 @@ import CenteredContent from "~layouts/centeredContent";
 import SiteLayout from "~layouts/siteLayout";
 import theme from "~styles/theme";
 
-import FallbackFeatureImage from "~content/img/fallback-feature-img.jpg";
-
 export const BlogPost = ({ data: { post }, location }) => {
     const intl = useIntl();
     const categories = post.tags;
-    const header_image = post.feature_image !== null ? post.feature_image : FallbackFeatureImage;
     const contact_us = intl.formatMessage({ id: "contact_us_via_mail" });
 
     return (
@@ -26,9 +24,14 @@ export const BlogPost = ({ data: { post }, location }) => {
                 pathname={location.pathname}
             />
 
-        {post.feature_image && (
-                <StyledHeroImage style={{backgroundImage: `url(${header_image})`}} />
-        )}
+            {post.featureImageSharp && (
+                <StyledHeroImage
+                  alt="Feature Image"
+                  fluid={post.featureImageSharp.childImageSharp.fluid}
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                />
+            )}
 
             <CenteredContent>
                 <article>
@@ -75,7 +78,13 @@ export const pageQuery = graphql`
             title
             custom_excerpt
             excerpt
-            feature_image
+            featureImageSharp {
+                childImageSharp {
+                    fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                    }
+                }
+            }
             html
             tags {
                 id
@@ -85,12 +94,12 @@ export const pageQuery = graphql`
     }
 `;
 
-export const StyledHeroImage = styled.div`
+export const StyledHeroImage = styled(Img)`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
-    height: 70vh;
+    max-height: 70vh;
     width: 100%;
 
     position: relative;
