@@ -26,7 +26,10 @@ export const BlogPost = ({ data: { post }, location }) => {
                 pathname={location.pathname}
             />
 
-            <StyledHeroImage style={{backgroundImage: `url(${header_image})`}} />
+        {post.feature_image && (
+                <StyledHeroImage style={{backgroundImage: `url(${header_image})`}} />
+        )}
+
             <CenteredContent>
                 <article>
                     <header>
