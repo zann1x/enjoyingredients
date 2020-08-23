@@ -10,11 +10,11 @@ const Navbar = ({ siteTitle }) => {
 
     // TODO: replace styles with styled components
     return (
-        <nav className="border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-4 h-22">
+        <nav className="border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-4 sm:h-16">
             <div className="flex items-center justify-between px-4 py-4 sm:p-0">
                 <Link to="/"
                   className="flex">
-                    <img style={{color:"black", maxWidth:"200px"}} src={'/img/logo_oneline.svg'} alt={siteTitle} />
+                    <img style={{color:"black"}} src={'/img/logo_oneline.png'} alt={siteTitle} />
                 </Link>
                 <div className="sm:hidden">
                     <button type="button"
@@ -37,7 +37,7 @@ const Navbar = ({ siteTitle }) => {
             </div>
 
             {/* TODO: add visual hint for location again */}
-            <div className={`${isOpen ? "block" : "hidden"} border-t border-green-500 sm:border-0 px-4 pt-4 pb-4 sm:flex sm:p-0`}>
+            <div className={`${isOpen ? "block" : "hidden"} border-t border-green-500 sm:border-0 px-4 py-4 sm:flex sm:p-0`}>
                 <Link to={EUrlType.BLOG_CATEGORY}
                       className={`block px-2 py-1 text-black font-semibold rounded hover:bg-gray-300`}> {/* ${window.location.pathname.includes(EUrlType.BLOG_CATEGORY) ? "underline" : ""}`}> */}
                     {intl.formatMessage({ id: "navbar_categories" })}
