@@ -14,7 +14,7 @@ const Navbar = ({ siteTitle }) => {
             <div className="flex items-center justify-between px-4 py-4 sm:p-0">
                 <Link to="/"
                   className="flex">
-                    <img style={{color:"black"}} src={'/img/logo_oneline.png'} alt={siteTitle} />
+                    <img style={{color:"black"}} src={'/img/logo_oneline.png'} alt={siteTitle} width="200" />
                 </Link>
                 <div className="sm:hidden">
                     <button type="button"
