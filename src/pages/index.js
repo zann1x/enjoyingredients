@@ -11,7 +11,7 @@ import config from '~utils/config';
 import { EUrlType } from '~utils/createPathFromSlug';
 import theme from '~styles/theme';
 
-export const Index = ({ data: { latestPosts }}) => {
+export const Index = ({ data: { latestPosts }, location}) => {
     const intl = useIntl();
 
     return (
@@ -19,7 +19,7 @@ export const Index = ({ data: { latestPosts }}) => {
             <SEO
                 title="The other food blog"
                 description={config.siteDescription}
-                pathname="/"
+                pathname={location.pathname}
             />
 
             <StyledContent>
