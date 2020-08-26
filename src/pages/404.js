@@ -14,7 +14,6 @@ export default () => {
     return (
         <SiteLayout>
             <Helmet
-                htmlAttributes={'de'}
                 title={`404 - ${config.siteTitle}`}
                 meta={[
                     {
