@@ -1,11 +1,15 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useIntl } from "gatsby-plugin-intl";
 
 import { EUrlType } from "~utils/createPathFromSlug";
 
 const Navbar = ({ siteTitle }) => {
-    let [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [pathname, setPathname] = useState('');
+    useEffect(() => {
+        setPathname(window.location.pathname);
+    }, [pathname]);
+
     const intl = useIntl();
 
     // TODO: replace styles with styled components
@@ -36,14 +40,13 @@ const Navbar = ({ siteTitle }) => {
                 </div>
             </div>
 
-            {/* TODO: add visual hint for location again */}
             <div className={`${isOpen ? "block" : "hidden"} border-t border-green-500 sm:border-0 px-4 py-4 sm:flex sm:p-0`}>
                 <Link to={EUrlType.BLOG_CATEGORY}
-                      className={`block px-2 py-1 text-black font-semibold rounded hover:bg-gray-300`}> {/* ${window.location.pathname.includes(EUrlType.BLOG_CATEGORY) ? "underline" : ""}`}> */}
+                      className={`block px-2 py-1 text-black font-semibold rounded hover:bg-gray-300 ${pathname.includes(EUrlType.BLOG_CATEGORY) ? "underline" : ""}`}>
                     {intl.formatMessage({ id: "navbar_categories" })}
                 </Link>
                 <Link to={EUrlType.ABOUT}
-                      className={`block px-2 py-1 text-black font-semibold rounded hover:bg-gray-300 mt-1 sm:mt-0 sm:ml-2`}> {/* ${window.location.pathname.includes(EUrlType.ABOUT) ? "underline" : ""}`}> */}
+                      className={`block px-2 py-1 text-black font-semibold rounded hover:bg-gray-300 mt-1 sm:mt-0 sm:ml-2 ${pathname.includes(EUrlType.ABOUT) ? "underline" : ""}`}>
                     {intl.formatMessage({ id: "navbar_about" })}
                 </Link>
             </div>
