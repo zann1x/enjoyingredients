@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useIntl } from "gatsby-plugin-intl";
+import styled from "styled-components";
 
 import { EUrlType } from "~utils/createPathFromSlug";
+
+import theme from "~styles/theme";
 
 const Navbar = ({ siteTitle }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +14,8 @@ const Navbar = ({ siteTitle }) => {
     }, [pathname]);
 
     const intl = useIntl();
+
+    console.log(pathname);
 
     // TODO: replace styles with styled components
     return (
@@ -41,17 +46,39 @@ const Navbar = ({ siteTitle }) => {
             </div>
 
             <div className={`${isOpen ? "block" : "hidden"} border-t border-green-500 sm:border-0 px-4 py-4 sm:flex sm:p-0`}>
-                <Link to={EUrlType.BLOG_CATEGORY}
-                      className={`block px-2 py-1 text-black font-semibold rounded hover:bg-gray-300 ${pathname.includes(EUrlType.BLOG_CATEGORY) ? "underline" : ""}`}>
-                    {intl.formatMessage({ id: "navbar_categories" })}
-                </Link>
-                <Link to={EUrlType.ABOUT}
-                      className={`block px-2 py-1 text-black font-semibold rounded hover:bg-gray-300 mt-1 sm:mt-0 sm:ml-2 ${pathname.includes(EUrlType.ABOUT) ? "underline" : ""}`}>
+                <StyledNavLink to={EUrlType.ABOUT} isselected={pathname.endsWith(EUrlType.ABOUT) ? "true" : ""}>
                     {intl.formatMessage({ id: "navbar_about" })}
-                </Link>
+                </StyledNavLink>
+                <StyledNavLink to={EUrlType.BLOG_RECIPES} isselected={pathname.endsWith(EUrlType.BLOG_RECIPES) ? "true" : ""}>
+                    {intl.formatMessage({ id: "navbar_recipes" })}
+                </StyledNavLink>
             </div>
         </nav>
     );
 }
 
 export default Navbar;
+
+const StyledNavLink = styled(Link)`
+    display: block;
+    padding: 0.25rem 0.5rem;
+    color: ${theme.color.black};
+    font-weight: ${theme.fontWeight.f600};
+    border-radius: 0.25rem;
+
+    &:hover {
+        background-color: ${theme.color.gray300};
+    }
+    &:last-of-type {
+        margin-top: 0.25rem;
+
+        @media (min-width: 640px) {
+            margin-top: 0;
+            margin-left: 0.5rem;
+        }
+    }
+
+    ${props => props.isselected === 'true' && `
+        text-decoration: underline;
+    `}
+`;

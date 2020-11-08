@@ -1,7 +1,8 @@
 const EUrlType = {
+    STARTPAGE: '/',
     ABOUT: '/about/',
     BLOG_POST: '/blog/posts/',
-    BLOG_CATEGORY: '/blog/categories/',
+    BLOG_RECIPES: '/blog/recipes/',
     PAGE: '/'
 };
 

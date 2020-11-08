@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const CategoryButton = ({ category }) => {
     const intl = useIntl();
-    const categoryPath = createIdPathFromSlug(EUrlType.BLOG_CATEGORY, category.slug);
+    const categoryPath = createIdPathFromSlug(EUrlType.BLOG_RECIPES, category.slug);
     const i18nCategoryName = mapCategorySlugToI18nKey(category.slug);
 
     if (i18nCategoryName !== '') {

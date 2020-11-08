@@ -11,7 +11,7 @@ import SiteLayout from "~layouts/siteLayout";
 import { mapCategorySlugToI18nKey } from "~utils/mapCategorySlugToI18nKey";
 import theme from "~styles/theme";
 
-const Categories =  ({ data: { allCategories, allPosts}, location }) => {
+const Recipes =  ({ data: { allCategories, allPosts}, location }) => {
     const intl = useIntl();
 
     return (
@@ -60,19 +60,19 @@ const Categories =  ({ data: { allCategories, allPosts}, location }) => {
     );
 }
 
-Categories.propTypes = {
+Recipes.propTypes = {
     allCategories: PropTypes.arrayOf(PropTypes.object),
     allPosts: PropTypes.arrayOf(PropTypes.object),
 };
 
-export default Categories;
+export default Recipes;
 
 export const pageQuery = graphql`
     query {
         allCategories: allGhostTag(
             filter: {
                 postCount: { gt: 0 },
-                slug: { ne: "data-schema" }
+                slug: { nin: ["data-schema", "getting-started"] }
             }
         ) {
             nodes {
@@ -89,7 +89,8 @@ export const pageQuery = graphql`
                 order: DESC
             },
             filter: {
-                slug: { ne: "data-schema" }
+                slug: { ne: "data-schema" },
+                authors: {elemMatch: {name: {ne: "Ghost"}}}
             }
         ) {
             nodes {
