@@ -7,12 +7,30 @@ import styled from "styled-components";
 import PostTeaserCard from "~components/postTeaserCard";
 import SEO from "~components/seo";
 import SiteLayout from "~layouts/siteLayout";
+import CenteredContent from "~layouts/centeredContent";
 import config from '~utils/config';
 import { EUrlType } from '~utils/createPathFromSlug';
 import theme from '~styles/theme';
 
 export const Index = ({ data: { latestPosts }, location}) => {
     const intl = useIntl();
+
+    let displayedContent;
+    if (latestPosts.nodes.length === 0) {
+        displayedContent = <StyledText>{intl.formatMessage({ id: 'empty_site' })}</StyledText>;
+    } else {
+        displayedContent = latestPosts.nodes.map((post, index) => {
+            if (index < 5) {
+                return (
+                    <StyledTeaserCardArea key={post.id}>
+                        <PostTeaserCard post={post}></PostTeaserCard>
+                    </StyledTeaserCardArea>
+                );
+            } else {
+                return (<></>);
+            }
+        });
+    }
 
     return (
         <SiteLayout>
@@ -22,19 +40,15 @@ export const Index = ({ data: { latestPosts }, location}) => {
                 pathname={location.pathname}
             />
 
-            <StyledContent>
-                {latestPosts.nodes.map((post) => {
-                    return (
-                        <StyledTeaserCardArea key={post.id}>
-                            <PostTeaserCard post={post}></PostTeaserCard>
-                        </StyledTeaserCardArea>
-                    );
-                })}
-            </StyledContent>
+            <CenteredContent>
+                {displayedContent}
+            </CenteredContent>
 
-            <StyledMoreButton to={EUrlType.BLOG_CATEGORY}>
-                {intl.formatMessage({ id: 'startpage_more_posts' })}
-            </StyledMoreButton>
+            {latestPosts.nodes.length > 5 &&
+                <StyledMoreButton to={EUrlType.BLOG_CATEGORY}>
+                    {intl.formatMessage({ id: 'startpage_more_posts' })}
+                </StyledMoreButton>
+            }
         </SiteLayout>
     );
 }
@@ -49,13 +63,14 @@ export const pageQuery = graphql`
     query {
         latestPosts: allGhostPost(
             filter: {
-                slug: {ne: "data-schema"}
+                slug: {ne: "data-schema"},
+                authors: {elemMatch: {name: {ne: "Ghost"}}}
             },
             sort: {
                 order: DESC,
                 fields: published_at
             }
-            limit: 8
+            limit: 6
         ) {
             nodes {
                 id
@@ -81,24 +96,9 @@ export const pageQuery = graphql`
     }
 `;
 
-const StyledContent = styled.div`
-    width: 91.666667%;
-    @media (min-width: 640px) {
-        max-width: 640px;
-    }
-    @media (min-width: 768px) {
-        max-width: 768px;
-    }
-    @media (min-width: 1024px) {
-        max-width: 1024px;
-    }
-    @media (min-width: 1280px) {
-        max-width: 1280px;
-    }
-
-    margin-right: auto;
-    margin-left: auto;
-    padding: 1.5rem 0.5rem;
+const StyledText = styled.p`
+    text-align: center;
+    font-size: 1.1rem;
 `;
 
 const StyledTeaserCardArea = styled.div`

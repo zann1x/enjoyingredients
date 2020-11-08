@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Footer from "~components/footer";
 import Navbar from "~components/navbar";
 
-export const SiteLayout = ({children}) => {
+const SiteLayout = ({children}) => {
     const data = useStaticQuery(
         graphql`
             query {
@@ -21,7 +21,7 @@ export const SiteLayout = ({children}) => {
     return (
         <StyledSiteWrapper>
             <Navbar siteTitle={data.site.siteMetadata.title} />
-                {children}
+            {children}
             <Footer />
         </StyledSiteWrapper>
     );
