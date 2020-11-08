@@ -13,8 +13,8 @@ const config = require('~utils/config');
 
 const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) => {
     let metaDescription = description;
-    if (description.length > 170) {
-        metaDescription = metaDescription.substr(0, 160).concat('...');
+    if (description.length > 230) {
+        metaDescription = metaDescription.substr(0, 230).concat('...');
     }
     
     canonical = canonical ? canonical : `${config.siteUrl}${pathname}`;
