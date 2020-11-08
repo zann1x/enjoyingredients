@@ -17,6 +17,7 @@ export const BlogPost = ({ data: { post }, location }) => {
     const contact_us = intl.formatMessage({ id: "contact_us_via_mail" });
     const publish_date = intl.formatDate(post.published_at, { day: 'numeric', month: 'long', year: 'numeric' });
 
+    // TODO: lazy load images inside the post
     return (
         <SiteLayout>
             <SEO
@@ -58,7 +59,8 @@ export const BlogPost = ({ data: { post }, location }) => {
                     </StyledCategoryButtonList>
 
                     <div>
-                        <p>{ contact_us } <StyledExtLink href="mailto:mail@enjoyingredients.com">mail@enjoyingredients.com</StyledExtLink>!</p>
+                        <span>{ contact_us }</span>
+                        <StyledExtLink href="mailto:mail@enjoyingredients.com">mail@enjoyingredients.com</StyledExtLink>
                     </div>
                 </article>
             </CenteredContent>
@@ -136,10 +138,10 @@ export const StyledEndPostDiv = styled.div`
     border-top: 1px solid #a6a5a5;
     content: " ";
     width: 30px;
+    padding-bottom: 1rem;
 `;
 
 const StyledCategoryButtonList = styled.div`
-    padding-top: 1rem;
     padding-bottom: 1rem;
 `;
 

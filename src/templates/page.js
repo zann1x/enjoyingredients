@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { useIntl } from "gatsby-plugin-intl";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -9,6 +10,9 @@ import SiteLayout from "~layouts/siteLayout";
 import theme from "~styles/theme";
 
 export const Page = ({ data: { page }, location }) => {
+    const intl = useIntl();
+    const contact_us = intl.formatMessage({ id: "contact_us_via_mail" });
+
     return (
         <SiteLayout>
             <SEO
@@ -24,6 +28,12 @@ export const Page = ({ data: { page }, location }) => {
                     </header>
                     <StyledPostContent className="ghost-content load-external-scripts" dangerouslySetInnerHTML={{ __html: page.html }} />
                 </article>
+
+                <StyledEndPostDiv />
+                <div>
+                    <span>{ contact_us }</span>
+                    <StyledExtLink href="mailto:mail@enjoyingredients.com">mail@enjoyingredients.com</StyledExtLink>
+                </div>
             </CenteredContent>
         </SiteLayout>
     );
@@ -87,6 +97,16 @@ export const StyledEndPostDiv = styled.div`
     border-top: 1px solid #a6a5a5;
     content: " ";
     width: 30px;
+    padding-bottom: 1rem;
+`;
+
+const StyledExtLink = styled.a`
+    text-decoration: underline;
+    &:hover {
+        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+        transition-duration: 200ms;
+        color: #4299e1;
+    }
 `;
 
 export const StyledPostContent = styled.section`
