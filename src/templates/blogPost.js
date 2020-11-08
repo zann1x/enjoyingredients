@@ -117,6 +117,7 @@ export const StyledPostHeading = styled.h1`
     font-size: ${theme.fontSize.h1};
     font-weight: ${theme.fontWeight.f600};
     text-align: center;
+    font-style: italic;
 `;
 
 export const StyledPublishingDate = styled.p`
