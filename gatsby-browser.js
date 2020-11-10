@@ -23,7 +23,6 @@ var trustAllScripts = () => {
         } else {
             s.innerHTML = node.innerHTML;
         }
-        console.log(s);
 
         document.getElementsByTagName('head')[0].appendChild(s);
     }

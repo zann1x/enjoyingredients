@@ -15,8 +15,6 @@ const Navbar = ({ siteTitle }) => {
 
     const intl = useIntl();
 
-    console.log(pathname);
-
     // TODO: replace styles with styled components
     return (
         <nav className="border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-4 sm:h-16">
