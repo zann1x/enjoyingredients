@@ -1,28 +1,28 @@
 {
-    "404_not_found": "Diese Seite existiert nicht... ( •́ﻩ•̀ )",
-    "empty_site": "Inhalt kommt noch! Versprochen! ( ⚆ _ ⚆ )",
+  "404_not_found": "Diese Seite existiert nicht... ( •́ﻩ•̀ )",
+  "empty_site": "Inhalt kommt noch! Versprochen! ( ⚆ _ ⚆ )",
 
-    "category_none": "Weiteres",
-    "category_desserts": "Desserts",
-    "category_fish_and_meat": "Fisch & Fleisch",
-    "category_breakfast": "Frühstück",
-    "category_pastries": "Gebäck",
-    "category_pastries_savory": "Herzhaftes Gebäck",
-    "category_pastries_sweet": "Süßes Gebäck",
-    "category_drinks": "Getränke",
-    "category_pasta_and_pizza": "Pasta & Pizza",
-    "category_appetizers": "Vorspeisen",
-    "category_getting_started": "Getting Started",
+  "category_none": "Weiteres",
+  "category_desserts": "Desserts",
+  "category_fish_and_meat": "Fisch & Fleisch",
+  "category_breakfast": "Frühstück",
+  "category_pastries": "Gebäck",
+  "category_pastries_savory": "Herzhaftes Gebäck",
+  "category_pastries_sweet": "Süßes Gebäck",
+  "category_drinks": "Getränke",
+  "category_pasta_and_pizza": "Pasta & Pizza",
+  "category_appetizers": "Vorspeisen",
+  "category_getting_started": "Getting Started",
 
-    "contact_us_via_mail": "Wenn Du Anregungen oder (An-)Fragen hast, schreib mir gerne an: ",
+  "contact_us_via_mail": "Wenn Du Anregungen oder (An-)Fragen hast, schreib mir gerne an: ",
 
-    "navbar_about": "Über mich",
-    "navbar_recipes": "Rezepte",
+  "navbar_about": "Über mich",
+  "navbar_recipes": "Rezepte",
 
-    "startpage_more_posts": "Mehr Posts",
+  "startpage_more_posts": "Mehr Posts",
 
-    "footer_made_with_love": "Mit ❤️ kreiert",
+  "footer_made_with_love": "Mit ❤️ kreiert",
 
-    "seo_categories_title": "Kategorieübersicht",
-    "seo_categories_description": "Eine Übersicht aller Posts und Kategorien, aus der Du dir immer etwas Leckeres aussuchen kannst"
+  "seo_categories_title": "Kategorieübersicht",
+  "seo_categories_description": "Eine Übersicht aller Posts und Kategorien, aus der Du dir immer etwas Leckeres aussuchen kannst"
 }
