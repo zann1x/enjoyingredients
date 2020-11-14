@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import CategoryButton from "~components/categoryButton";
+import ContentFooter from "~components/contentFooter";
 import SEO from "~components/seo";
 import CenteredContent from "~layouts/centeredContent";
 import SiteLayout from "~layouts/siteLayout";
@@ -14,7 +15,6 @@ import theme from "~styles/theme";
 export const BlogPost = ({ data: { post }, location }) => {
     const intl = useIntl();
     const categories = post.tags;
-    const contact_us = intl.formatMessage({ id: "contact_us_via_mail" });
     const publish_date = intl.formatDate(post.published_at, { day: 'numeric', month: 'long', year: 'numeric' });
 
     // TODO: lazy load images inside the post
@@ -58,10 +58,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                         })}
                     </StyledCategoryButtonList>
 
-                    <div>
-                        <span>{ contact_us }</span>
-                        <StyledExtLink href="mailto:mail@enjoyingredients.com">mail@enjoyingredients.com</StyledExtLink>
-                    </div>
+                    <ContentFooter />
                 </article>
             </CenteredContent>
         </SiteLayout>
@@ -144,15 +141,6 @@ export const StyledEndPostDiv = styled.div`
 
 const StyledCategoryButtonList = styled.div`
     padding-bottom: 1rem;
-`;
-
-const StyledExtLink = styled.a`
-    text-decoration: underline;
-    &:hover {
-        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-        transition-duration: 200ms;
-        color: #4299e1;
-    }
 `;
 
 export const StyledPostContent = styled.section`
