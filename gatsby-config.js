@@ -11,12 +11,17 @@ try {
             apiUrl: process.env.GHOST_API_URL,
             contentApiKey: process.env.GHOST_CONTENT_API_KEY,
         },
-    }
+    };
 } finally {
-    const { apiUrl, contentApiKey } = process.env.NODE_ENV === 'development' ? ghostConfig.development : ghostConfig.production
+    const { apiUrl, contentApiKey } =
+        process.env.NODE_ENV === 'development'
+            ? ghostConfig.development
+            : ghostConfig.production;
 
     if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
-        throw new Error('GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build.') // eslint-disable-line
+        throw new Error(
+            'GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build.',
+        ); // eslint-disable-line
     }
 }
 
@@ -55,9 +60,7 @@ module.exports = {
                 ],
                 // Additional condition to exclude nodes
                 // Takes precedence over lookup
-                exclude: node => (
-                    node.ghostId === undefined
-                ),
+                exclude: (node) => node.ghostId === undefined,
                 // Additional information messages useful for debugging
                 verbose: true,
                 // Option to disable the module (default: false)
@@ -106,11 +109,11 @@ module.exports = {
                     'gatsby-remark-copy-linked-files',
                     'gatsby-remark-smartypants',
                     {
-                        resolve: "gatsby-remark-external-links",
+                        resolve: 'gatsby-remark-external-links',
                         options: {
-                          target: "_blank",
-                          rel: "nofollow noopener noreferrer"
-                        }
+                            target: '_blank',
+                            rel: 'nofollow noopener noreferrer',
+                        },
                     },
                     {
                         resolve: 'gatsby-remark-images',
@@ -145,9 +148,10 @@ module.exports = {
         {
             resolve: `jamify-source-ghost`,
             options: {
-                ghostConfig: process.env.NODE_ENV === `development`
-                    ? ghostConfig.development
-                    : ghostConfig.production,
+                ghostConfig:
+                    process.env.NODE_ENV === `development`
+                        ? ghostConfig.development
+                        : ghostConfig.production,
                 // Use cache (default: true)
                 cacheResponse: true,
                 // Show info message (default: true)
@@ -155,4 +159,4 @@ module.exports = {
             },
         },
     ],
-}
+};

@@ -1,15 +1,17 @@
-import React from "react";
-import { useIntl } from "gatsby-plugin-intl";
-import styled from "styled-components";
+import React from 'react';
+import { useIntl } from 'gatsby-plugin-intl';
+import styled from 'styled-components';
 
-const ContentFooter = () =>  {
+const ContentFooter = () => {
     const intl = useIntl();
-    const contact_us = intl.formatMessage({ id: "contact_us_via_mail" });
+    const contact_us = intl.formatMessage({ id: 'contact_us_via_mail' });
 
     return (
         <>
-            <span>{ contact_us }</span>
-            <StyledExtLink href="mailto:mail@enjoyingredients.com">mail@enjoyingredients.com</StyledExtLink>
+            <span>{contact_us}</span>
+            <StyledExtLink href="mailto:mail@enjoyingredients.com">
+                mail@enjoyingredients.com
+            </StyledExtLink>
         </>
     );
 };

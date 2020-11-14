@@ -1,23 +1,25 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { Link, useIntl } from "gatsby-plugin-intl";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import { graphql } from 'gatsby';
+import { Link, useIntl } from 'gatsby-plugin-intl';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import PostTeaserCard from "~components/postTeaserCard";
-import SEO from "~components/seo";
-import SiteLayout from "~layouts/siteLayout";
-import CenteredContent from "~layouts/centeredContent";
+import PostTeaserCard from '~components/postTeaserCard';
+import SEO from '~components/seo';
+import SiteLayout from '~layouts/siteLayout';
+import CenteredContent from '~layouts/centeredContent';
 import config from '~utils/config';
 import { EUrlType } from '~utils/createPathFromSlug';
 import theme from '~styles/theme';
 
-export const Index = ({ data: { latestPosts }, location}) => {
+export const Index = ({ data: { latestPosts }, location }) => {
     const intl = useIntl();
 
     let displayedContent;
     if (latestPosts.nodes.length === 0) {
-        displayedContent = <StyledText>{intl.formatMessage({ id: 'empty_site' })}</StyledText>;
+        displayedContent = (
+            <StyledText>{intl.formatMessage({ id: 'empty_site' })}</StyledText>
+        );
     } else {
         displayedContent = latestPosts.nodes.map((post, index) => {
             if (index < 5) {
@@ -27,7 +29,7 @@ export const Index = ({ data: { latestPosts }, location}) => {
                     </StyledTeaserCardArea>
                 );
             } else {
-                return (<></>);
+                return <></>;
             }
         });
     }
@@ -40,18 +42,16 @@ export const Index = ({ data: { latestPosts }, location}) => {
                 pathname={location.pathname}
             />
 
-            <CenteredContent>
-                {displayedContent}
-            </CenteredContent>
+            <CenteredContent>{displayedContent}</CenteredContent>
 
-            {latestPosts.nodes.length > 5 &&
+            {latestPosts.nodes.length > 5 && (
                 <StyledMoreButton to={EUrlType.BLOG_CATEGORY}>
                     {intl.formatMessage({ id: 'startpage_more_posts' })}
                 </StyledMoreButton>
-            }
+            )}
         </SiteLayout>
     );
-}
+};
 
 Index.propTypes = {
     latestPosts: PropTypes.arrayOf(PropTypes.object),
@@ -63,13 +63,10 @@ export const pageQuery = graphql`
     query {
         latestPosts: allGhostPost(
             filter: {
-                slug: {ne: "data-schema"},
-                authors: {elemMatch: {name: {ne: "Ghost"}}}
-            },
-            sort: {
-                order: DESC,
-                fields: published_at
+                slug: { ne: "data-schema" }
+                authors: { elemMatch: { name: { ne: "Ghost" } } }
             }
+            sort: { order: DESC, fields: published_at }
             limit: 6
         ) {
             nodes {

@@ -1,11 +1,11 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
 
-import Footer from "~components/footer";
-import Navbar from "~components/navbar";
+import Footer from '~components/footer';
+import Navbar from '~components/navbar';
 
-const SiteLayout = ({children}) => {
+const SiteLayout = ({ children }) => {
     const data = useStaticQuery(
         graphql`
             query {
@@ -15,7 +15,7 @@ const SiteLayout = ({children}) => {
                     }
                 }
             }
-        `
+        `,
     );
 
     return (
@@ -25,7 +25,7 @@ const SiteLayout = ({children}) => {
             <Footer />
         </StyledSiteWrapper>
     );
-}
+};
 
 export default SiteLayout;
 

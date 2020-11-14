@@ -3,7 +3,7 @@ const EUrlType = {
     ABOUT: '/about/',
     BLOG_POST: '/blog/posts/',
     BLOG_RECIPES: '/blog/recipes/',
-    PAGE: '/'
+    PAGE: '/',
 };
 
 function createIdPathFromSlug(urlType, slug) {

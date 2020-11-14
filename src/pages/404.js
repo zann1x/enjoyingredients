@@ -1,11 +1,11 @@
-import React from "react"
-import { useIntl } from "gatsby-plugin-intl";
-import Helmet from "react-helmet";
+import React from 'react';
+import { useIntl } from 'gatsby-plugin-intl';
+import Helmet from 'react-helmet';
 
-import CenteredContent from "~layouts/centeredContent";
-import SiteLayout from "~layouts/siteLayout";
-import config from "~utils/config";
-import styled from "styled-components";
+import CenteredContent from '~layouts/centeredContent';
+import SiteLayout from '~layouts/siteLayout';
+import config from '~utils/config';
+import styled from 'styled-components';
 
 export default () => {
     // TODO: detect language
@@ -18,7 +18,7 @@ export default () => {
                 meta={[
                     {
                         name: 'robots',
-                        content: 'noindex, nofollow, noarchive'
+                        content: 'noindex, nofollow, noarchive',
                     },
                 ]}
             />
@@ -29,7 +29,7 @@ export default () => {
             </CenteredContent>
         </SiteLayout>
     );
-}
+};
 
 const StyledText = styled.p`
     text-align: center;

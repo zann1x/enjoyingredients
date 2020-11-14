@@ -1,4 +1,4 @@
-require (`./src/styles/main.css`);
+require(`./src/styles/main.css`);
 
 /**
  * Trust All Scripts
@@ -11,7 +11,9 @@ require (`./src/styles/main.css`);
  *
  */
 var trustAllScripts = () => {
-    var scriptNodes = document.querySelectorAll('.load-external-scripts script');
+    var scriptNodes = document.querySelectorAll(
+        '.load-external-scripts script',
+    );
 
     for (var i = 0; i < scriptNodes.length; i += 1) {
         var node = scriptNodes[i];

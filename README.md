@@ -23,7 +23,7 @@
 1. **Open the source code and start editing!**
 
     The site is now running at `http://localhost:8000`.
-    
+
     The GraphQL Tool can be accessed at `http://localhost:8000/___graphql`.
 
 ### 👻 Local development with Ghost

@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import theme from "~styles/theme";
+import { createGlobalStyle } from 'styled-components';
+import theme from '~styles/theme';
 
 const GlobalStyle = createGlobalStyle`
     p {
@@ -147,4 +147,4 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export default GlobalStyle
+export default GlobalStyle;

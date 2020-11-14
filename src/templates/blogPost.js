@@ -1,21 +1,25 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Img from "gatsby-image";
-import { useIntl } from "gatsby-plugin-intl";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import { useIntl } from 'gatsby-plugin-intl';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import CategoryButton from "~components/categoryButton";
-import ContentFooter from "~components/contentFooter";
-import SEO from "~components/seo";
-import CenteredContent from "~layouts/centeredContent";
-import SiteLayout from "~layouts/siteLayout";
-import theme from "~styles/theme";
+import CategoryButton from '~components/categoryButton';
+import ContentFooter from '~components/contentFooter';
+import SEO from '~components/seo';
+import CenteredContent from '~layouts/centeredContent';
+import SiteLayout from '~layouts/siteLayout';
+import theme from '~styles/theme';
 
 export const BlogPost = ({ data: { post }, location }) => {
     const intl = useIntl();
     const categories = post.tags;
-    const publish_date = intl.formatDate(post.published_at, { day: 'numeric', month: 'long', year: 'numeric' });
+    const publish_date = intl.formatDate(post.published_at, {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    });
 
     // TODO: lazy load images inside the post
     return (
@@ -28,10 +32,10 @@ export const BlogPost = ({ data: { post }, location }) => {
 
             {post.featureImageSharp && (
                 <StyledHeroImage
-                  alt="Feature Image"
-                  fluid={post.featureImageSharp.childImageSharp.fluid}
-                  objectFit="cover"
-                  objectPosition="50% 50%"
+                    alt="Feature Image"
+                    fluid={post.featureImageSharp.childImageSharp.fluid}
+                    objectFit="cover"
+                    objectPosition="50% 50%"
                 />
             )}
 
@@ -39,16 +43,23 @@ export const BlogPost = ({ data: { post }, location }) => {
                 <article>
                     <header>
                         <StyledPostHeading>{post.title}</StyledPostHeading>
-                        <StyledPublishingDate>{publish_date}</StyledPublishingDate>
-                        {post.custom_excerpt &&
-                            <StyledPostExcerpt className="post-content">{post.custom_excerpt}</StyledPostExcerpt>
-                        }
+                        <StyledPublishingDate>
+                            {publish_date}
+                        </StyledPublishingDate>
+                        {post.custom_excerpt && (
+                            <StyledPostExcerpt className="post-content">
+                                {post.custom_excerpt}
+                            </StyledPostExcerpt>
+                        )}
                     </header>
-                    <hr/>
-                    <StyledPostContent className="ghost-content load-external-scripts" dangerouslySetInnerHTML={{ __html: post.html }} />
+                    <hr />
+                    <StyledPostContent
+                        className="ghost-content load-external-scripts"
+                        dangerouslySetInnerHTML={{ __html: post.html }}
+                    />
                     <StyledEndPostDiv />
                     <StyledCategoryButtonList>
-                        {categories.map(category => {
+                        {categories.map((category) => {
                             return (
                                 <CategoryButton
                                     key={category.id}
@@ -63,7 +74,7 @@ export const BlogPost = ({ data: { post }, location }) => {
             </CenteredContent>
         </SiteLayout>
     );
-}
+};
 
 BlogPost.propTypes = {
     post: PropTypes.object,
@@ -73,8 +84,8 @@ BlogPost.propTypes = {
 export default BlogPost;
 
 export const pageQuery = graphql`
-    query ($slug: String!) {
-        post: ghostPost(slug: {eq: $slug} ) {
+    query($slug: String!) {
+        post: ghostPost(slug: { eq: $slug }) {
             title
             published_at
             custom_excerpt
@@ -134,7 +145,7 @@ export const StyledPostExcerpt = styled.div`
 
 export const StyledEndPostDiv = styled.div`
     border-top: 1px solid #a6a5a5;
-    content: " ";
+    content: ' ';
     width: 30px;
     padding-bottom: 1rem;
 `;
@@ -192,7 +203,8 @@ export const StyledPostContent = styled.section`
             width: 100%;
 
             a.kg-bookmark-container {
-                box-shadow: 0 2px 5px -1px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.09);
+                box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.15),
+                    0 0 1px rgba(0, 0, 0, 0.09);
                 color: #15171a;
                 display: flex;
                 min-height: 148px;
@@ -213,7 +225,7 @@ export const StyledPostContent = styled.section`
                     @media (max-width: 500px) {
                         order: 2;
                     }
-    
+
                     div.kg-bookmark-title {
                         font-weight: ${theme.fontWeight.f600};
                         font-size: ${theme.fontSize.base};
@@ -323,12 +335,13 @@ export const StyledPostContent = styled.section`
         text-decoration: underline;
 
         &:hover {
-            transition: all .2s ease;
+            transition: all 0.2s ease;
             color: #4299e1;
         }
     }
 
-    ol, ul {
+    ol,
+    ul {
         list-style-position: outside;
         margin-left: 1.5rem;
 

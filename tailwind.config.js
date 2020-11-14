@@ -1,7 +1,5 @@
 module.exports = {
-    purge: [
-        './src/**/*.js'
-    ],
+    purge: ['./src/**/*.js'],
     theme: {
         extend: {},
     },
@@ -10,4 +8,4 @@ module.exports = {
         margin: ['first', 'responsive'],
     },
     plugins: [],
-}
+};

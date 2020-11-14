@@ -1,13 +1,13 @@
-import React from "react";
-import { graphql } from "gatsby";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import SEO from "~components/seo";
-import CenteredContent from "~layouts/centeredContent";
-import ContentFooter from "~components/contentFooter";
-import SiteLayout from "~layouts/siteLayout";
-import theme from "~styles/theme";
+import SEO from '~components/seo';
+import CenteredContent from '~layouts/centeredContent';
+import ContentFooter from '~components/contentFooter';
+import SiteLayout from '~layouts/siteLayout';
+import theme from '~styles/theme';
 
 export const Page = ({ data: { page }, location }) => {
     return (
@@ -23,7 +23,10 @@ export const Page = ({ data: { page }, location }) => {
                     <header>
                         <StyledPostHeading>{page.title}</StyledPostHeading>
                     </header>
-                    <StyledPostContent className="ghost-content load-external-scripts" dangerouslySetInnerHTML={{ __html: page.html }} />
+                    <StyledPostContent
+                        className="ghost-content load-external-scripts"
+                        dangerouslySetInnerHTML={{ __html: page.html }}
+                    />
                 </article>
 
                 <StyledEndPostDiv />
@@ -31,7 +34,7 @@ export const Page = ({ data: { page }, location }) => {
             </CenteredContent>
         </SiteLayout>
     );
-}
+};
 
 Page.propTypes = {
     post: PropTypes.object,
@@ -41,8 +44,8 @@ Page.propTypes = {
 export default Page;
 
 export const pageQuery = graphql`
-    query ($slug: String!) {
-        page: ghostPage(slug: {eq: $slug} ) {
+    query($slug: String!) {
+        page: ghostPage(slug: { eq: $slug }) {
             title
             custom_excerpt
             excerpt
@@ -90,7 +93,7 @@ export const StyledPostExcerpt = styled.div`
 
 export const StyledEndPostDiv = styled.div`
     border-top: 1px solid #a6a5a5;
-    content: " ";
+    content: ' ';
     width: 30px;
     padding-bottom: 1rem;
 `;
@@ -144,7 +147,8 @@ export const StyledPostContent = styled.section`
             width: 100%;
 
             a.kg-bookmark-container {
-                box-shadow: 0 2px 5px -1px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.09);
+                box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.15),
+                    0 0 1px rgba(0, 0, 0, 0.09);
                 color: #15171a;
                 display: flex;
                 min-height: 148px;
@@ -165,7 +169,7 @@ export const StyledPostContent = styled.section`
                     @media (max-width: 500px) {
                         order: 2;
                     }
-    
+
                     div.kg-bookmark-title {
                         font-weight: ${theme.fontWeight.f600};
                         font-size: ${theme.fontSize.base};
@@ -275,12 +279,13 @@ export const StyledPostContent = styled.section`
         text-decoration: underline;
 
         &:hover {
-            transition: all .2s ease;
+            transition: all 0.2s ease;
             color: #4299e1;
         }
     }
 
-    ol, ul {
+    ol,
+    ul {
         list-style-position: outside;
         margin-left: 1.5rem;
 

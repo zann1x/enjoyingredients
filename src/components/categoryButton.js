@@ -1,14 +1,17 @@
-import React from "react";
-import { Link, useIntl } from "gatsby-plugin-intl";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Link, useIntl } from 'gatsby-plugin-intl';
+import PropTypes from 'prop-types';
 
-import { createIdPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
-import { mapCategorySlugToI18nKey } from "~utils/mapCategorySlugToI18nKey";
-import styled from "styled-components";
+import { createIdPathFromSlug, EUrlType } from '~utils/createPathFromSlug';
+import { mapCategorySlugToI18nKey } from '~utils/mapCategorySlugToI18nKey';
+import styled from 'styled-components';
 
 const CategoryButton = ({ category }) => {
     const intl = useIntl();
-    const categoryPath = createIdPathFromSlug(EUrlType.BLOG_RECIPES, category.slug);
+    const categoryPath = createIdPathFromSlug(
+        EUrlType.BLOG_RECIPES,
+        category.slug,
+    );
     const i18nCategoryName = mapCategorySlugToI18nKey(category.slug);
 
     if (i18nCategoryName !== '') {
@@ -21,7 +24,7 @@ const CategoryButton = ({ category }) => {
         // TODO: log somewhere
         return '';
     }
-}
+};
 
 CategoryButton.propTypes = {
     category: PropTypes.shape({
@@ -36,7 +39,7 @@ const StyledLink = styled(Link)`
     border-radius: 9999px;
     padding: 0.25rem 0.75rem;
     margin: 0.25rem;
-    font-size: .875rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: #2d3748;
     background-color: #e2e8f0;

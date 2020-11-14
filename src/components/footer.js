@@ -1,19 +1,25 @@
-import React from "react";
-import { useIntl } from "gatsby-plugin-intl";
-import styled from "styled-components";
+import React from 'react';
+import { useIntl } from 'gatsby-plugin-intl';
+import styled from 'styled-components';
 
-import theme from "~styles/theme";
+import theme from '~styles/theme';
 
 export const Footer = () => {
     const intl = useIntl();
-    const made_with_love = intl.formatMessage({ id: "footer_made_with_love" });
+    const made_with_love = intl.formatMessage({ id: 'footer_made_with_love' });
 
     return (
         <StyledFooter>
-            <StyledExtLink href="https://lukaszanner.de" target="_blank" rel="noopener">{made_with_love}</StyledExtLink>
+            <StyledExtLink
+                href="https://lukaszanner.de"
+                target="_blank"
+                rel="noopener"
+            >
+                {made_with_love}
+            </StyledExtLink>
         </StyledFooter>
     );
-}
+};
 
 export default Footer;
 

@@ -1,6 +1,9 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
-const { createPathFromSlug, EUrlType } = require("./src/utils/createPathFromSlug");
+const {
+    createPathFromSlug,
+    EUrlType,
+} = require('./src/utils/createPathFromSlug');
 
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
@@ -10,23 +13,19 @@ exports.createPages = async ({ actions, graphql }) => {
     const result = await graphql(`
         {
             posts: allGhostPost(
-                filter: {slug: {ne: "data-schema"}},
-                sort: {order: DESC, fields: [published_at]}
-                ) {
+                filter: { slug: { ne: "data-schema" } }
+                sort: { order: DESC, fields: [published_at] }
+            ) {
                 nodes {
                     slug
                 }
             }
-            tags: allGhostTag(
-                filter: {slug: {ne: "data-schema"}}
-                ) {
+            tags: allGhostTag(filter: { slug: { ne: "data-schema" } }) {
                 nodes {
                     slug
                 }
             }
-            pages: allGhostPage(
-                filter: {slug: {ne: "data-schema-page"}}
-                ) {
+            pages: allGhostPage(filter: { slug: { ne: "data-schema-page" } }) {
                 nodes {
                     slug
                 }
@@ -77,7 +76,7 @@ exports.createPages = async ({ actions, graphql }) => {
             });
         });
     }
-}
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions;
@@ -90,7 +89,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
             value: slug,
         });
     }
-}
+};
 
 // Give the src folders an alias for prettier imports
 exports.onCreateWebpackConfig = ({ actions }) => {
@@ -107,5 +106,5 @@ exports.onCreateWebpackConfig = ({ actions }) => {
                 '~utils': path.resolve(__dirname, 'src/utils'),
             },
         },
-    })
-}
+    });
+};

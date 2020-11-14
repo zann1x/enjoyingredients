@@ -5,18 +5,26 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 
 const config = require('~utils/config');
 
-const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) => {
+const SEO = ({
+    title,
+    description,
+    lang,
+    meta,
+    canonical,
+    pathname,
+    robots,
+}) => {
     let metaDescription = description;
     if (description.length > 230) {
         metaDescription = metaDescription.substr(0, 230).concat('...');
     }
-    
+
     canonical = canonical ? canonical : `${config.siteUrl}${pathname}`;
 
     // TODO: potentially add hreflang
@@ -26,17 +34,17 @@ const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) =>
             htmlAttributes={{
                 lang,
             }}
-            defaultTitle = {config.siteTitle}
+            defaultTitle={config.siteTitle}
             title={title}
             titleTemplate={`%s - ${config.siteTitle}`}
             meta={[
                 {
                     name: 'canonical',
-                    content: canonical
+                    content: canonical,
                 },
                 {
                     name: 'robots',
-                    content: robots
+                    content: robots,
                 },
                 {
                     name: 'description',
@@ -81,13 +89,13 @@ const SEO = ({ title, description, lang, meta, canonical, pathname, robots }) =>
             ].concat(meta)}
         />
     );
-}
+};
 
 SEO.defaultProps = {
     lang: 'de',
     meta: [],
     robots: 'index, follow',
-}
+};
 
 SEO.propTypes = {
     title: PropTypes.string.isRequired,
@@ -97,6 +105,6 @@ SEO.propTypes = {
     canonical: PropTypes.string,
     pathname: PropTypes.string.isRequired,
     robots: PropTypes.string,
-}
+};
 
 export default SEO;

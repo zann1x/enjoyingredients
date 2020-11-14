@@ -1,45 +1,51 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { useIntl } from "gatsby-plugin-intl";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import { graphql } from 'gatsby';
+import { useIntl } from 'gatsby-plugin-intl';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import CenteredContent from "~layouts/centeredContent";
-import PostTeaserCard from "~components/postTeaserCard";
-import SEO from "~components/seo";
-import SiteLayout from "~layouts/siteLayout";
-import { mapCategorySlugToI18nKey } from "~utils/mapCategorySlugToI18nKey";
-import theme from "~styles/theme";
+import CenteredContent from '~layouts/centeredContent';
+import PostTeaserCard from '~components/postTeaserCard';
+import SEO from '~components/seo';
+import SiteLayout from '~layouts/siteLayout';
+import { mapCategorySlugToI18nKey } from '~utils/mapCategorySlugToI18nKey';
+import theme from '~styles/theme';
 
-const Recipes =  ({ data: { allCategories, allPosts}, location }) => {
+const Recipes = ({ data: { allCategories, allPosts }, location }) => {
     const intl = useIntl();
 
     return (
         <SiteLayout>
             <SEO
                 title={intl.formatMessage({ id: 'seo_categories_title' })}
-                description={intl.formatMessage({ id: 'seo_categories_description' })}
+                description={intl.formatMessage({
+                    id: 'seo_categories_description',
+                })}
                 pathname={location.pathname}
             />
 
             <CenteredContent>
                 {/* TODO: not all posts are necessarily in a category */}
                 {allCategories.nodes.map((category) => {
-                    const i18nCategoryName = mapCategorySlugToI18nKey(category.slug);
+                    const i18nCategoryName = mapCategorySlugToI18nKey(
+                        category.slug,
+                    );
                     return (
-                        <StyledContent
-                            key={category.id}
-                            id={category.slug}
-                            >
+                        <StyledContent key={category.id} id={category.slug}>
                             <StyledHeading>
-                                {intl.formatMessage({ id: i18nCategoryName }).toUpperCase()}
+                                {intl
+                                    .formatMessage({ id: i18nCategoryName })
+                                    .toUpperCase()}
                             </StyledHeading>
                             <StyledSeparator></StyledSeparator>
 
-                            {allPosts.nodes.map(post => {
-                                const renderPost = post.tags.filter(tag => {
+                            {allPosts.nodes.map((post) => {
+                                const renderPost = post.tags.filter((tag) => {
                                     // Category IDs always start with 'Ghost__Tag__' and end with numbers
-                                    const categoryId = category.id.replace('Ghost__Tag__', '');
+                                    const categoryId = category.id.replace(
+                                        'Ghost__Tag__',
+                                        '',
+                                    );
                                     return tag.id === categoryId;
                                 });
                                 if (!renderPost.length) {
@@ -48,7 +54,9 @@ const Recipes =  ({ data: { allCategories, allPosts}, location }) => {
 
                                 return (
                                     <StyledTeaserCardArea key={post.id}>
-                                        <PostTeaserCard post={post}></PostTeaserCard>
+                                        <PostTeaserCard
+                                            post={post}
+                                        ></PostTeaserCard>
                                     </StyledTeaserCardArea>
                                 );
                             })}
@@ -58,7 +66,7 @@ const Recipes =  ({ data: { allCategories, allPosts}, location }) => {
             </CenteredContent>
         </SiteLayout>
     );
-}
+};
 
 Recipes.propTypes = {
     allCategories: PropTypes.arrayOf(PropTypes.object),
@@ -71,7 +79,7 @@ export const pageQuery = graphql`
     query {
         allCategories: allGhostTag(
             filter: {
-                postCount: { gt: 0 },
+                postCount: { gt: 0 }
                 slug: { nin: ["data-schema", "getting-started"] }
             }
         ) {
@@ -83,14 +91,11 @@ export const pageQuery = graphql`
             }
         }
 
-        allPosts: allGhostPost (
-            sort: {
-                fields: published_at
-                order: DESC
-            },
+        allPosts: allGhostPost(
+            sort: { fields: published_at, order: DESC }
             filter: {
-                slug: { ne: "data-schema" },
-                authors: {elemMatch: {name: {ne: "Ghost"}}}
+                slug: { ne: "data-schema" }
+                authors: { elemMatch: { name: { ne: "Ghost" } } }
             }
         ) {
             nodes {

@@ -1,18 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import GlobalStyle from "~styles/globalStyle";
-import styled from "styled-components";
+import GlobalStyle from '~styles/globalStyle';
+import styled from 'styled-components';
 
-const CenteredContent = ({children}) => {
+const CenteredContent = ({ children }) => {
     return (
         <>
             <GlobalStyle />
-            <StyledContainer>
-                {children}
-            </StyledContainer>
+            <StyledContainer>{children}</StyledContainer>
         </>
     );
-}
+};
 
 export default CenteredContent;
 

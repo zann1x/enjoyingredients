@@ -1,28 +1,40 @@
-import React from "react";
-import { Link } from "gatsby-plugin-intl";
-import PropTypes from "prop-types";
-import { createPathFromSlug, EUrlType } from "~utils/createPathFromSlug";
+import React from 'react';
+import { Link } from 'gatsby-plugin-intl';
+import PropTypes from 'prop-types';
+import { createPathFromSlug, EUrlType } from '~utils/createPathFromSlug';
 
 const SwitchPostNavigation = ({ previousPost, nextPost }) => {
     return (
         <StyledList>
             {previousPost && (
                 <StyledListItem>
-                    <Link to={createPathFromSlug(EUrlType.BLOG_POST, previousPost.slug)} rel="prev">
+                    <Link
+                        to={createPathFromSlug(
+                            EUrlType.BLOG_POST,
+                            previousPost.slug,
+                        )}
+                        rel="prev"
+                    >
                         ← {previousPost.title}
                     </Link>
                 </StyledListItem>
             )}
             {nextPost && (
                 <StyledListItem>
-                    <Link to={createPathFromSlug(EUrlType.BLOG_POST, nextPost.slug)} rel="next">
+                    <Link
+                        to={createPathFromSlug(
+                            EUrlType.BLOG_POST,
+                            nextPost.slug,
+                        )}
+                        rel="next"
+                    >
                         {nextPost.title} →
                     </Link>
                 </StyledListItem>
             )}
         </StyledList>
     );
-}
+};
 
 SwitchPostNavigation.propTypes = {
     previousPost: PropTypes.object,
@@ -30,7 +42,6 @@ SwitchPostNavigation.propTypes = {
 };
 
 export default SwitchPostNavigation;
-
 
 const StyledList = styled.ul`
     display: flex;
