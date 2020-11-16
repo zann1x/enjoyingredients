@@ -1,10 +1,12 @@
 import React from 'react';
-import { useIntl } from 'gatsby-plugin-intl';
+import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
-const ContentFooter = () => {
-    const intl = useIntl();
-    const contact_us = intl.formatMessage({ id: 'contact_us_via_mail' });
+const ContentFooter: React.FC = () => {
+    const intl: IntlShape = useIntl();
+    const contact_us: string = intl.formatMessage({
+        id: 'contact_us_via_mail',
+    });
 
     return (
         <>

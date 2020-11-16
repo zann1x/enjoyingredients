@@ -1,18 +1,21 @@
 import React from 'react';
-import { Link, useIntl } from 'gatsby-plugin-intl';
-import PropTypes from 'prop-types';
+import { IntlShape, Link, useIntl } from 'gatsby-plugin-intl';
 
 import { createIdPathFromSlug, EUrlType } from '~utils/createPathFromSlug';
 import { mapCategorySlugToI18nKey } from '~utils/mapCategorySlugToI18nKey';
 import styled from 'styled-components';
 
-const CategoryButton = ({ category }) => {
-    const intl = useIntl();
-    const categoryPath = createIdPathFromSlug(
+interface CategoryButtonProps {
+    slug: string;
+}
+
+const CategoryButton: React.FC<CategoryButtonProps> = ({ slug }) => {
+    const intl: IntlShape = useIntl();
+    const categoryPath: string = createIdPathFromSlug(
         EUrlType.BLOG_RECIPES,
-        category.slug,
+        slug,
     );
-    const i18nCategoryName = mapCategorySlugToI18nKey(category.slug);
+    const i18nCategoryName: string = mapCategorySlugToI18nKey(slug);
 
     if (i18nCategoryName !== '') {
         return (
@@ -22,14 +25,8 @@ const CategoryButton = ({ category }) => {
         );
     } else {
         // TODO: log somewhere
-        return '';
+        return <></>;
     }
-};
-
-CategoryButton.propTypes = {
-    category: PropTypes.shape({
-        slug: PropTypes.string.isRequired,
-    }),
 };
 
 export default CategoryButton;

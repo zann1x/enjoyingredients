@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import SEO from '~components/seo';
@@ -9,7 +8,14 @@ import ContentFooter from '~components/contentFooter';
 import SiteLayout from '~layouts/siteLayout';
 import theme from '~styles/theme';
 
-export const Page = ({ data: { page }, location }) => {
+interface PageProps {
+    data: {
+        page;
+    };
+    location;
+}
+
+export const Page: React.FC<PageProps> = ({ data: { page }, location }) => {
     return (
         <SiteLayout>
             <SEO
@@ -34,11 +40,6 @@ export const Page = ({ data: { page }, location }) => {
             </CenteredContent>
         </SiteLayout>
     );
-};
-
-Page.propTypes = {
-    post: PropTypes.object,
-    location: PropTypes.object,
 };
 
 export default Page;

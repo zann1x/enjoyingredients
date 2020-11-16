@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { useIntl } from 'gatsby-plugin-intl';
+import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -11,8 +11,19 @@ import SiteLayout from '~layouts/siteLayout';
 import { mapCategorySlugToI18nKey } from '~utils/mapCategorySlugToI18nKey';
 import theme from '~styles/theme';
 
-const Recipes = ({ data: { allCategories, allPosts }, location }) => {
-    const intl = useIntl();
+interface RecipesProps {
+    data: {
+        allCategories;
+        allPosts;
+    };
+    location;
+}
+
+const Recipes: React.FC<RecipesProps> = ({
+    data: { allCategories, allPosts },
+    location,
+}) => {
+    const intl: IntlShape = useIntl();
 
     return (
         <SiteLayout>
@@ -66,11 +77,6 @@ const Recipes = ({ data: { allCategories, allPosts }, location }) => {
             </CenteredContent>
         </SiteLayout>
     );
-};
-
-Recipes.propTypes = {
-    allCategories: PropTypes.arrayOf(PropTypes.object),
-    allPosts: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Recipes;

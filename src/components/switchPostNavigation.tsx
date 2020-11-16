@@ -1,9 +1,17 @@
 import React from 'react';
 import { Link } from 'gatsby-plugin-intl';
-import PropTypes from 'prop-types';
 import { createPathFromSlug, EUrlType } from '~utils/createPathFromSlug';
+import styled from 'styled-components';
 
-const SwitchPostNavigation = ({ previousPost, nextPost }) => {
+interface SwitchPostNavigationProps {
+    previousPost;
+    nextPost;
+}
+
+const SwitchPostNavigation: React.FC<SwitchPostNavigationProps> = ({
+    previousPost,
+    nextPost,
+}) => {
     return (
         <StyledList>
             {previousPost && (
@@ -34,11 +42,6 @@ const SwitchPostNavigation = ({ previousPost, nextPost }) => {
             )}
         </StyledList>
     );
-};
-
-SwitchPostNavigation.propTypes = {
-    previousPost: PropTypes.object,
-    nextPost: PropTypes.object,
 };
 
 export default SwitchPostNavigation;

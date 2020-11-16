@@ -4,23 +4,31 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 const config = require('~utils/config');
 
-const SEO = ({
+interface SEOProps {
+    title: string;
+    description: string;
+    lang?: string;
+    meta?;
+    canonical?: string;
+    pathname: string;
+    robots?: string;
+}
+
+const SEO: React.FC<SEOProps> = ({
     title,
     description,
-    lang,
-    meta,
+    lang = 'de',
+    meta = [],
     canonical,
     pathname,
-    robots,
+    robots = 'index, follow',
 }) => {
-    let metaDescription = description;
+    let metaDescription: string = description;
     if (description.length > 230) {
         metaDescription = metaDescription.substr(0, 230).concat('...');
     }
@@ -89,22 +97,6 @@ const SEO = ({
             ].concat(meta)}
         />
     );
-};
-
-SEO.defaultProps = {
-    lang: 'de',
-    meta: [],
-    robots: 'index, follow',
-};
-
-SEO.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    lang: PropTypes.string,
-    meta: PropTypes.arrayOf(PropTypes.object),
-    canonical: PropTypes.string,
-    pathname: PropTypes.string.isRequired,
-    robots: PropTypes.string,
 };
 
 export default SEO;

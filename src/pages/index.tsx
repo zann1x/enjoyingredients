@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Link, useIntl } from 'gatsby-plugin-intl';
+import { IntlShape, Link, useIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -12,8 +12,18 @@ import config from '~utils/config';
 import { EUrlType } from '~utils/createPathFromSlug';
 import theme from '~styles/theme';
 
-export const Index = ({ data: { latestPosts }, location }) => {
-    const intl = useIntl();
+interface IndexProps {
+    data: {
+        latestPosts;
+    };
+    location;
+}
+
+export const Index: React.FC<IndexProps> = ({
+    data: { latestPosts },
+    location,
+}) => {
+    const intl: IntlShape = useIntl();
 
     let displayedContent;
     if (latestPosts.nodes.length === 0) {
@@ -21,7 +31,7 @@ export const Index = ({ data: { latestPosts }, location }) => {
             <StyledText>{intl.formatMessage({ id: 'empty_site' })}</StyledText>
         );
     } else {
-        displayedContent = latestPosts.nodes.map((post, index) => {
+        displayedContent = latestPosts.nodes.map((post, index: number) => {
             if (index < 5) {
                 return (
                     <StyledTeaserCardArea key={post.id}>
@@ -51,10 +61,6 @@ export const Index = ({ data: { latestPosts }, location }) => {
             )}
         </SiteLayout>
     );
-};
-
-Index.propTypes = {
-    latestPosts: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Index;

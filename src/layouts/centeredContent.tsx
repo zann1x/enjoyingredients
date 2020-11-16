@@ -3,7 +3,11 @@ import React from 'react';
 import GlobalStyle from '~styles/globalStyle';
 import styled from 'styled-components';
 
-const CenteredContent = ({ children }) => {
+interface CenteredContentProps {
+    children;
+}
+
+const CenteredContent: React.FC<CenteredContentProps> = ({ children }) => {
     return (
         <>
             <GlobalStyle />

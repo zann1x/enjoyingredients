@@ -5,7 +5,11 @@ import styled from 'styled-components';
 import Footer from '~components/footer';
 import Navbar from '~components/navbar';
 
-const SiteLayout = ({ children }) => {
+interface SiteLayoutProps {
+    children;
+}
+
+const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
     const data = useStaticQuery(
         graphql`
             query {

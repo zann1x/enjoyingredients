@@ -1,4 +1,4 @@
-export function mapCategorySlugToI18nKey(slug) {
+export function mapCategorySlugToI18nKey(slug: string): string {
     switch (slug) {
         case 'desserts':
             return 'category_desserts';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useIntl } from 'gatsby-plugin-intl';
+import { IntlShape, Link, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
 import { EUrlType } from '~utils/createPathFromSlug';
@@ -13,7 +13,7 @@ const Navbar = ({ siteTitle }) => {
         setPathname(window.location.pathname);
     }, [pathname]);
 
-    const intl = useIntl();
+    const intl: IntlShape = useIntl();
 
     // TODO: replace styles with styled components
     return (

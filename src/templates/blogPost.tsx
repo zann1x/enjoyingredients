@@ -1,8 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { useIntl } from 'gatsby-plugin-intl';
-import PropTypes from 'prop-types';
+import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
 import CategoryButton from '~components/categoryButton';
@@ -12,10 +11,20 @@ import CenteredContent from '~layouts/centeredContent';
 import SiteLayout from '~layouts/siteLayout';
 import theme from '~styles/theme';
 
-export const BlogPost = ({ data: { post }, location }) => {
-    const intl = useIntl();
+interface BlogPostProps {
+    data: {
+        post;
+    };
+    location;
+}
+
+export const BlogPost: React.FC<BlogPostProps> = ({
+    data: { post },
+    location,
+}) => {
+    const intl: IntlShape = useIntl();
     const categories = post.tags;
-    const publish_date = intl.formatDate(post.published_at, {
+    const publish_date: string = intl.formatDate(post.published_at, {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
@@ -63,7 +72,7 @@ export const BlogPost = ({ data: { post }, location }) => {
                             return (
                                 <CategoryButton
                                     key={category.id}
-                                    category={category}
+                                    slug={category.slug}
                                 ></CategoryButton>
                             );
                         })}
@@ -74,11 +83,6 @@ export const BlogPost = ({ data: { post }, location }) => {
             </CenteredContent>
         </SiteLayout>
     );
-};
-
-BlogPost.propTypes = {
-    post: PropTypes.object,
-    location: PropTypes.object,
 };
 
 export default BlogPost;

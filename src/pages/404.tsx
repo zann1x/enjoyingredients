@@ -7,7 +7,7 @@ import SiteLayout from '~layouts/siteLayout';
 import config from '~utils/config';
 import styled from 'styled-components';
 
-export default () => {
+const NotFound: React.FC = () => {
     // TODO: detect language
     const intl = useIntl();
 
@@ -30,6 +30,8 @@ export default () => {
         </SiteLayout>
     );
 };
+
+export default NotFound;
 
 const StyledText = styled.p`
     text-align: center;

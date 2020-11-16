@@ -1,12 +1,14 @@
 import React from 'react';
-import { useIntl } from 'gatsby-plugin-intl';
+import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
 import theme from '~styles/theme';
 
-export const Footer = () => {
-    const intl = useIntl();
-    const made_with_love = intl.formatMessage({ id: 'footer_made_with_love' });
+export const Footer: React.FC = () => {
+    const intl: IntlShape = useIntl();
+    const made_with_love: string = intl.formatMessage({
+        id: 'footer_made_with_love',
+    });
 
     return (
         <StyledFooter>

@@ -1,19 +1,29 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby-plugin-intl';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import CategoryButton from '~components/categoryButton';
 import theme from '~styles/theme';
 import { createPathFromSlug, EUrlType } from '~utils/createPathFromSlug';
 
-const PostTeaserCard = ({
+interface PostTeaserCardProps {
+    post: {
+        slug: string;
+        title: string;
+        featureImageSharp;
+        excerpt: string;
+        custom_excerpt: string;
+        tags;
+    };
+}
+
+const PostTeaserCard: React.FC<PostTeaserCardProps> = ({
     post: { slug, title, featureImageSharp, excerpt, custom_excerpt, tags },
 }) => {
-    const postUrl = createPathFromSlug(EUrlType.BLOG_POST, slug);
+    const postUrl: string = createPathFromSlug(EUrlType.BLOG_POST, slug);
 
-    let post_description = '';
+    let post_description: string = '';
     if (custom_excerpt === null) {
         if (excerpt.length > 250) {
             // TODO: cut the text off a little more gentle at a full stop
@@ -57,17 +67,13 @@ const PostTeaserCard = ({
                     return (
                         <CategoryButton
                             key={category.id}
-                            category={category}
+                            slug={category.slug}
                         ></CategoryButton>
                     );
                 })}
             </StyledCategoryButtons>
         </StyledTeaserBox>
     );
-};
-
-PostTeaserCard.propTypes = {
-    post: PropTypes.object,
 };
 
 export default PostTeaserCard;

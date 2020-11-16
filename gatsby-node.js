@@ -7,8 +7,8 @@ const {
 
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
-    const blogPostTemplate = path.resolve(`./src/templates/blogPost.js`);
-    const pageTemplate = path.resolve(`./src/templates/page.js`);
+    const blogPostTemplate = path.resolve(`./src/templates/blogPost.tsx`);
+    const pageTemplate = path.resolve(`./src/templates/page.tsx`);
 
     const result = await graphql(`
         {
