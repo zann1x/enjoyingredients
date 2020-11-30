@@ -55,13 +55,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
                         <StyledPublishingDate>
                             {publish_date}
                         </StyledPublishingDate>
-                        {post.custom_excerpt && (
-                            <StyledPostExcerpt className="post-content">
-                                {post.custom_excerpt}
-                            </StyledPostExcerpt>
-                        )}
                     </header>
-                    <hr />
                     <StyledPostContent
                         className="ghost-content load-external-scripts"
                         dangerouslySetInnerHTML={{ __html: post.html }}
@@ -87,7 +81,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 
 export default BlogPost;
 
-export const pageQuery = graphql`
+const pageQuery = graphql`
     query($slug: String!) {
         post: ghostPost(slug: { eq: $slug }) {
             title
@@ -110,7 +104,7 @@ export const pageQuery = graphql`
     }
 `;
 
-export const StyledHeroImage = styled(Img)`
+const StyledHeroImage = styled(Img)`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -125,14 +119,14 @@ export const StyledHeroImage = styled(Img)`
     }
 `;
 
-export const StyledPostHeading = styled.h1`
+const StyledPostHeading = styled.h1`
     font-size: ${theme.fontSize.h1};
     font-weight: ${theme.fontWeight.f600};
     text-align: center;
     font-style: italic;
 `;
 
-export const StyledPublishingDate = styled.p`
+const StyledPublishingDate = styled.p`
     color: ${theme.color.gray700};
     font-size: ${theme.fontSize.sm};
     padding-top: 0.5rem;
@@ -140,14 +134,7 @@ export const StyledPublishingDate = styled.p`
     text-align: center;
 `;
 
-export const StyledPostExcerpt = styled.div`
-    color: ${theme.color.gray600};
-    font-size: ${theme.fontSize.md};
-    padding-top: 1rem;
-    padding-bottom: 1.5rem;
-`;
-
-export const StyledEndPostDiv = styled.div`
+const StyledEndPostDiv = styled.div`
     border-top: 1px solid #a6a5a5;
     content: ' ';
     width: 30px;
@@ -158,7 +145,7 @@ const StyledCategoryButtonList = styled.div`
     padding-bottom: 1rem;
 `;
 
-export const StyledPostContent = styled.section`
+const StyledPostContent = styled.section`
     & {
         font-size: ${theme.fontSize.base};
         line-height: 1.625;
