@@ -81,7 +81,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 
 export default BlogPost;
 
-const pageQuery = graphql`
+export const pageQuery = graphql`
     query($slug: String!) {
         post: ghostPost(slug: { eq: $slug }) {
             title
