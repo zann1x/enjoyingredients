@@ -55,22 +55,7 @@ export const pageQuery = graphql`
     }
 `;
 
-export const StyledHeroImage = styled.div`
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    height: 50vh;
-    width: 100%;
-
-    position: relative;
-
-    &:before {
-        width: 100vh;
-    }
-`;
-
-export const StyledPostHeading = styled.h1`
+const StyledPostHeading = styled.h1`
     font-size: ${theme.fontSize.h1};
     font-weight: ${theme.fontWeight.f600};
     text-align: center;
@@ -78,28 +63,14 @@ export const StyledPostHeading = styled.h1`
     margin-bottom: 1rem;
 `;
 
-export const StyledPublishingDate = styled.p`
-    color: ${theme.color.gray700};
-    font-size: ${theme.fontSize.sm};
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-`;
-
-export const StyledPostExcerpt = styled.div`
-    color: ${theme.color.gray600};
-    font-size: ${theme.fontSize.md};
-    padding-top: 1rem;
-    padding-bottom: 1.5rem;
-`;
-
-export const StyledEndPostDiv = styled.div`
+const StyledEndPostDiv = styled.div`
     border-top: 1px solid #a6a5a5;
     content: ' ';
     width: 30px;
     padding-bottom: 1rem;
 `;
 
-export const StyledPostContent = styled.section`
+const StyledPostContent = styled.section`
     & {
         font-size: ${theme.fontSize.base};
         line-height: 1.625;
