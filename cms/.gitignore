@@ -1,3 +1,0 @@
-# Config files with sensitive data
-config/**
-!config/php.ini
