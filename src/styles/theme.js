@@ -41,6 +41,7 @@ const theme = {
         gray700: '#4a5568',
         gray800: '#2d3748',
         gray900: '#1a202c',
+        green500: '#10B981',
     },
 };
 

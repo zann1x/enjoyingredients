@@ -15,29 +15,23 @@ const Navbar = ({ siteTitle }) => {
 
     const intl: IntlShape = useIntl();
 
-    // TODO: replace styles with styled components
     return (
-        <nav className="border-b-2 border-green-500 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-4 sm:h-16">
-            <div className="flex items-center justify-between px-4 py-4 sm:p-0">
-                <Link to="/" className="flex">
-                    <img
-                        style={{ color: 'black' }}
+        <StyledNav>
+            <StyledNavMenu>
+                <Link to="/">
+                    <StyledLogo
                         src={'/img/logo_oneline.png'}
                         alt={siteTitle}
                         width="200"
                     />
                 </Link>
-                <div className="sm:hidden">
-                    <button
+                <StyledBurgerMenuDiv>
+                    <StyledBurgerMenuButton
                         type="button"
                         onClick={() => setIsOpen(!isOpen)}
-                        className="block px-1 py-1 rounded text-gray-900 hover:bg-gray-300 focus:outline-none"
                         aria-label="Toggle burger menu"
                     >
-                        <svg
-                            className="h-6 w-6 fill-current"
-                            viewBox="0 0 24 24"
-                        >
+                        <StyledBurgerMenuIcon viewBox="0 0 24 24">
                             {isOpen ? (
                                 // Closed burger menu displaying the three dashes
                                 <path
@@ -51,16 +45,12 @@ const Navbar = ({ siteTitle }) => {
                                     d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
                                 />
                             )}
-                        </svg>
-                    </button>
-                </div>
-            </div>
+                        </StyledBurgerMenuIcon>
+                    </StyledBurgerMenuButton>
+                </StyledBurgerMenuDiv>
+            </StyledNavMenu>
 
-            <div
-                className={`${
-                    isOpen ? 'block' : 'hidden'
-                } border-t border-green-500 sm:border-0 px-4 py-4 sm:flex sm:p-0`}
-            >
+            <StyledNavLinkDiv isopen={isOpen ? 'true' : ''}>
                 <StyledNavLink
                     to={EUrlType.ABOUT}
                     isselected={pathname.endsWith(EUrlType.ABOUT) ? 'true' : ''}
@@ -75,8 +65,8 @@ const Navbar = ({ siteTitle }) => {
                 >
                     {intl.formatMessage({ id: 'navbar_recipes' })}
                 </StyledNavLink>
-            </div>
-        </nav>
+            </StyledNavLinkDiv>
+        </StyledNav>
     );
 };
 
@@ -106,4 +96,73 @@ const StyledNavLink = styled(Link)`
         `
         text-decoration: underline;
     `}
+`;
+
+const StyledNavLinkDiv = styled.div`
+    border-top-width: 1px;
+    border-color: ${theme.color.green500};
+    padding: 1rem;
+
+    @media (min-width: 640px) {
+        display: flex;
+        padding: 0;
+        border-width: 0;
+    }
+
+    ${(props) =>
+        props.isopen === 'true' ? `display: block;` : `display: none;`}
+`;
+
+const StyledLogo = styled.img`
+    color: ${theme.color.black};
+`;
+
+const StyledBurgerMenuIcon = styled.svg`
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: currentColor;
+`;
+
+const StyledBurgerMenuButton = styled.button`
+    display: block;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    color: ${theme.color.gray900};
+
+    &:hover {
+        background-color: ${theme.color.gray300};
+    }
+
+    &:focus {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+    }
+`;
+
+const StyledBurgerMenuDiv = styled.div`
+    @media (min-width: 640px) {
+        display: none;
+    }
+`;
+
+const StyledNavMenu = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    @media (min-width: 640px) {
+        padding: 0;
+    }
+`;
+
+const StyledNav = styled.nav`
+    border-bottom-width: 2px;
+    border-color: ${theme.color.green500};
+    @media (min-width: 640px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        height: 4rem;
+    }
 `;
