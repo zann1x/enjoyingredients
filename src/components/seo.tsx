@@ -96,7 +96,12 @@ const SEO: React.FC<SEOProps> = ({
                 },
             ].concat(meta)}
         >
-            <script async defer data-domain="enjoyingredients.com" src="https://pla.enjoyingredients.com/js/plausible.js"></script>
+            <script
+                async
+                defer
+                data-domain="enjoyingredients.com"
+                src="https://pla.enjoyingredients.com/js/plausible.js"
+            ></script>
         </Helmet>
     );
 };
