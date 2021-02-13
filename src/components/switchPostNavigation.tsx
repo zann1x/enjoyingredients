@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby-plugin-intl';
-import { createPathFromSlug, EUrlType } from '~utils/createPathFromSlug';
 import styled from 'styled-components';
+
+import { createPathFromSlug, EUrlType } from '~/utils/createPathFromSlug';
 
 interface SwitchPostNavigationProps {
     previousPost;

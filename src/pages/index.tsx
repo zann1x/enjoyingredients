@@ -1,16 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { IntlShape, Link, useIntl } from 'gatsby-plugin-intl';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import PostTeaserCard from '~components/postTeaserCard';
-import SEO from '~components/seo';
-import SiteLayout from '~layouts/siteLayout';
-import CenteredContent from '~layouts/centeredContent';
-import config from '~utils/config';
-import { EUrlType } from '~utils/createPathFromSlug';
-import theme from '~styles/theme';
+import PostTeaserCard from '~/components/postTeaserCard';
+import SEO from '~/components/seo';
+import SiteLayout from '~/layouts/siteLayout';
+import CenteredContent from '~/layouts/centeredContent';
+import config from '~/utils/config';
+import { EUrlType } from '~/utils/createPathFromSlug';
+import theme from '~/styles/theme';
 
 interface IndexProps {
     data: {

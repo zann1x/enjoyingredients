@@ -7,7 +7,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-const config = require('~utils/config');
+const config = require('~/utils/config');
 
 interface SEOProps {
     title: string;

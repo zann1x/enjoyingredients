@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import theme from '~styles/theme';
+import theme from '~/styles/theme';
 
 const GlobalStyle = createGlobalStyle`
     p {
@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
             &.kg-image-card {
                 padding: 1rem 0;
                 max-width: 100%;
-    
+
                 // TODO: max-width: 1040px;
                 &.kg-width-wide {
                     > .kg-image {
@@ -35,22 +35,22 @@ const GlobalStyle = createGlobalStyle`
                     }
                 }
             }
-    
+
             &.kg-bookmark-card {
                 margin: 1rem 0;
                 width: 100%;
-    
+
                 a.kg-bookmark-container {
                     box-shadow: 0 2px 5px -1px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.09);
                     color: #15171a;
                     display: flex;
                     min-height: 148px;
                     text-decoration: none;
-    
+
                     @media (max-width: 500px) {
                         flex-direction: column;
                     }
-    
+
                     div.kg-bookmark-content {
                         display: flex;
                         flex-grow: 1;
@@ -58,15 +58,15 @@ const GlobalStyle = createGlobalStyle`
                         justify-content: flex-start;
                         align-items: flex-start;
                         padding: 20px;
-    
+
                         @media (max-width: 500px) {
                             order: 2;
                         }
-        
+
                         div.kg-bookmark-title {
                             font-weight: ${theme.fontWeight.f600};
                             font-size: ${theme.fontSize.base};
-    
+
                             @media (max-width: 500px) {
                                 font-size: ${theme.fontSize.sm};
                             }
@@ -79,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
                             line-height: 1.5em;
                             font-weight: ${theme.fontWeight.f400};
                             font-size: ${theme.fontSize.base};
-    
+
                             @media (max-width: 500px) {
                                 font-size: ${theme.fontSize.sm};
                             }
@@ -92,17 +92,17 @@ const GlobalStyle = createGlobalStyle`
                             color: #5d7179;
                             font-size: ${theme.fontSize.base};
                             font-weight: ${theme.fontWeight.f400};
-    
+
                             @media (max-width: 500px) {
                                 font-size: ${theme.fontSize.sm};
                                 line-height: 1.5em;
                             }
-    
+
                             img.kg-bookmark-icon {
                                 margin-right: 8px;
                                 width: 22px;
                                 height: 22px;
-    
+
                                 @media (max-width: 500px) {
                                     width: 18px;
                                     height: 18px;
@@ -117,19 +117,19 @@ const GlobalStyle = createGlobalStyle`
                             }
                         }
                     }
-    
+
                     div.kg-bookmark-thumbnail {
                         position: relative;
                         min-width: 33%;
                         min-height: 160px;
                         max-height: 100%;
-    
+
                         @media (max-width: 500px) {
                             width: 100%;
                             min-height: 160px;
                             order: 1;
                         }
-    
+
                         img {
                             position: absolute;
                             top: 0;

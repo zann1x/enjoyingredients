@@ -2,7 +2,7 @@ import React from 'react';
 import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
-import theme from '~styles/theme';
+import theme from '~/styles/theme';
 
 export const Footer: React.FC = () => {
     const intl: IntlShape = useIntl();

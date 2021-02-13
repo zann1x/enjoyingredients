@@ -3,9 +3,9 @@ import Img from 'gatsby-image';
 import { Link } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
-import CategoryButton from '~components/categoryButton';
-import theme from '~styles/theme';
-import { createPathFromSlug, EUrlType } from '~utils/createPathFromSlug';
+import CategoryButton from '~/components/categoryButton';
+import theme from '~/styles/theme';
+import { createPathFromSlug, EUrlType } from '~/utils/createPathFromSlug';
 
 interface PostTeaserCardProps {
     post: {

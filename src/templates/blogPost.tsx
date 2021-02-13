@@ -4,12 +4,12 @@ import Img from 'gatsby-image';
 import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
-import CategoryButton from '~components/categoryButton';
-import ContentFooter from '~components/contentFooter';
-import SEO from '~components/seo';
-import CenteredContent from '~layouts/centeredContent';
-import SiteLayout from '~layouts/siteLayout';
-import theme from '~styles/theme';
+import CategoryButton from '~/components/categoryButton';
+import ContentFooter from '~/components/contentFooter';
+import SEO from '~/components/seo';
+import CenteredContent from '~/layouts/centeredContent';
+import SiteLayout from '~/layouts/siteLayout';
+import theme from '~/styles/theme';
 
 interface BlogPostProps {
     data: {

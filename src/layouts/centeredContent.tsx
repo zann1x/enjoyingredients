@@ -1,7 +1,7 @@
 import React from 'react';
-
-import GlobalStyle from '~styles/globalStyle';
 import styled from 'styled-components';
+
+import GlobalStyle from '~/styles/globalStyle';
 
 interface CenteredContentProps {
     children;

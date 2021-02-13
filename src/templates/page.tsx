@@ -2,11 +2,11 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import SEO from '~components/seo';
-import CenteredContent from '~layouts/centeredContent';
-import ContentFooter from '~components/contentFooter';
-import SiteLayout from '~layouts/siteLayout';
-import theme from '~styles/theme';
+import SEO from '~/components/seo';
+import CenteredContent from '~/layouts/centeredContent';
+import ContentFooter from '~/components/contentFooter';
+import SiteLayout from '~/layouts/siteLayout';
+import theme from '~/styles/theme';
 
 interface PageProps {
     data: {

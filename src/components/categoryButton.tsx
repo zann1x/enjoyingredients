@@ -1,8 +1,8 @@
 import React from 'react';
 import { IntlShape, Link, useIntl } from 'gatsby-plugin-intl';
 
-import { createIdPathFromSlug, EUrlType } from '~utils/createPathFromSlug';
-import { mapCategorySlugToI18nKey } from '~utils/mapCategorySlugToI18nKey';
+import { createIdPathFromSlug, EUrlType } from '~/utils/createPathFromSlug';
+import { mapCategorySlugToI18nKey } from '~/utils/mapCategorySlugToI18nKey';
 import styled from 'styled-components';
 
 interface CategoryButtonProps {

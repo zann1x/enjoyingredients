@@ -1,15 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { IntlShape, useIntl } from 'gatsby-plugin-intl';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import CenteredContent from '~layouts/centeredContent';
-import PostTeaserCard from '~components/postTeaserCard';
-import SEO from '~components/seo';
-import SiteLayout from '~layouts/siteLayout';
-import { mapCategorySlugToI18nKey } from '~utils/mapCategorySlugToI18nKey';
-import theme from '~styles/theme';
+import CenteredContent from '~/layouts/centeredContent';
+import PostTeaserCard from '~/components/postTeaserCard';
+import SEO from '~/components/seo';
+import SiteLayout from '~/layouts/siteLayout';
+import { mapCategorySlugToI18nKey } from '~/utils/mapCategorySlugToI18nKey';
+import theme from '~/styles/theme';
 
 interface RecipesProps {
     data: {

@@ -2,8 +2,8 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import Footer from '~components/footer';
-import Navbar from '~components/navbar';
+import Footer from '~/components/footer';
+import Navbar from '~/components/navbar';
 
 interface SiteLayoutProps {
     children;

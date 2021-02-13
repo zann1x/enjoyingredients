@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { IntlShape, Link, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
-import { EUrlType } from '~utils/createPathFromSlug';
-
-import theme from '~styles/theme';
+import { EUrlType } from '~/utils/createPathFromSlug';
+import theme from '~/styles/theme';
 
 const Navbar = ({ siteTitle }) => {
     const [isOpen, setIsOpen] = useState(false);

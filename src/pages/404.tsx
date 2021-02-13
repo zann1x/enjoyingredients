@@ -1,11 +1,11 @@
 import React from 'react';
 import { useIntl } from 'gatsby-plugin-intl';
 import Helmet from 'react-helmet';
-
-import CenteredContent from '~layouts/centeredContent';
-import SiteLayout from '~layouts/siteLayout';
-import config from '~utils/config';
 import styled from 'styled-components';
+
+import CenteredContent from '~/layouts/centeredContent';
+import SiteLayout from '~/layouts/siteLayout';
+import config from '~/utils/config';
 
 const NotFound: React.FC = () => {
     // TODO: detect language
