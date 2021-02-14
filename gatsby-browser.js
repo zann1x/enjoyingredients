@@ -1,4 +1,5 @@
-require(`./src/styles/main.css`);
+require('./src/styles/main.css');
+require('firebase/firestore');
 
 /**
  * Trust All Scripts

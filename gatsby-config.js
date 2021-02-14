@@ -1,7 +1,18 @@
 const config = require('./src/utils/config');
 const path = require(`path`);
+require('dotenv').config();
 
 let ghostConfig;
+
+const firebaseConfig = {
+    apiKey: process.env.GATSBY_FIREBASE_API_KEY,
+    authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.GATSBY_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.GATSBY_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.GATSBY_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.GATSBY_FIREBASE_APP_ID,
+    measurementId: process.env.GATSBY_FIREBASE_MEASUREMENT_ID
+  };
 
 try {
     ghostConfig = require(`./.ghost`);
@@ -40,6 +51,30 @@ module.exports = {
         'gatsby-plugin-sharp',
         'gatsby-plugin-styled-components',
         'gatsby-transformer-sharp',
+        {
+            resolve: 'gatsby-plugin-firebase',
+            options: {
+                features: {
+                    analytics: false,
+                    auth: false,
+                    database: false,
+                    firestore: true,
+                    functions: false,
+                    messaging: false,
+                    performance: false,
+                    storage: false,
+                },
+                credentials: {
+                    apiKey: firebaseConfig.apiKey,
+                    authDomain: firebaseConfig.authDomain,
+                    projectId: firebaseConfig.projectId,
+                    storageBucket: firebaseConfig.storageBucket,
+                    messagingSenderId: firebaseConfig.messagingSenderId,
+                    appId: firebaseConfig.appId,
+                    measurementId: firebaseConfig.measurementId,
+                },
+            },
+        },
         {
             resolve: `gatsby-plugin-ghost-images`,
             options: {
