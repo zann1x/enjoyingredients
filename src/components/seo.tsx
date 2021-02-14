@@ -95,14 +95,7 @@ const SEO: React.FC<SEOProps> = ({
                     content: metaDescription,
                 },
             ].concat(meta)}
-        >
-            <script
-                async
-                defer
-                data-domain="enjoyingredients.com"
-                src="https://pla.enjoyingredients.com/js/plausible.js"
-            ></script>
-        </Helmet>
+        ></Helmet>
     );
 };
 
