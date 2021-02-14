@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useIntl } from 'gatsby-plugin-intl';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
@@ -10,6 +10,12 @@ import config from '~/utils/config';
 const NotFound: React.FC = () => {
     // TODO: detect language
     const intl = useIntl();
+
+    useEffect(() => {
+        if (window.plausible) {
+            window.plausible("404", { props: { path: document.location.pathname } });
+        }
+    });
 
     return (
         <SiteLayout>
