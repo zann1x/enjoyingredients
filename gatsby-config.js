@@ -95,14 +95,6 @@ module.exports = {
                 name: 'img',
             },
         },
-        // {
-        //     resolve: 'gatsby-source-filesystem',
-        //     options: {
-        //         path: path.join(__dirname, `content`, `assets`)
-        //         name: 'assets',
-        //     },
-        // },
-        //{
         {
             resolve: 'gatsby-transformer-remark',
             options: {
@@ -131,21 +123,6 @@ module.exports = {
                 ],
             },
         },
-        // {
-        //     resolve: 'gatsby-plugin-manifest',
-        //     options: {
-        //         name: 'EnjoyIngredients - the other food blog',
-        //         short_name: 'EnjoyIngredients',
-        //         start_url: '/',
-        //         background_color: '#ffffff',
-        //         theme_color: '#663399',
-        //         display: 'minimal-ui',
-        //         icon: `content/assets/gatsby-icon.png`,
-        //     },
-        // },
-        // this (optional) plugin enables Progressive Web App + Offline functionality
-        // To learn more, visit: https://gatsby.dev/offline
-        // 'gatsby-plugin-offline',
         {
             resolve: `jamify-source-ghost`,
             options: {
