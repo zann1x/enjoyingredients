@@ -174,6 +174,11 @@ const StyledPostContent = styled.section`
             padding: 1rem 0;
             max-width: 100%;
 
+            .kg-image {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             // TODO: max-width: 1040px;
             &.kg-width-wide {
                 > .kg-image {
