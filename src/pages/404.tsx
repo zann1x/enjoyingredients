@@ -13,7 +13,9 @@ const NotFound: React.FC = () => {
 
     useEffect(() => {
         if (window.plausible) {
-            window.plausible("404", { props: { path: document.location.pathname } });
+            window.plausible('404', {
+                props: { path: document.location.pathname },
+            });
         }
     });
 

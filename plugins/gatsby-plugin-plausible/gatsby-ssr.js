@@ -9,13 +9,16 @@ exports.onRenderBody = ({ setHeadComponents }) => {
         async: true,
         defer: true,
         'data-domain': 'enjoyingredients.com',
-        src: 'https://pla.enjoyingredients.com/js/plausible.js'
+        src: 'https://pla.enjoyingredients.com/js/plausible.js',
     };
 
     return setHeadComponents([
         <script {...plausibleSnippetProps} />,
-        <script dangerouslySetInnerHTML={{
-            __html: 'window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }'
-        }} />
+        <script
+            dangerouslySetInnerHTML={{
+                __html:
+                    'window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }',
+            }}
+        />,
     ]);
 };
