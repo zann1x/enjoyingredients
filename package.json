@@ -65,7 +65,6 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "type-check": "tsc",
-    "deploy": "firebase deploy",
     "preview": "firebase hosting:channel:deploy"
   }
 }
