@@ -23,8 +23,6 @@ export default ContentFooter;
 const StyledExtLink = styled.a`
     text-decoration: underline;
     &:hover {
-        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-        transition-duration: 200ms;
         color: #4299e1;
     }
 `;

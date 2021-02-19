@@ -33,8 +33,6 @@ const StyledFooter = styled.footer`
 
 const StyledExtLink = styled.a`
     &:hover {
-        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-        transition-duration: 200ms;
         color: #4299e1;
     }
 `;

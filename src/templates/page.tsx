@@ -251,7 +251,6 @@ const StyledPostContent = styled.section`
         text-decoration: underline;
 
         &:hover {
-            transition: all 0.2s ease;
             color: #4299e1;
         }
     }
