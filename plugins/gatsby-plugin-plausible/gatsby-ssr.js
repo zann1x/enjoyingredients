@@ -9,7 +9,7 @@ exports.onRenderBody = ({ setHeadComponents }) => {
         async: true,
         defer: true,
         'data-domain': 'enjoyingredients.com',
-        src: 'https://pla.enjoyingredients.com/js/plausible.js',
+        src: 'https://pla.enjoyingredients.com/js/plausible.outbound-links.js',
     };
 
     return setHeadComponents([
