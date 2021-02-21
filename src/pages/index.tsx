@@ -26,11 +26,11 @@ export const Index = ({ latestPosts }: IndexProps) => {
             <StyledText>{intl.formatMessage({ id: 'empty_site' })}</StyledText>
         );
     } else {
-        displayedContent = latestPosts.nodes.map((post, index: number) => {
+        displayedContent = latestPosts.nodes.map((post: any, index: number) => {
             if (index < 5) {
                 return (
                     <StyledTeaserCardArea key={post.id}>
-                        <PostTeaserCard post={post}></PostTeaserCard>
+                        <PostTeaserCard post={post} />
                     </StyledTeaserCardArea>
                 );
             } else {

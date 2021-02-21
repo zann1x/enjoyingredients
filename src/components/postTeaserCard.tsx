@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -8,60 +8,51 @@ import theme from '~/styles/theme';
 import { createPathFromSlug, EUrlType } from '~/utils/createPathFromSlug';
 
 interface PostTeaserCardProps {
-    post: {
-        slug: string;
-        title: string;
-        featureImageSharp;
-        excerpt: string;
-        custom_excerpt: string;
-        tags;
-    };
+    post: any;
 }
 
-const PostTeaserCard = ({
-    post: { slug, title, featureImageSharp, excerpt, custom_excerpt, tags },
-}: PostTeaserCardProps) => {
-    const postUrl: string = createPathFromSlug(EUrlType.BLOG_POST, slug);
+const PostTeaserCard = ({ post }: PostTeaserCardProps) => {
+    const postUrl: string = createPathFromSlug(EUrlType.BLOG_POST, post.slug);
 
     let post_description: string = '';
-    if (custom_excerpt === null) {
-        if (excerpt.length > 250) {
+    if (post.custom_excerpt === null) {
+        if (post.excerpt.length > 250) {
             // TODO: cut the text off a little more gentle at a full stop
-            post_description = excerpt.substr(0, 250);
+            post_description = post.excerpt.substr(0, 250);
             const lastWhitespace = post_description.lastIndexOf(' ');
             if (lastWhitespace !== -1 && lastWhitespace !== post_description.length) {
                 post_description = post_description.substr(0, lastWhitespace);
             }
             post_description = post_description.trim().concat('...');
         } else {
-            post_description = excerpt;
+            post_description = post.excerpt;
         }
     }
-    const description =
-        custom_excerpt !== null ? custom_excerpt : post_description;
+    const description = post.custom_excerpt !== null ? post.custom_excerpt : post_description;
 
     return (
         <StyledTeaserBox>
-            {featureImageSharp && (
+            {post.feature_image && (
                 <Link href={postUrl}>
-                    // TODO
                     <StyledFeatureImg
-                        alt="Teaser"
-                        fluid={featureImageSharp.childImageSharp.fluid}
+                        src={post.feature_image}
+                        alt="Teaser Image"
+                        layout="fill"
                         objectFit="cover"
                         objectPosition="50% 50%"
+                        priority="true"
                     />
                 </Link>
             )}
             <StyledTextArea>
                 <Link href={postUrl}>
-                    <StyledHeading>{title || slug}</StyledHeading>
+                    <StyledHeading>{post.title || post.slug}</StyledHeading>
                     <StyledExcerpt>{description}</StyledExcerpt>
                 </Link>
             </StyledTextArea>
 
             <StyledCategoryButtons>
-                {tags.map((category) => {
+                {post.tags.map((category) => {
                     return (
                         <CategoryButton
                             key={category.id}
@@ -81,7 +72,7 @@ const StyledHeading = styled.p`
     font-weight: ${theme.fontWeight.f700};
 `;
 
-const StyledFeatureImg = styled(Img)`
+const StyledFeatureImg = styled(Image)`
     border-radius: 0.5rem 0.5rem 0 0;
     max-height: 350px;
 `;

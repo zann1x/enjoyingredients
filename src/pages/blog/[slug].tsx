@@ -1,6 +1,6 @@
 import React from 'react';
-import Img from 'gatsby-image';
 import { IntlShape, useIntl } from 'gatsby-plugin-intl';
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import CategoryButton from '~/components/categoryButton';
@@ -40,13 +40,14 @@ export const BlogPost = ({ post }: BlogPostProps) => {
                 description={post.custom_excerpt || post.excerpt}
             />
 
-            {post.featureImageSharp && (
-                // TODO
+            {post.feature_image && (
                 <StyledHeroImage
+                    src={post.feature_image}
                     alt="Feature Image"
-                    fluid={post.featureImageSharp.childImageSharp.fluid}
+                    layout="fill"
                     objectFit="cover"
                     objectPosition="50% 50%"
+                    priority="true"
                 />
             )}
 
@@ -98,7 +99,7 @@ export const getStaticProps: GetStaticProps = async({ params }) => {
     return { props: { post } };
 };
 
-const StyledHeroImage = styled(Img)`
+const StyledHeroImage = styled(Image)`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

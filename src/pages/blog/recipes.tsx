@@ -62,9 +62,7 @@ const Recipes = ({
 
                                 return (
                                     <StyledTeaserCardArea key={post.id}>
-                                        <PostTeaserCard
-                                            post={post}
-                                        ></PostTeaserCard>
+                                        <PostTeaserCard post={post} />
                                     </StyledTeaserCardArea>
                                 );
                             })}
