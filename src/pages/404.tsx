@@ -5,10 +5,9 @@ import styled from 'styled-components';
 
 import CenteredContent from '~/layouts/centeredContent';
 import SiteLayout from '~/layouts/siteLayout';
-import config from '~/utils/config';
+import config from '~/config';
 
 const NotFound: React.FC = () => {
-    // TODO: detect language
     const intl = useIntl();
 
     useEffect(() => {
@@ -22,13 +21,8 @@ const NotFound: React.FC = () => {
     return (
         <SiteLayout>
             <Helmet
-                title={`404 - ${config.siteTitle}`}
-                meta={[
-                    {
-                        name: 'robots',
-                        content: 'noindex, nofollow, noarchive',
-                    },
-                ]}
+                title={`${intl.formatMessage({ id: "404_title" })} - ${config.siteTitle}`}
+                robots='noindex, nofollow, noarchive'
             />
             <CenteredContent>
                 <StyledText>
