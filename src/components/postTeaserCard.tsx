@@ -4,7 +4,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import CategoryButton from '~/components/categoryButton';
-import theme from '~/styles/theme';
 import { createPathFromSlug, EUrlType } from '~/utils/createPathFromSlug';
 
 interface PostTeaserCardProps {
@@ -68,8 +67,8 @@ const PostTeaserCard = ({ post }: PostTeaserCardProps) => {
 export default PostTeaserCard;
 
 const StyledHeading = styled.p`
-    font-size: ${theme.fontSize.xl};
-    font-weight: ${theme.fontWeight.f700};
+    font-size: ${({ theme }) => theme.fontSize.xl};
+    font-weight: ${({ theme }) => theme.fontWeight.f700};
 `;
 
 const StyledFeatureImg = styled(Image)`
@@ -78,7 +77,7 @@ const StyledFeatureImg = styled(Image)`
 `;
 
 const StyledExcerpt = styled.p`
-    font-size: ${theme.fontSize.base};
+    font-size: ${({ theme }) => theme.fontSize.base};
 
     padding-top: 0.25rem;
 `;

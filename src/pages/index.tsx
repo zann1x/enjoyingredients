@@ -10,7 +10,6 @@ import SiteLayout from '~/layouts/siteLayout';
 import CenteredContent from '~/layouts/centeredContent';
 import config from '~/config';
 import { EUrlType } from '~/utils/createPathFromSlug';
-import theme from '~/styles/theme';
 import { getPostsForIndexPage } from '~/lib/ghost-api';
 
 interface IndexProps {
@@ -79,17 +78,17 @@ const StyledTeaserCardArea = styled.div`
 `;
 
 const StyledMoreButton = styled(Link)`
-    border: 1px solid ${theme.color.gray600};
+    border: 1px solid ${({ theme }) => theme.color.gray600};
     border-radius: 1.5rem;
     margin: 0 auto 1.5rem;
     padding: 0.75rem 1.5rem;
     text-align: center;
 
     &:hover {
-        background-color: ${theme.color.gray300};
+        background-color: ${({ theme }) => theme.color.gray300};
 
         &:focus {
-            background-color: ${theme.color.gray200};
+            background-color: ${({ theme }) => theme.color.gray200};
         }
     }
 `;

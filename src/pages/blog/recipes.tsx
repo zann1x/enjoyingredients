@@ -7,7 +7,6 @@ import PostTeaserCard from '~/components/postTeaserCard';
 import SEO from '~/components/seo';
 import SiteLayout from '~/layouts/siteLayout';
 import { mapCategorySlugToI18nKey } from '~/utils/mapCategorySlugToI18nKey';
-import theme from '~/styles/theme';
 import { getAllPostsWithTags, getAllTagsWithPosts } from '~/lib/ghost-api';
 import { GetStaticProps } from 'next';
 
@@ -89,8 +88,8 @@ export const getStaticProps: GetStaticProps = async(context) => {
 };
 
 const StyledHeading = styled.h1`
-    font-size: ${theme.fontSize.h1};
-    font-weight: ${theme.fontWeight.f500};
+    font-size: ${({ theme }) => theme.fontSize.h1};
+    font-weight: ${({ theme }) => theme.fontWeight.f500};
 
     margin-right: auto;
     margin-left: auto;

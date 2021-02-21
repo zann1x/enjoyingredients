@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 import config from '~/config';
 import { EUrlType } from '~/utils/createPathFromSlug';
-import theme from '~/styles/theme';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -77,12 +76,12 @@ export default Navbar;
 const StyledNavLink = styled(Link)`
     display: block;
     padding: 0.25rem 0.5rem;
-    color: ${theme.color.black};
-    font-weight: ${theme.fontWeight.f600};
+    color: ${({ theme }) => theme.color.black};
+    font-weight: ${({ theme }) => theme.fontWeight.f600};
     border-radius: 0.25rem;
 
     &:hover {
-        background-color: ${theme.color.gray300};
+        background-color: ${({ theme }) => theme.color.gray300};
     }
     &:last-of-type {
         margin-top: 0.25rem;
@@ -102,7 +101,7 @@ const StyledNavLink = styled(Link)`
 
 const StyledNavLinkDiv = styled.div`
     border-top-width: 1px;
-    border-color: ${theme.color.green500};
+    border-color: ${({ theme }) => theme.color.green500};
     padding: 1rem;
 
     @media (min-width: 640px) {
@@ -116,7 +115,7 @@ const StyledNavLinkDiv = styled.div`
 `;
 
 const StyledLogo = styled.img`
-    color: ${theme.color.black};
+    color: ${({ theme }) => theme.color.black};
 `;
 
 const StyledBurgerMenuIcon = styled.svg`
@@ -129,10 +128,10 @@ const StyledBurgerMenuButton = styled.button`
     display: block;
     padding: 0.25rem;
     border-radius: 0.25rem;
-    color: ${theme.color.gray900};
+    color: ${({ theme }) => theme.color.gray900};
 
     &:hover {
-        background-color: ${theme.color.gray300};
+        background-color: ${({ theme }) => theme.color.gray300};
     }
 
     &:focus {
@@ -159,7 +158,7 @@ const StyledNavMenu = styled.div`
 
 const StyledNav = styled.nav`
     border-bottom-width: 2px;
-    border-color: ${theme.color.green500};
+    border-color: ${({ theme }) => theme.color.green500};
     @media (min-width: 640px) {
         display: flex;
         justify-content: space-between;

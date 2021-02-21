@@ -8,7 +8,6 @@ import ContentFooter from '~/components/contentFooter';
 import { getAllPagesRaw, getPageBySlug } from '~/lib/ghost-api';
 import CenteredContent from '~/layouts/centeredContent';
 import SiteLayout from '~/layouts/siteLayout';
-import theme from '~/styles/theme';
 import { EUrlType } from '~/utils/createPathFromSlug';
 
 interface PageProps {
@@ -64,8 +63,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const StyledPostHeading = styled.h1`
-    font-size: ${theme.fontSize.h1};
-    font-weight: ${theme.fontWeight.f600};
+    font-size: ${({ theme }) => theme.fontSize.h1};
+    font-weight: ${({ theme }) => theme.fontWeight.f600};
     text-align: center;
     font-style: italic;
     margin-bottom: 1rem;
@@ -80,7 +79,7 @@ const StyledEndPostDiv = styled.div`
 
 const StyledPostContent = styled.section`
     & {
-        font-size: ${theme.fontSize.base};
+        font-size: ${({ theme }) => theme.fontSize.base};
         line-height: 1.625;
         overflow-wrap: break-word;
         text-align: left;
@@ -89,16 +88,16 @@ const StyledPostContent = styled.section`
     }
 
     h2 {
-        font-size: ${theme.fontSize.h2};
-        font-weight: ${theme.fontWeight.f500};
+        font-size: ${({ theme }) => theme.fontSize.h2};
+        font-weight: ${({ theme }) => theme.fontWeight.f500};
         padding: 2rem 0 0.3rem 0;
         &:first-of-type {
             padding-top: 1rem;
         }
     }
     h3 {
-        font-size: ${theme.fontSize.h3};
-        font-weight: ${theme.fontWeight.f500};
+        font-size: ${({ theme }) => theme.fontSize.h3};
+        font-weight: ${({ theme }) => theme.fontWeight.f500};
         padding: 1.125rem 0 0.3rem 0;
     }
 
@@ -156,11 +155,11 @@ const StyledPostContent = styled.section`
                     }
 
                     div.kg-bookmark-title {
-                        font-weight: ${theme.fontWeight.f600};
-                        font-size: ${theme.fontSize.base};
+                        font-weight: ${({ theme }) => theme.fontWeight.f600};
+                        font-size: ${({ theme }) => theme.fontSize.base};
 
                         @media (max-width: 500px) {
-                            font-size: ${theme.fontSize.sm};
+                            font-size: ${({ theme }) => theme.fontSize.sm};
                         }
                     }
                     div.kg-bookmark-description {
@@ -169,11 +168,11 @@ const StyledPostContent = styled.section`
                         max-height: 48px;
                         color: #5d7179;
                         line-height: 1.5em;
-                        font-weight: ${theme.fontWeight.f400};
-                        font-size: ${theme.fontSize.base};
+                        font-weight: ${({ theme }) => theme.fontWeight.f400};
+                        font-size: ${({ theme }) => theme.fontSize.base};
 
                         @media (max-width: 500px) {
-                            font-size: ${theme.fontSize.sm};
+                            font-size: ${({ theme }) => theme.fontSize.sm};
                         }
                     }
                     div.kg-bookmark-metadata {
@@ -182,11 +181,11 @@ const StyledPostContent = styled.section`
                         align-items: center;
                         margin-top: 14px;
                         color: #5d7179;
-                        font-size: ${theme.fontSize.base};
-                        font-weight: ${theme.fontWeight.f400};
+                        font-size: ${({ theme }) => theme.fontSize.base};
+                        font-weight: ${({ theme }) => theme.fontWeight.f400};
 
                         @media (max-width: 500px) {
-                            font-size: ${theme.fontSize.sm};
+                            font-size: ${({ theme }) => theme.fontSize.sm};
                             line-height: 1.5em;
                         }
 
@@ -249,10 +248,10 @@ const StyledPostContent = styled.section`
 
     code {
         padding: 0 5px 2px;
-        font-size: ${theme.fontSize.sm};
+        font-size: ${({ theme }) => theme.fontSize.sm};
         line-height: 1em;
-        font-weight: ${theme.fontWeight.f400} !important;
-        background: ${theme.color.gray300};
+        font-weight: ${({ theme }) => theme.fontWeight.f400} !important;
+        background: ${({ theme }) => theme.color.gray300};
         border-radius: 3px;
     }
 

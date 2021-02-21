@@ -2,8 +2,6 @@ import React from 'react';
 import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
-import theme from '~/styles/theme';
-
 const Footer = () => {
     const intl: IntlShape = useIntl();
     const made_with_love: string = intl.formatMessage({
@@ -26,7 +24,7 @@ const Footer = () => {
 export default Footer;
 
 const StyledFooter = styled.footer`
-    font-size: ${theme.fontSize.sm};
+    font-size: ${({ theme }) => theme.fontSize.sm};
     padding: 1em 0;
     text-align: center;
 `;
