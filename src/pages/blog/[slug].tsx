@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
@@ -10,18 +9,21 @@ import SEO from '~/components/seo';
 import CenteredContent from '~/layouts/centeredContent';
 import SiteLayout from '~/layouts/siteLayout';
 import theme from '~/styles/theme';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Error from 'next/error';
+import { getAllPostsRaw, getPostBySlug } from '~/lib/ghost-api';
+import { EUrlType } from '~/utils/createPathFromSlug';
 
 interface BlogPostProps {
-    data: {
-        post;
-    };
-    location;
+    post: any;
 }
 
-export const BlogPost: React.FC<BlogPostProps> = ({
-    data: { post },
-    location,
-}) => {
+export const BlogPost = ({ post }: BlogPostProps) => {
+    // TODO: Do I really need this?
+    if (!post?.slug) {
+        return <Error statusCode={404} />
+    }
+
     const intl: IntlShape = useIntl();
     const categories = post.tags;
     const publish_date: string = intl.formatDate(post.published_at, {
@@ -36,10 +38,10 @@ export const BlogPost: React.FC<BlogPostProps> = ({
             <SEO
                 title={post.title}
                 description={post.custom_excerpt || post.excerpt}
-                pathname={location.pathname}
             />
 
             {post.featureImageSharp && (
+                // TODO
                 <StyledHeroImage
                     alt="Feature Image"
                     fluid={post.featureImageSharp.childImageSharp.fluid}
@@ -81,28 +83,20 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 
 export default BlogPost;
 
-export const pageQuery = graphql`
-    query($slug: String!) {
-        post: ghostPost(slug: { eq: $slug }) {
-            title
-            published_at
-            custom_excerpt
-            excerpt
-            featureImageSharp {
-                childImageSharp {
-                    fluid(maxWidth: 1920) {
-                        ...GatsbyImageSharpFluid_withWebp
-                    }
-                }
-            }
-            html
-            tags {
-                id
-                slug
-            }
-        }
-    }
-`;
+export const getStaticPaths: GetStaticPaths = async () => {
+    const posts = (await getAllPostsRaw()) || [];
+    const paths = posts.map((post) => `${EUrlType.BLOG_POST}/${post.slug}`);
+
+    return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async({ params }) => {
+    // TODO: filter out pages for paths not fitting to the language of the site
+    //       (e.g. pages with tag #de should not appear under .com/en/)
+    const post = await getPostBySlug(params.slug);
+
+    return { props: { post } };
+};
 
 const StyledHeroImage = styled(Img)`
     background-position: center;
