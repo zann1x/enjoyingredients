@@ -67,10 +67,7 @@ export default Index;
 export const pageQuery = graphql`
     query {
         latestPosts: allGhostPost(
-            filter: {
-                slug: { ne: "data-schema" }
-                authors: { elemMatch: { name: { ne: "Ghost" } } }
-            }
+            filter: { slug: { ne: "data-schema" } }
             sort: { order: DESC, fields: published_at }
             limit: 6
         ) {

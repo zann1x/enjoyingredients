@@ -82,12 +82,7 @@ export default Recipes;
 
 export const pageQuery = graphql`
     query {
-        allCategories: allGhostTag(
-            filter: {
-                postCount: { gt: 0 }
-                slug: { nin: ["data-schema", "getting-started"] }
-            }
-        ) {
+        allCategories: allGhostTag(filter: { postCount: { gt: 0 } }) {
             nodes {
                 id
                 slug
@@ -98,10 +93,7 @@ export const pageQuery = graphql`
 
         allPosts: allGhostPost(
             sort: { fields: published_at, order: DESC }
-            filter: {
-                slug: { ne: "data-schema" }
-                authors: { elemMatch: { name: { ne: "Ghost" } } }
-            }
+            filter: { slug: { ne: "data-schema" } }
         ) {
             nodes {
                 id

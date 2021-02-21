@@ -18,8 +18,6 @@ export function mapCategorySlugToI18nKey(slug: string): string {
             return 'category_pasta_and_pizza';
         case 'appetizers':
             return 'category_appetizers';
-        case 'getting-started':
-            return 'category_getting_started';
         default:
             return 'category_none';
     }
