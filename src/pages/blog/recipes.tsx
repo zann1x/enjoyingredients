@@ -9,19 +9,19 @@ import SEO from '~/components/seo';
 import SiteLayout from '~/layouts/siteLayout';
 import { mapCategorySlugToI18nKey } from '~/utils/mapCategorySlugToI18nKey';
 import theme from '~/styles/theme';
+import { getAllPostsWithTags, getAllTagsWithPosts } from '~/lib/ghost-api';
+import { GetStaticProps } from 'next';
 
 interface RecipesProps {
     data: {
-        allCategories;
-        allPosts;
+        allCategories: any;
+        allPosts: any;
     };
-    location;
 }
 
-const Recipes: React.FC<RecipesProps> = ({
+const Recipes = ({
     data: { allCategories, allPosts },
-    location,
-}) => {
+}: RecipesProps) => {
     const intl: IntlShape = useIntl();
 
     return (
@@ -31,7 +31,6 @@ const Recipes: React.FC<RecipesProps> = ({
                 description={intl.formatMessage({
                     id: 'seo_categories_description',
                 })}
-                pathname={location.pathname}
             />
 
             <CenteredContent>
@@ -80,44 +79,17 @@ const Recipes: React.FC<RecipesProps> = ({
 
 export default Recipes;
 
-export const pageQuery = graphql`
-    query {
-        allCategories: allGhostTag(filter: { postCount: { gt: 0 } }) {
-            nodes {
-                id
-                slug
-                name
-                description
-            }
-        }
+export const getStaticProps: GetStaticProps = async(context) => {
+    const allCategories = (await getAllTagsWithPosts()) || [];
+    const allPosts = (await getAllPostsWithTags()) || [];
 
-        allPosts: allGhostPost(
-            sort: { fields: published_at, order: DESC }
-            filter: { slug: { ne: "data-schema" } }
-        ) {
-            nodes {
-                id
-                slug
-                title
-                feature_image
-                featureImageSharp {
-                    childImageSharp {
-                        fluid(maxWidth: 1920) {
-                            ...GatsbyImageSharpFluid_withWebp
-                        }
-                    }
-                }
-                excerpt
-                custom_excerpt
-                tags {
-                    id
-                    slug
-                    name
-                }
-            }
+    return {
+        props: {
+            allCategories,
+            allPosts
         }
-    }
-`;
+    };
+};
 
 const StyledHeading = styled.h1`
     font-size: ${theme.fontSize.h1};

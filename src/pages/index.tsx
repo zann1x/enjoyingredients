@@ -1,27 +1,23 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { IntlShape, Link, useIntl } from 'gatsby-plugin-intl';
+import { IntlShape, useIntl } from 'gatsby-plugin-intl';
+import { GetStaticProps } from 'next';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import PostTeaserCard from '~/components/postTeaserCard';
 import SEO from '~/components/seo';
 import SiteLayout from '~/layouts/siteLayout';
 import CenteredContent from '~/layouts/centeredContent';
-import config from '~/utils/config';
+import config from '~/config';
 import { EUrlType } from '~/utils/createPathFromSlug';
 import theme from '~/styles/theme';
+import { getPostsForIndexPage } from '~/lib/ghost-api';
 
 interface IndexProps {
-    data: {
-        latestPosts;
-    };
-    location;
+    latestPosts: any;
 }
 
-export const Index: React.FC<IndexProps> = ({
-    data: { latestPosts },
-    location,
-}) => {
+export const Index = ({ latestPosts }: IndexProps) => {
     const intl: IntlShape = useIntl();
 
     let displayedContent;
@@ -46,15 +42,16 @@ export const Index: React.FC<IndexProps> = ({
     return (
         <SiteLayout>
             <SEO
-                title="The other food blog"
-                description={config.siteDescription}
-                pathname={location.pathname}
+                title={`${config.siteTitle} - ${intl.formatMessage({
+                    id: 'index_title',
+                })}`}
+                description={intl.formatMessage({ id: 'index_description' })}
             />
 
             <CenteredContent>{displayedContent}</CenteredContent>
 
             {latestPosts.nodes.length > 5 && (
-                <StyledMoreButton to={EUrlType.BLOG_CATEGORY}>
+                <StyledMoreButton href={EUrlType.BLOG_CATEGORY}>
                     {intl.formatMessage({ id: 'startpage_more_posts' })}
                 </StyledMoreButton>
             )}
@@ -64,36 +61,10 @@ export const Index: React.FC<IndexProps> = ({
 
 export default Index;
 
-export const pageQuery = graphql`
-    query {
-        latestPosts: allGhostPost(
-            filter: { slug: { ne: "data-schema" } }
-            sort: { order: DESC, fields: published_at }
-            limit: 6
-        ) {
-            nodes {
-                id
-                slug
-                title
-                feature_image
-                featureImageSharp {
-                    childImageSharp {
-                        fluid(maxWidth: 1920) {
-                            ...GatsbyImageSharpFluid_withWebp
-                        }
-                    }
-                }
-                excerpt
-                custom_excerpt
-                tags {
-                    id
-                    slug
-                    name
-                }
-            }
-        }
-    }
-`;
+export const getStaticProps: GetStaticProps = async (context) => {
+    const latestPosts = (await getPostsForIndexPage()) || [];
+    return { props: { latestPosts } };
+};
 
 const StyledText = styled.p`
     text-align: center;

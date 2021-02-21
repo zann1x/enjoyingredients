@@ -1,5 +1,6 @@
 import React from 'react';
-import { IntlShape, Link, useIntl } from 'gatsby-plugin-intl';
+import { IntlShape, useIntl } from 'gatsby-plugin-intl';
+import Link from 'next/link';
 
 import { createIdPathFromSlug, EUrlType } from '~/utils/createPathFromSlug';
 import { mapCategorySlugToI18nKey } from '~/utils/mapCategorySlugToI18nKey';
@@ -9,7 +10,7 @@ interface CategoryButtonProps {
     slug: string;
 }
 
-const CategoryButton: React.FC<CategoryButtonProps> = ({ slug }) => {
+const CategoryButton = ({ slug }: CategoryButtonProps) => {
     const intl: IntlShape = useIntl();
     const categoryPath: string = createIdPathFromSlug(
         EUrlType.BLOG_RECIPES,
@@ -19,7 +20,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ slug }) => {
 
     if (i18nCategoryName !== '') {
         return (
-            <StyledLink to={categoryPath}>
+            <StyledLink href={categoryPath}>
                 {intl.formatMessage({ id: i18nCategoryName })}
             </StyledLink>
         );

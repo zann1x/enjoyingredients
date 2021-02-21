@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import theme from '~/styles/theme';
 
-export const Footer: React.FC = () => {
+const Footer = () => {
     const intl: IntlShape = useIntl();
     const made_with_love: string = intl.formatMessage({
         id: 'footer_made_with_love',

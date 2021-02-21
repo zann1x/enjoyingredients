@@ -1,19 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import GlobalStyle from '~/styles/globalStyle';
-
 interface CenteredContentProps {
-    children;
+    children: any;
 }
 
-const CenteredContent: React.FC<CenteredContentProps> = ({ children }) => {
-    return (
-        <>
-            <GlobalStyle />
-            <StyledContainer>{children}</StyledContainer>
-        </>
-    );
+const CenteredContent = ({ children }: CenteredContentProps) => {
+    return <StyledContainer>{children}</StyledContainer>;
 };
 
 export default CenteredContent;

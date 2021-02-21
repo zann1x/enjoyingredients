@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { IntlShape, Link, useIntl } from 'gatsby-plugin-intl';
+import { IntlShape, useIntl } from 'gatsby-plugin-intl';
+import Link from 'next/link';
 import styled from 'styled-components';
 
+import config from '~/config';
 import { EUrlType } from '~/utils/createPathFromSlug';
 import theme from '~/styles/theme';
 
-const Navbar = ({ siteTitle }) => {
+const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [pathname, setPathname] = useState('');
+    // TODO: useRouter
     useEffect(() => {
         setPathname(window.location.pathname);
     }, [pathname]);
@@ -17,10 +20,10 @@ const Navbar = ({ siteTitle }) => {
     return (
         <StyledNav>
             <StyledNavMenu>
-                <Link to="/">
+                <Link href="/">
                     <StyledLogo
                         src={'/img/logo_oneline.png'}
-                        alt={siteTitle}
+                        alt={config.siteTitle}
                         width="200"
                     />
                 </Link>

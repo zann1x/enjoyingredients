@@ -1,30 +1,17 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Footer from '~/components/footer';
 import Navbar from '~/components/navbar';
 
 interface SiteLayoutProps {
-    children;
+    children: any;
 }
 
-const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
-    const data = useStaticQuery(
-        graphql`
-            query {
-                site {
-                    siteMetadata {
-                        title
-                    }
-                }
-            }
-        `,
-    );
-
+const SiteLayout = ({ children }: SiteLayoutProps) => {
     return (
         <StyledSiteWrapper>
-            <Navbar siteTitle={data.site.siteMetadata.title} />
+            <Navbar />
             {children}
             <Footer />
         </StyledSiteWrapper>

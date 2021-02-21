@@ -1,6 +1,6 @@
 import React from 'react';
 import Img from 'gatsby-image';
-import { Link } from 'gatsby-plugin-intl';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import CategoryButton from '~/components/categoryButton';
@@ -18,9 +18,9 @@ interface PostTeaserCardProps {
     };
 }
 
-const PostTeaserCard: React.FC<PostTeaserCardProps> = ({
+const PostTeaserCard = ({
     post: { slug, title, featureImageSharp, excerpt, custom_excerpt, tags },
-}) => {
+}: PostTeaserCardProps) => {
     const postUrl: string = createPathFromSlug(EUrlType.BLOG_POST, slug);
 
     let post_description: string = '';
@@ -29,10 +29,7 @@ const PostTeaserCard: React.FC<PostTeaserCardProps> = ({
             // TODO: cut the text off a little more gentle at a full stop
             post_description = excerpt.substr(0, 250);
             const lastWhitespace = post_description.lastIndexOf(' ');
-            if (
-                lastWhitespace !== -1 &&
-                lastWhitespace !== post_description.length
-            ) {
+            if (lastWhitespace !== -1 && lastWhitespace !== post_description.length) {
                 post_description = post_description.substr(0, lastWhitespace);
             }
             post_description = post_description.trim().concat('...');
@@ -46,7 +43,8 @@ const PostTeaserCard: React.FC<PostTeaserCardProps> = ({
     return (
         <StyledTeaserBox>
             {featureImageSharp && (
-                <Link to={postUrl}>
+                <Link href={postUrl}>
+                    // TODO
                     <StyledFeatureImg
                         alt="Teaser"
                         fluid={featureImageSharp.childImageSharp.fluid}
@@ -56,7 +54,7 @@ const PostTeaserCard: React.FC<PostTeaserCardProps> = ({
                 </Link>
             )}
             <StyledTextArea>
-                <Link to={postUrl}>
+                <Link href={postUrl}>
                     <StyledHeading>{title || slug}</StyledHeading>
                     <StyledExcerpt>{description}</StyledExcerpt>
                 </Link>
