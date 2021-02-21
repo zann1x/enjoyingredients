@@ -3,7 +3,7 @@
 # https://www.netlify.com/docs/redirects/
 
 # Redirect default Netlify subdomain to primary domain
-https://enjoyingredients.netlify.com/* https://enjoyingredients.com/:splat 301!
-http://enjoyingredients.netlify.com/* https://enjoyingredients.com/:splat 301!
+https://enjoyingredients.netlify.com/* https://www.enjoyingredients.com/:splat 301!
+http://enjoyingredients.netlify.com/* https://www.enjoyingredients.com/:splat 301!
 
 /* /de/:splat 302! Language=de
