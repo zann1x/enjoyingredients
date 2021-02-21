@@ -1,5 +1,19 @@
+import type { AppProps } from 'next/app';
 import { createGlobalStyle } from 'styled-components';
+
+import '~/styles/main.css';
 import theme from '~/styles/theme';
+
+function MyApp({ Component, pageProps }: AppProps) {
+    return (
+        <>
+            <GlobalStyle />
+            <Component {...pageProps} />
+        </>
+    );
+}
+
+export default MyApp;
 
 const GlobalStyle = createGlobalStyle`
     p {
@@ -151,5 +165,3 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 `;
-
-export default GlobalStyle;
