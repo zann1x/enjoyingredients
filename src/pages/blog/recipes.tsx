@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 
