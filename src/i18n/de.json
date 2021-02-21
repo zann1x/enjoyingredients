@@ -1,5 +1,6 @@
 {
   "404_not_found": "Diese Seite existiert nicht... ( •́ﻩ•̀ )",
+  "404_title": "Seite nicht gefunden",
   "empty_site": "Inhalt kommt noch! Versprochen! ( ⚆ _ ⚆ )",
 
   "category_none": "Weiteres",
@@ -14,6 +15,9 @@
   "category_appetizers": "Vorspeisen",
 
   "contact_us_via_mail": "Wenn Du Anregungen oder (An-)Fragen hast, schreib mir gerne an: ",
+
+  "index_title": "Der Essensblog mit Herz",
+  "index_description": "EnjoyIngredients ist der Essenblog rund um bewusste und gesunde Ernährung für Groß und Klein",
 
   "navbar_about": "Über mich",
   "navbar_recipes": "Rezepte",
