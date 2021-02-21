@@ -36,12 +36,10 @@
     "url": "git+https://github.com/zann1x/enjoyingredients.git"
   },
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "next build",
+    "dev": "next dev",
     "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "start": "next start",
     "type-check": "tsc"
   }
 }
