@@ -1,27 +1,31 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Error from 'next/error';
 import styled from 'styled-components';
 
 import SEO from '~/components/seo';
-import CenteredContent from '~/layouts/centeredContent';
 import ContentFooter from '~/components/contentFooter';
+import { getAllPagesRaw, getPageBySlug } from '~/lib/ghost-api';
+import CenteredContent from '~/layouts/centeredContent';
 import SiteLayout from '~/layouts/siteLayout';
 import theme from '~/styles/theme';
+import { EUrlType } from '~/utils/createPathFromSlug';
 
 interface PageProps {
-    data: {
-        page;
-    };
-    location;
+    page: any;
 }
 
-export const Page: React.FC<PageProps> = ({ data: { page }, location }) => {
+export const Page = ({ page }: PageProps) => {
+    // TODO: Do I really need this?
+    if (!page?.slug) {
+        return <Error statusCode={404} />
+    }
+
     return (
         <SiteLayout>
             <SEO
                 title={page.title}
                 description={page.custom_excerpt || page.excerpt}
-                pathname={location.pathname}
             />
 
             <CenteredContent>
@@ -44,16 +48,20 @@ export const Page: React.FC<PageProps> = ({ data: { page }, location }) => {
 
 export default Page;
 
-export const pageQuery = graphql`
-    query($slug: String!) {
-        page: ghostPage(slug: { eq: $slug }) {
-            title
-            custom_excerpt
-            excerpt
-            html
-        }
-    }
-`;
+export const getStaticPaths: GetStaticPaths = async () => {
+    const pages = (await getAllPagesRaw()) || [];
+    const paths = pages.map((page) => `${EUrlType.PAGE}/${page.slug}`);
+
+    return {paths, fallback: false}
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    // TODO: filter out pages for paths not fitting to the language of the site
+    //       (e.g. pages with tag #de should not appear under .com/en/)
+    const page = await getPageBySlug(params.slug);
+
+    return {props: {page}};
+};
 
 const StyledPostHeading = styled.h1`
     font-size: ${theme.fontSize.h1};
