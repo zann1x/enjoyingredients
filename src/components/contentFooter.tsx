@@ -11,8 +11,8 @@ const ContentFooter: React.FC = () => {
     return (
         <>
             <span>{contact_us}</span>
-            <StyledExtLink href="mailto:mail@enjoyingredients.com">
-                mail@enjoyingredients.com
+            <StyledExtLink href="mailto:info@enjoyingredients.de">
+                info@enjoyingredients.de
             </StyledExtLink>
         </>
     );
