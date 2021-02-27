@@ -48,7 +48,7 @@ export const BlogPost = ({ post }: BlogPostProps) => {
                     layout="fill"
                     objectFit="cover"
                     objectPosition="50% 50%"
-                    priority="true"
+                    priority={true}
                 />
             )}
 
