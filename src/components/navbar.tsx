@@ -53,13 +53,13 @@ const Navbar = () => {
 
             <StyledNavLinkDiv isopen={isOpen ? 'true' : ''}>
                 <StyledNavLink
-                    to={EUrlType.ABOUT}
+                    href={EUrlType.ABOUT}
                     isselected={pathname.endsWith(EUrlType.ABOUT) ? 'true' : ''}
                 >
                     {t('navbar_about')}
                 </StyledNavLink>
                 <StyledNavLink
-                    to={EUrlType.BLOG_RECIPES}
+                    href={EUrlType.BLOG_RECIPES}
                     isselected={
                         pathname.endsWith(EUrlType.BLOG_RECIPES) ? 'true' : ''
                     }
