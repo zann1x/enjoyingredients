@@ -26,11 +26,11 @@ export async function getAllPostsWithTags() {
 
 export async function getAllTagsWithPosts() {
     const tags = await api.tags.browse({
-        filter: 'posts.count:>0',
+        include: 'count.posts',
         order: 'slug ASC',
     });
 
-    return tags;
+    return tags.filter(tag => tag.count.posts > 0);
 }
 
 export async function getAllPostsRaw() {
