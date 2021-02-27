@@ -24,9 +24,8 @@ const Navbar = () => {
                     <StyledLogo
                         src={'/img/logo.png'}
                         alt={config.siteTitle}
-                        width="200"
-                        height="auto"
-                        layout="responsive"
+                        width="291px"
+                        height="50px"
                     />
                 </Link>
                 <StyledBurgerMenuDiv>
