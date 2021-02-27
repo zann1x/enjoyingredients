@@ -37,20 +37,26 @@ const PostTeaserCard = ({ post }: PostTeaserCardProps) => {
         <StyledTeaserBox>
             {post.feature_image && (
                 <Link href={postUrl}>
-                    <StyledFeatureImg
-                        src={post.feature_image}
-                        alt="Teaser Image"
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="50% 50%"
-                        priority="true"
-                    />
+                    <a>
+                        <StyledFeatureImg
+                            src={post.feature_image}
+                            alt="Teaser Image"
+                            layout="responsive"
+                            width="auto"
+                            height="auto"
+                            objectFit="cover"
+                            objectPosition="50% 50%"
+                            priority="true"
+                        />
+                    </a>
                 </Link>
             )}
             <StyledTextArea>
                 <Link href={postUrl}>
-                    <StyledHeading>{post.title || post.slug}</StyledHeading>
-                    <StyledExcerpt>{description}</StyledExcerpt>
+                    <a>
+                        <StyledHeading>{post.title || post.slug}</StyledHeading>
+                        <StyledExcerpt>{description}</StyledExcerpt>
+                    </a>
                 </Link>
             </StyledTextArea>
 

@@ -21,12 +21,14 @@ const Navbar = () => {
         <StyledNav>
             <StyledNavMenu>
                 <Link href="/">
-                    <StyledLogo
-                        src={'/img/logo.png'}
-                        alt={config.siteTitle}
-                        width="291px"
-                        height="50px"
-                    />
+                    <a>
+                        <StyledLogo
+                            src={'/img/logo.png'}
+                            alt={config.siteTitle}
+                            width="291px"
+                            height="50px"
+                        />
+                    </a>
                 </Link>
                 <StyledBurgerMenuDiv>
                     <StyledBurgerMenuButton
@@ -58,7 +60,7 @@ const Navbar = () => {
                     href={EUrlType.ABOUT}
                     isselected={pathname.endsWith(EUrlType.ABOUT) ? 'true' : ''}
                 >
-                    {t('navbar_about')}
+                    <a>{t('navbar_about')}</a>
                 </StyledNavLink>
                 <StyledNavLink
                     href={EUrlType.BLOG_RECIPES}
