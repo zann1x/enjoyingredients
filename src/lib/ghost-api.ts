@@ -18,28 +18,28 @@ export async function getPostsForIndexPage() {
 export async function getAllPostsWithTags() {
     const posts = await api.posts.browse({
         order: 'published_at DESC',
-        include: 'tags'
+        include: 'tags',
     });
 
     return posts;
-};
+}
 
 export async function getAllTagsWithPosts() {
     const tags = await api.tags.browse({
         filter: 'posts.count:>0',
-        order: 'slug ASC'
+        order: 'slug ASC',
     });
 
     return tags;
-};
+}
 
 export async function getAllPostsRaw() {
     const posts = await api.posts.browse({
-        order: 'published_at DESC'
+        order: 'published_at DESC',
     });
 
     return posts;
-};
+}
 
 export async function getAllPagesRaw() {
     const pages = await api.pages.browse();
@@ -50,7 +50,7 @@ export async function getAllPagesRaw() {
 export async function getPostBySlug(slug) {
     const post = await api.posts.read({
         slug: slug,
-        include: 'tags'
+        include: 'tags',
     });
 
     return post;
@@ -59,7 +59,7 @@ export async function getPostBySlug(slug) {
 export async function getPageBySlug(slug) {
     const page = await api.pages.read({
         slug: slug,
-        include: 'tags'
+        include: 'tags',
     });
 
     return page;

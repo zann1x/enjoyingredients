@@ -19,7 +19,10 @@ const PostTeaserCard = ({ post }: PostTeaserCardProps) => {
             // TODO: cut the text off a little more gentle at a full stop
             post_description = post.excerpt.substr(0, 250);
             const lastWhitespace = post_description.lastIndexOf(' ');
-            if (lastWhitespace !== -1 && lastWhitespace !== post_description.length) {
+            if (
+                lastWhitespace !== -1 &&
+                lastWhitespace !== post_description.length
+            ) {
                 post_description = post_description.substr(0, lastWhitespace);
             }
             post_description = post_description.trim().concat('...');
@@ -27,7 +30,8 @@ const PostTeaserCard = ({ post }: PostTeaserCardProps) => {
             post_description = post.excerpt;
         }
     }
-    const description = post.custom_excerpt !== null ? post.custom_excerpt : post_description;
+    const description =
+        post.custom_excerpt !== null ? post.custom_excerpt : post_description;
 
     return (
         <StyledTeaserBox>

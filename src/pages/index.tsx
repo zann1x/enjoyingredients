@@ -22,9 +22,7 @@ export const Index = ({ latestPosts }: IndexProps) => {
 
     let displayedContent;
     if (latestPosts.nodes.length === 0) {
-        displayedContent = (
-            <StyledText>{t('empty_site')}</StyledText>
-        );
+        displayedContent = <StyledText>{t('empty_site')}</StyledText>;
     } else {
         displayedContent = latestPosts.nodes.map((post: any, index: number) => {
             if (index < 5) {
@@ -68,8 +66,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
             latestPosts,
-            ...await serverSideTranslations(context.locale, ['common']),
-        }
+            ...(await serverSideTranslations(context.locale, ['common'])),
+        },
     };
 };
 

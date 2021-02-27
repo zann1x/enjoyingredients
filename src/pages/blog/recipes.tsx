@@ -18,9 +18,7 @@ interface RecipesProps {
     };
 }
 
-const Recipes = ({
-    data: { allCategories, allPosts },
-}: RecipesProps) => {
+const Recipes = ({ data: { allCategories, allPosts } }: RecipesProps) => {
     const { t } = useTranslation('common');
 
     return (
@@ -72,7 +70,7 @@ const Recipes = ({
 
 export default Recipes;
 
-export const getStaticProps: GetStaticProps = async(context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
     const allCategories = (await getAllTagsWithPosts()) || [];
     const allPosts = (await getAllPostsWithTags()) || [];
     if (!allPosts) {
@@ -83,8 +81,8 @@ export const getStaticProps: GetStaticProps = async(context) => {
         props: {
             allCategories,
             allPosts,
-            ...await serverSideTranslations(context.locale, ['common']),
-        }
+            ...(await serverSideTranslations(context.locale, ['common'])),
+        },
     };
 };
 

@@ -18,7 +18,7 @@ interface PageProps {
 export const Page = ({ page }: PageProps) => {
     // TODO: Do I really need this?
     if (!page?.slug) {
-        return <Error statusCode={404} />
+        return <Error statusCode={404} />;
     }
 
     return (
@@ -52,7 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const pages = (await getAllPagesRaw()) || [];
     const paths = pages.map((page) => `${EUrlType.PAGE}/${page.slug}`);
 
-    return {paths, fallback: false}
+    return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -66,8 +66,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
             page,
-            ...await serverSideTranslations(context.locale, ['common']),
-        }
+            ...(await serverSideTranslations(context.locale, ['common'])),
+        },
     };
 };
 

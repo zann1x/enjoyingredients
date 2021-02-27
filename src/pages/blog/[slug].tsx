@@ -21,7 +21,7 @@ interface BlogPostProps {
 export const BlogPost = ({ post }: BlogPostProps) => {
     // TODO: Do I really need this?
     if (!post?.slug) {
-        return <Error statusCode={404} />
+        return <Error statusCode={404} />;
     }
 
     const router = useRouter();
@@ -92,7 +92,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async(context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
     // TODO: filter out pages for paths not fitting to the language of the site
     //       (e.g. pages with tag #de should not appear under .com/en/)
     const post = await getPostBySlug(context.params.slug);
@@ -103,8 +103,8 @@ export const getStaticProps: GetStaticProps = async(context) => {
     return {
         props: {
             post,
-            ...await serverSideTranslations(context.locale, ['common']),
-        }
+            ...(await serverSideTranslations(context.locale, ['common'])),
+        },
     };
 };
 

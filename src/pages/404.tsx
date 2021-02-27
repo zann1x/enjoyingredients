@@ -23,13 +23,11 @@ const NotFound: React.FC = () => {
     return (
         <SiteLayout>
             <Head>
-                <title>{`${t("404_title")} - ${config.siteTitle}`}</title>
+                <title>{`${t('404_title')} - ${config.siteTitle}`}</title>
                 <meta name="robots" content="noindex, nofollow, noarchive" />
             </Head>
             <CenteredContent>
-                <StyledText>
-                    {t('404_not_found')}
-                </StyledText>
+                <StyledText>{t('404_not_found')}</StyledText>
             </CenteredContent>
         </SiteLayout>
     );
@@ -40,8 +38,8 @@ export default NotFound;
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
-            ...await serverSideTranslations(context.locale, ['common']),
-        }
+            ...(await serverSideTranslations(context.locale, ['common'])),
+        },
     };
 };
 

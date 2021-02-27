@@ -20,9 +20,7 @@ const CategoryButton = ({ slug }: CategoryButtonProps) => {
 
     if (i18nCategoryName !== '') {
         return (
-            <StyledLink href={categoryPath}>
-                {t(i18nCategoryName)}
-            </StyledLink>
+            <StyledLink href={categoryPath}>{t(i18nCategoryName)}</StyledLink>
         );
     } else {
         // TODO: log somewhere
