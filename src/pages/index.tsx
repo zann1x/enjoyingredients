@@ -1,6 +1,7 @@
 import React from 'react';
-import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -17,12 +18,12 @@ interface IndexProps {
 }
 
 export const Index = ({ latestPosts }: IndexProps) => {
-    const intl: IntlShape = useIntl();
+    const { t } = useTranslation('common');
 
     let displayedContent;
     if (latestPosts.nodes.length === 0) {
         displayedContent = (
-            <StyledText>{intl.formatMessage({ id: 'empty_site' })}</StyledText>
+            <StyledText>{t('empty_site')}</StyledText>
         );
     } else {
         displayedContent = latestPosts.nodes.map((post: any, index: number) => {
@@ -41,17 +42,15 @@ export const Index = ({ latestPosts }: IndexProps) => {
     return (
         <SiteLayout>
             <SEO
-                title={`${config.siteTitle} - ${intl.formatMessage({
-                    id: 'index_title',
-                })}`}
-                description={intl.formatMessage({ id: 'index_description' })}
+                title={`${config.siteTitle} - ${t('index_title')}`}
+                description={t('index_description')}
             />
 
             <CenteredContent>{displayedContent}</CenteredContent>
 
             {latestPosts.nodes.length > 5 && (
                 <StyledMoreButton href={EUrlType.BLOG_CATEGORY}>
-                    {intl.formatMessage({ id: 'startpage_more_posts' })}
+                    {t('startpage_more_posts')}
                 </StyledMoreButton>
             )}
         </SiteLayout>
@@ -62,7 +61,16 @@ export default Index;
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const latestPosts = (await getPostsForIndexPage()) || [];
-    return { props: { latestPosts } };
+    if (!latestPosts) {
+        return { notFound: true };
+    }
+
+    return {
+        props: {
+            latestPosts,
+            ...await serverSideTranslations(context.locale, ['common']),
+        }
+    };
 };
 
 const StyledText = styled.p`

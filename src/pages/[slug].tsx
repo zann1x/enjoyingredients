@@ -9,6 +9,7 @@ import { getAllPagesRaw, getPageBySlug } from '~/lib/ghost-api';
 import CenteredContent from '~/layouts/centeredContent';
 import SiteLayout from '~/layouts/siteLayout';
 import { EUrlType } from '~/utils/createPathFromSlug';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 interface PageProps {
     page: any;
@@ -54,12 +55,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return {paths, fallback: false}
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async (context) => {
     // TODO: filter out pages for paths not fitting to the language of the site
     //       (e.g. pages with tag #de should not appear under .com/en/)
-    const page = await getPageBySlug(params.slug);
+    const page = await getPageBySlug(context.params.slug);
+    if (!page) {
+        return { notFound: true };
+    }
 
-    return {props: {page}};
+    return {
+        props: {
+            page,
+            ...await serverSideTranslations(context.locale, ['common']),
+        }
+    };
 };
 
 const StyledPostHeading = styled.h1`

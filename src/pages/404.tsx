@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
-import { useIntl } from 'gatsby-plugin-intl';
-import Helmet from 'react-helmet';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 import styled from 'styled-components';
 
 import CenteredContent from '~/layouts/centeredContent';
@@ -8,7 +10,7 @@ import SiteLayout from '~/layouts/siteLayout';
 import config from '~/config';
 
 const NotFound: React.FC = () => {
-    const intl = useIntl();
+    const { t } = useTranslation('common');
 
     useEffect(() => {
         if (window.plausible) {
@@ -20,13 +22,13 @@ const NotFound: React.FC = () => {
 
     return (
         <SiteLayout>
-            <Helmet
-                title={`${intl.formatMessage({ id: "404_title" })} - ${config.siteTitle}`}
-                robots='noindex, nofollow, noarchive'
-            />
+            <Head>
+                <title>{`${t("404_title")} - ${config.siteTitle}`}</title>
+                <meta name="robots" content="noindex, nofollow, noarchive" />
+            </Head>
             <CenteredContent>
                 <StyledText>
-                    {intl.formatMessage({ id: '404_not_found' })}
+                    {t('404_not_found')}
                 </StyledText>
             </CenteredContent>
         </SiteLayout>
@@ -34,6 +36,14 @@ const NotFound: React.FC = () => {
 };
 
 export default NotFound;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    return {
+        props: {
+            ...await serverSideTranslations(context.locale, ['common']),
+        }
+    };
+};
 
 const StyledText = styled.p`
     text-align: center;

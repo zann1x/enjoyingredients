@@ -1,17 +1,17 @@
 import React from 'react';
-import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import styled from 'styled-components';
 
 import { createIdPathFromSlug, EUrlType } from '~/utils/createPathFromSlug';
 import { mapCategorySlugToI18nKey } from '~/utils/mapCategorySlugToI18nKey';
-import styled from 'styled-components';
 
 interface CategoryButtonProps {
     slug: string;
 }
 
 const CategoryButton = ({ slug }: CategoryButtonProps) => {
-    const intl: IntlShape = useIntl();
+    const { t } = useTranslation('common');
     const categoryPath: string = createIdPathFromSlug(
         EUrlType.BLOG_RECIPES,
         slug,
@@ -21,7 +21,7 @@ const CategoryButton = ({ slug }: CategoryButtonProps) => {
     if (i18nCategoryName !== '') {
         return (
             <StyledLink href={categoryPath}>
-                {intl.formatMessage({ id: i18nCategoryName })}
+                {t(i18nCategoryName)}
             </StyledLink>
         );
     } else {

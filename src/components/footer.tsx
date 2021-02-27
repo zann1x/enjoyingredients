@@ -1,12 +1,10 @@
 import React from 'react';
-import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
+import { useTranslation } from 'next-i18next';
 
 const Footer = () => {
-    const intl: IntlShape = useIntl();
-    const made_with_love: string = intl.formatMessage({
-        id: 'footer_made_with_love',
-    });
+    const { t } = useTranslation('common');
+    const made_with_love: string = t('footer_made_with_love');
 
     return (
         <StyledFooter>

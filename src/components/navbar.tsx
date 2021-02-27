@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 import styled from 'styled-components';
 
 import config from '~/config';
@@ -14,7 +14,7 @@ const Navbar = () => {
         setPathname(window.location.pathname);
     }, [pathname]);
 
-    const intl: IntlShape = useIntl();
+    const { t } = useTranslation('common');
 
     return (
         <StyledNav>
@@ -56,7 +56,7 @@ const Navbar = () => {
                     to={EUrlType.ABOUT}
                     isselected={pathname.endsWith(EUrlType.ABOUT) ? 'true' : ''}
                 >
-                    {intl.formatMessage({ id: 'navbar_about' })}
+                    {t('navbar_about')}
                 </StyledNavLink>
                 <StyledNavLink
                     to={EUrlType.BLOG_RECIPES}
@@ -64,7 +64,7 @@ const Navbar = () => {
                         pathname.endsWith(EUrlType.BLOG_RECIPES) ? 'true' : ''
                     }
                 >
-                    {intl.formatMessage({ id: 'navbar_recipes' })}
+                    {t('navbar_recipes')}
                 </StyledNavLink>
             </StyledNavLinkDiv>
         </StyledNav>

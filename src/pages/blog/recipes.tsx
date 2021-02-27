@@ -1,5 +1,6 @@
 import React from 'react';
-import { IntlShape, useIntl } from 'gatsby-plugin-intl';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styled from 'styled-components';
 
 import CenteredContent from '~/layouts/centeredContent';
@@ -20,15 +21,13 @@ interface RecipesProps {
 const Recipes = ({
     data: { allCategories, allPosts },
 }: RecipesProps) => {
-    const intl: IntlShape = useIntl();
+    const { t } = useTranslation('common');
 
     return (
         <SiteLayout>
             <SEO
-                title={intl.formatMessage({ id: 'seo_categories_title' })}
-                description={intl.formatMessage({
-                    id: 'seo_categories_description',
-                })}
+                title={t('seo_categories_title')}
+                description={t('seo_categories_description')}
             />
 
             <CenteredContent>
@@ -40,9 +39,7 @@ const Recipes = ({
                     return (
                         <StyledContent key={category.id} id={category.slug}>
                             <StyledHeading>
-                                {intl
-                                    .formatMessage({ id: i18nCategoryName })
-                                    .toUpperCase()}
+                                {t(i18nCategoryName).toUpperCase()}
                             </StyledHeading>
                             <StyledSeparator></StyledSeparator>
 
@@ -78,11 +75,15 @@ export default Recipes;
 export const getStaticProps: GetStaticProps = async(context) => {
     const allCategories = (await getAllTagsWithPosts()) || [];
     const allPosts = (await getAllPostsWithTags()) || [];
+    if (!allPosts) {
+        return { notFound: true };
+    }
 
     return {
         props: {
             allCategories,
-            allPosts
+            allPosts,
+            ...await serverSideTranslations(context.locale, ['common']),
         }
     };
 };

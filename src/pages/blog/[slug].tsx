@@ -1,6 +1,7 @@
 import React from 'react';
-import { IntlShape, useIntl } from 'gatsby-plugin-intl';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styled from 'styled-components';
 
 import CategoryButton from '~/components/categoryButton';
@@ -23,13 +24,14 @@ export const BlogPost = ({ post }: BlogPostProps) => {
         return <Error statusCode={404} />
     }
 
-    const intl: IntlShape = useIntl();
+    const router = useRouter();
+
     const categories = post.tags;
-    const publish_date: string = intl.formatDate(post.published_at, {
+    const publish_date: string = new Intl.DateTimeFormat(router.locale, {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
-    });
+    }).format(new Date(post.published_at));
 
     // TODO: lazy load images inside the post
     return (
@@ -90,12 +92,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async({ params }) => {
+export const getStaticProps: GetStaticProps = async(context) => {
     // TODO: filter out pages for paths not fitting to the language of the site
     //       (e.g. pages with tag #de should not appear under .com/en/)
-    const post = await getPostBySlug(params.slug);
+    const post = await getPostBySlug(context.params.slug);
+    if (!post) {
+        return { notFound: true };
+    }
 
-    return { props: { post } };
+    return {
+        props: {
+            post,
+            ...await serverSideTranslations(context.locale, ['common']),
+        }
+    };
 };
 
 const StyledHeroImage = styled(Image)`
