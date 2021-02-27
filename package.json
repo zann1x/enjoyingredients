@@ -10,6 +10,7 @@
   "dependencies": {
     "@tryghost/content-api": "^1.4.14",
     "babel-plugin-styled-components": "^1.11.1",
+    "cross-env": "^7.0.3",
     "next": "^10.0.7",
     "next-i18next": "^8.0.2",
     "react": "^17.0.1",
@@ -38,7 +39,7 @@
   },
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "start": "next start",
     "type-check": "tsc"
