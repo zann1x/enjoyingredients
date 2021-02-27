@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import styled from 'styled-components';
@@ -21,9 +22,11 @@ const Navbar = () => {
             <StyledNavMenu>
                 <Link href="/">
                     <StyledLogo
-                        src={'/img/logo_oneline.png'}
+                        src={'/img/logo.png'}
                         alt={config.siteTitle}
                         width="200"
+                        height="auto"
+                        layout="responsive"
                     />
                 </Link>
                 <StyledBurgerMenuDiv>
@@ -114,7 +117,7 @@ const StyledNavLinkDiv = styled.div`
         props.isopen === 'true' ? `display: block;` : `display: none;`}
 `;
 
-const StyledLogo = styled.img`
+const StyledLogo = styled(Image)`
     color: ${({ theme }) => theme.color.black};
 `;
 
