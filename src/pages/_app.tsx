@@ -1,10 +1,10 @@
-import type { AppProps } from 'next/app';
+import { AppPropsType } from 'next/dist/next-server/lib/utils';
 import { appWithTranslation } from 'next-i18next';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import '../styles/main.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppPropsType) {
     return (
         <>
             <GlobalStyle />
