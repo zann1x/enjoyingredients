@@ -30,7 +30,7 @@ const Recipes = ({ data: { allCategories, allPosts } }: RecipesProps) => {
 
             <CenteredContent>
                 {/* TODO: not all posts are necessarily in a category */}
-                {allCategories.nodes.map((category) => {
+                {allCategories.map((category) => {
                     const i18nCategoryName = mapCategorySlugToI18nKey(
                         category.slug,
                     );
@@ -41,7 +41,7 @@ const Recipes = ({ data: { allCategories, allPosts } }: RecipesProps) => {
                             </StyledHeading>
                             <StyledSeparator></StyledSeparator>
 
-                            {allPosts.nodes.map((post) => {
+                            {allPosts.map((post) => {
                                 const renderPost = post.tags.filter((tag) => {
                                     // Category IDs always start with 'Ghost__Tag__' and end with numbers
                                     const categoryId = category.id.replace(

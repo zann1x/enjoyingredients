@@ -87,7 +87,7 @@ export default BlogPost;
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const posts = (await getAllPostsRaw()) || [];
-    const paths = posts.map((post) => `${EUrlType.BLOG_POST}/${post.slug}`);
+    const paths = posts.map((post) => `${EUrlType.BLOG_POST}${post.slug}`);
 
     return { paths, fallback: false };
 };

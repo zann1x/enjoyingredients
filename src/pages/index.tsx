@@ -21,10 +21,10 @@ export const Index = ({ latestPosts }: IndexProps) => {
     const { t } = useTranslation('common');
 
     let displayedContent;
-    if (latestPosts.nodes.length === 0) {
+    if (latestPosts.length === 0) {
         displayedContent = <StyledText>{t('empty_site')}</StyledText>;
     } else {
-        displayedContent = latestPosts.nodes.map((post: any, index: number) => {
+        displayedContent = latestPosts.map((post: any, index: number) => {
             if (index < 5) {
                 return (
                     <StyledTeaserCardArea key={post.id}>
@@ -46,7 +46,7 @@ export const Index = ({ latestPosts }: IndexProps) => {
 
             <CenteredContent>{displayedContent}</CenteredContent>
 
-            {latestPosts.nodes.length > 5 && (
+            {latestPosts.length > 5 && (
                 <StyledMoreButton href={EUrlType.BLOG_CATEGORY}>
                     {t('startpage_more_posts')}
                 </StyledMoreButton>
