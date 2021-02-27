@@ -12,13 +12,11 @@ import { getAllPostsWithTags, getAllTagsWithPosts } from '~/lib/ghost-api';
 import { GetStaticProps } from 'next';
 
 interface RecipesProps {
-    data: {
-        allCategories: any;
-        allPosts: any;
-    };
+    allCategories: any;
+    allPosts: any;
 }
 
-const Recipes = ({ data: { allCategories, allPosts } }: RecipesProps) => {
+const Recipes = ({ allCategories, allPosts }: RecipesProps) => {
     const { t } = useTranslation('common');
 
     return (
