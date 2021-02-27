@@ -1,15 +1,8 @@
+const { i18n } = require('./next-i18next.config')
+
 module.exports = {
     compress: false,
-    i18n: {
-        locales: ['de'],
-        defaultLocale: 'de',
-        domains: [
-            {
-                domain: 'enjoyingredients.de',
-                defaultLocale: 'de',
-            },
-        ],
-    },
+    i18n,
     // TODO: Maybe add this or let Vercel handle this or something?
     //       See https://nextjs.org/docs/basic-features/image-optimization#configuration
     // images: {
