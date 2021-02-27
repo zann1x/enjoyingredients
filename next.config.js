@@ -5,8 +5,8 @@ module.exports = {
     i18n,
     // TODO: Maybe add this or let Vercel handle this or something?
     //       See https://nextjs.org/docs/basic-features/image-optimization#configuration
-    // images: {
-    //     domain: ['cms.enjoyingredients.com']
-    // },
+    images: {
+        domains: ['cms.enjoyingredients.com'],
+    },
     reactStrictMode: true,
 };
