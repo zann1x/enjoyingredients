@@ -11,6 +11,7 @@
     "@tryghost/content-api": "^1.4.14",
     "babel-plugin-styled-components": "^1.11.1",
     "next": "^10.0.7",
+    "next-i18next": "^8.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
