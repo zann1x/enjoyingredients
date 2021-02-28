@@ -77,6 +77,10 @@ const StyledPostHeading = styled.h1`
     text-align: center;
     font-style: italic;
     margin-bottom: 1rem;
+
+    @media (max-width: 500px) {
+        font-size: ${({ theme }) => theme.fontSize.h2};
+    }
 `;
 
 const StyledEndPostDiv = styled.div`
