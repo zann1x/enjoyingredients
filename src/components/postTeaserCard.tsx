@@ -47,7 +47,6 @@ const PostTeaserCard = ({ post }: PostTeaserCardProps) => {
                                 height="auto"
                                 objectFit="cover"
                                 objectPosition="50% 50%"
-                                priority={true}
                             />
                         </StyledFeatureImgDiv>
                     </a>

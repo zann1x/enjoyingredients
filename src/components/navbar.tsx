@@ -25,6 +25,7 @@ const Navbar = () => {
                                 alt={config.siteTitle}
                                 width="232.8px"
                                 height="40px"
+                                priority={true}
                             />
                         </StyledLogoDiv>
                     </a>

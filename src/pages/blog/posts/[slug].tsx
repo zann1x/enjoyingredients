@@ -116,7 +116,7 @@ const StyledHeroImageDiv = styled.div`
     position: relative;
 
     &:before {
-        width: 100vh;
+        width: 100vw;
     }
 `;
 
