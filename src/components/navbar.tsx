@@ -21,7 +21,8 @@ const Navbar = ({ siteTitle }) => {
                     <StyledLogo
                         src={'/img/logo_oneline.png'}
                         alt={siteTitle}
-                        width="200"
+                        width="232.8px"
+                        height="40px"
                     />
                 </Link>
                 <StyledBurgerMenuDiv>
