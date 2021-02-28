@@ -25,8 +25,8 @@ const Navbar = () => {
                         <StyledLogo
                             src={'/img/logo.png'}
                             alt={config.siteTitle}
-                            width="291px"
-                            height="50px"
+                            width="232.8px"
+                            height="40px"
                         />
                     </a>
                 </Link>
