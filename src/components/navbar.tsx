@@ -56,14 +56,16 @@ const Navbar = () => {
 
             <StyledNavLinkDiv isopen={isOpen ? 'true' : ''}>
                 <StyledNavLink
-                    isselected={router.asPath.endsWith(EUrlType.ABOUT)}
+                    isselected={router.asPath.indexOf(EUrlType.ABOUT) === 0}
                 >
                     <Link href={EUrlType.ABOUT}>
                         <a>{t('navbar_about')}</a>
                     </Link>
                 </StyledNavLink>
                 <StyledNavLink
-                    isselected={router.asPath.endsWith(EUrlType.BLOG_RECIPES)}
+                    isselected={
+                        router.asPath.indexOf(EUrlType.BLOG_RECIPES) === 0
+                    }
                 >
                     <Link href={EUrlType.BLOG_RECIPES}>
                         <a>{t('navbar_recipes')}</a>
