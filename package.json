@@ -1,9 +1,7 @@
 {
   "name": "enjoyingredients",
   "private": true,
-  "description": "EnjoyIngredients - the other food blog",
   "version": "1.0.0",
-  "author": "Lukas Zanner <mail@lukaszanner.de>",
   "bugs": {
     "url": "https://github.com/zann1x/enjoyingredients/issues"
   },
@@ -44,12 +42,6 @@
     "prettier": "^2.2.1",
     "tailwindcss": "^1.7.3"
   },
-  "homepage": "https://enjoyingredients.com/",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zann1x/enjoyingredients.git"
