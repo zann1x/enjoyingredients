@@ -63,7 +63,6 @@ export const BlogPost = ({ post }: BlogPostProps) => {
                         </StyledPublishingDate>
                     </header>
                     <StyledPostContent
-                        className="ghost-content load-external-scripts"
                         dangerouslySetInnerHTML={{ __html: post.html }}
                     />
                     <StyledEndPostDiv />
@@ -173,6 +172,15 @@ const StyledPostContent = styled.section`
         font-size: ${({ theme }) => theme.fontSize.h3};
         font-weight: ${({ theme }) => theme.fontWeight.f500};
         padding: 1.125rem 0 0.3rem 0;
+    }
+
+    th,
+    td {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #f8f8f8;
     }
 
     figure.kg-card {
