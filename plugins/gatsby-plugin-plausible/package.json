@@ -1,6 +1,0 @@
-{
-  "name": "gatsby-plugin-plausible",
-  "version": "1.0.0",
-  "description": "Plugin to add Plausible Analytics to the site",
-  "main": "index.js"
-}
