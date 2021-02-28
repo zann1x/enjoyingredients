@@ -15,7 +15,6 @@ const NotFound: React.FC = () => {
     const plausible = usePlausible();
 
     useEffect(() => {
-        console.log('thats a 404 m8');
         plausible('404', {
             props: { path: window.location.pathname },
         });
