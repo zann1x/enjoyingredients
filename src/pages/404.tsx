@@ -8,28 +8,31 @@ import styled from 'styled-components';
 import CenteredContent from '~/layouts/centeredContent';
 import SiteLayout from '~/layouts/siteLayout';
 import config from '~/config';
+import { usePlausible } from '~/packages/next-plausible';
 
 const NotFound: React.FC = () => {
     const { t } = useTranslation('common');
+    const plausible = usePlausible();
 
     useEffect(() => {
-        if (window.plausible) {
-            window.plausible('404', {
-                props: { path: document.location.pathname },
-            });
-        }
-    });
+        console.log('thats a 404 m8');
+        plausible('404', {
+            props: { path: window.location.pathname },
+        });
+    }, []);
 
     return (
-        <SiteLayout>
+        <>
             <Head>
                 <title>{`${t('404_title')} - ${config.siteTitle}`}</title>
                 <meta name="robots" content="noindex, nofollow, noarchive" />
             </Head>
-            <CenteredContent>
-                <StyledText>{t('404_not_found')}</StyledText>
-            </CenteredContent>
-        </SiteLayout>
+            <SiteLayout>
+                <CenteredContent>
+                    <StyledText>{t('404_not_found')}</StyledText>
+                </CenteredContent>
+            </SiteLayout>
+        </>
     );
 };
 

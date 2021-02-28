@@ -3,13 +3,17 @@ import { appWithTranslation } from 'next-i18next';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import '../styles/main.css';
+import PlausibleProvider from '~/packages/next-plausible';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
             <GlobalStyle />
             <ThemeProvider theme={theme}>
-                <Component {...pageProps} />
+                <PlausibleProvider>
+                    <Component {...pageProps} />
+                </PlausibleProvider>
             </ThemeProvider>
         </>
     );
