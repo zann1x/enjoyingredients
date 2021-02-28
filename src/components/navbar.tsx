@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
@@ -6,21 +6,18 @@ import styled from 'styled-components';
 
 import config from '~/config';
 import { EUrlType } from '~/utils/createPathFromSlug';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [pathname, setPathname] = useState('');
-    // TODO: useRouter
-    useEffect(() => {
-        setPathname(window.location.pathname);
-    }, [pathname]);
+    const router = useRouter();
 
     const { t } = useTranslation('common');
 
     return (
         <StyledNav>
             <StyledNavMenu>
-                <Link href="/">
+                <Link href={EUrlType.STARTPAGE}>
                     <a>
                         <StyledLogoDiv>
                             <Image
@@ -59,16 +56,14 @@ const Navbar = () => {
 
             <StyledNavLinkDiv isopen={isOpen ? 'true' : ''}>
                 <StyledNavLink
-                    isselected={pathname.endsWith(EUrlType.ABOUT) ? 'true' : ''}
+                    isselected={router.asPath.endsWith(EUrlType.ABOUT)}
                 >
                     <Link href={EUrlType.ABOUT}>
                         <a>{t('navbar_about')}</a>
                     </Link>
                 </StyledNavLink>
                 <StyledNavLink
-                    isselected={
-                        pathname.endsWith(EUrlType.BLOG_RECIPES) ? 'true' : ''
-                    }
+                    isselected={router.asPath.endsWith(EUrlType.BLOG_RECIPES)}
                 >
                     <Link href={EUrlType.BLOG_RECIPES}>
                         <a>{t('navbar_recipes')}</a>
@@ -100,11 +95,7 @@ const StyledNavLink = styled.div`
         }
     }
 
-    ${(props) =>
-        props.isselected === 'true' &&
-        `
-        text-decoration: underline;
-    `}
+    text-decoration: ${(props) => (props.isselected ? 'underline' : 'none')};
 `;
 
 const StyledNavLinkDiv = styled.div`
