@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import config from '~/config';
+import { EUrlType } from '~/utils/createPathFromSlug';
 
 interface SEOProps {
     title: string;
@@ -39,7 +40,9 @@ const SEO = ({
 
     canonical = canonical
         ? canonical
-        : `${getBaseURLForLocale(router.locale)}${pathname}`;
+        : `${getBaseURLForLocale(router.locale)}${
+              pathname !== EUrlType.STARTPAGE ? pathname : ''
+          }`;
 
     // TODO: potentially add hreflang
     return (

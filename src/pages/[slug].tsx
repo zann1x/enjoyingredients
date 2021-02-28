@@ -50,7 +50,7 @@ export default Page;
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const pages = (await getAllPagesRaw()) || [];
-    const paths = pages.map((page) => `${EUrlType.PAGE}${page.slug}`);
+    const paths = pages.map((page) => `/${page.slug}`);
 
     return { paths, fallback: false };
 };
