@@ -20,8 +20,10 @@ const CategoryButton = ({ slug }: CategoryButtonProps) => {
 
     if (i18nCategoryName !== '') {
         return (
-            <StyledLink href={categoryPath}>
-                <a>{t(i18nCategoryName)}</a>
+            <StyledLink>
+                <Link href={categoryPath}>
+                    <a>{t(i18nCategoryName)}</a>
+                </Link>
             </StyledLink>
         );
     } else {
@@ -32,7 +34,7 @@ const CategoryButton = ({ slug }: CategoryButtonProps) => {
 
 export default CategoryButton;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.div`
     display: inline-block;
     border-radius: 9999px;
     padding: 0.25rem 0.75rem;

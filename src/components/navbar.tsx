@@ -56,19 +56,15 @@ const Navbar = () => {
             </StyledNavMenu>
 
             <StyledNavLinkDiv isopen={isOpen ? 'true' : ''}>
-                <StyledNavLink
-                    href={EUrlType.ABOUT}
-                    isselected={pathname.endsWith(EUrlType.ABOUT) ? 'true' : ''}
-                >
-                    <a>{t('navbar_about')}</a>
+                <StyledNavLink isselected={pathname.endsWith(EUrlType.ABOUT) ? 'true' : ''}>
+                    <Link href={EUrlType.ABOUT}>
+                        <a>{t('navbar_about')}</a>
+                    </Link>
                 </StyledNavLink>
-                <StyledNavLink
-                    href={EUrlType.BLOG_RECIPES}
-                    isselected={
-                        pathname.endsWith(EUrlType.BLOG_RECIPES) ? 'true' : ''
-                    }
-                >
-                    {t('navbar_recipes')}
+                <StyledNavLink isselected={pathname.endsWith(EUrlType.BLOG_RECIPES) ? 'true' : ''}>
+                    <Link href={EUrlType.BLOG_RECIPES}>
+                        <a>{t('navbar_recipes')}</a>
+                    </Link>
                 </StyledNavLink>
             </StyledNavLinkDiv>
         </StyledNav>
@@ -77,7 +73,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-const StyledNavLink = styled(Link)`
+const StyledNavLink = styled.div`
     display: block;
     padding: 0.25rem 0.5rem;
     color: ${({ theme }) => theme.color.black};
@@ -131,6 +127,7 @@ const StyledBurgerMenuIcon = styled.svg`
 const StyledBurgerMenuButton = styled.button`
     display: block;
     padding: 0.25rem;
+    padding-top: 0;
     border-radius: 0.25rem;
     color: ${({ theme }) => theme.color.gray900};
 
@@ -155,8 +152,10 @@ const StyledNavMenu = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
+    padding-top: 1.5rem;
     @media (min-width: 640px) {
         padding: 0;
+        padding-top: 0.5rem;
     }
 `;
 
