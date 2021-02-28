@@ -111,11 +111,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const StyledHeroImageDiv = styled.div`
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    max-height: 70vh;
+    height: 80vh;
     width: 100%;
 
     position: relative;
