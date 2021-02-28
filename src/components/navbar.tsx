@@ -26,6 +26,7 @@ const Navbar = () => {
                                 width="232.8px"
                                 height="40px"
                                 priority={true}
+                                quality="100"
                             />
                         </StyledLogoDiv>
                     </a>
