@@ -12,7 +12,6 @@
     "gatsby-plugin-catch-links": "^2.3.11",
     "gatsby-plugin-ghost-images": "^1.5.2",
     "gatsby-plugin-intl": "^0.3.3",
-    "gatsby-plugin-postcss": "^2.3.11",
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-sharp": "^2.6.27",
     "gatsby-plugin-styled-components": "^3.3.10",
@@ -39,8 +38,7 @@
     "@types/react-dom": "^17.0.1",
     "gatsby-plugin-force-trailing-slashes": "^1.0.4",
     "husky": "^5.0.9",
-    "prettier": "^2.2.1",
-    "tailwindcss": "^1.7.3"
+    "prettier": "^2.2.1"
   },
   "repository": {
     "type": "git",
