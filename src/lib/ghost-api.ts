@@ -1,8 +1,10 @@
 import GhostContentAPI from '@tryghost/content-api';
 
+const config = require('~/../.ghost');
+
 const api = new GhostContentAPI({
-    url: process.env.GHOST_API_URL,
-    key: process.env.GHOST_API_KEY,
+    url: config.GHOST_API_URL,
+    key: config.GHOST_API_KEY,
     version: 'v3',
 });
 
