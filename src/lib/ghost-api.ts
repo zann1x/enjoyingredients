@@ -30,7 +30,7 @@ export async function getAllTagsWithPosts() {
         order: 'slug ASC',
     });
 
-    return tags.filter(tag => tag.count.posts > 0);
+    return tags.filter((tag) => tag.count.posts > 0);
 }
 
 export async function getAllPostsRaw() {

@@ -58,12 +58,18 @@ const Navbar = () => {
             </StyledNavMenu>
 
             <StyledNavLinkDiv isopen={isOpen ? 'true' : ''}>
-                <StyledNavLink isselected={pathname.endsWith(EUrlType.ABOUT) ? 'true' : ''}>
+                <StyledNavLink
+                    isselected={pathname.endsWith(EUrlType.ABOUT) ? 'true' : ''}
+                >
                     <Link href={EUrlType.ABOUT}>
                         <a>{t('navbar_about')}</a>
                     </Link>
                 </StyledNavLink>
-                <StyledNavLink isselected={pathname.endsWith(EUrlType.BLOG_RECIPES) ? 'true' : ''}>
+                <StyledNavLink
+                    isselected={
+                        pathname.endsWith(EUrlType.BLOG_RECIPES) ? 'true' : ''
+                    }
+                >
                     <Link href={EUrlType.BLOG_RECIPES}>
                         <a>{t('navbar_recipes')}</a>
                     </Link>
