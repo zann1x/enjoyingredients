@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface CenteredContentProps {
-    children: any;
+    children: ReactNode | ReactNode[];
 }
 
 const CenteredContent = ({ children }: CenteredContentProps) => {

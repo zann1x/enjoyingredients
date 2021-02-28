@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Footer from '~/components/footer';
 import Navbar from '~/components/navbar';
 
 interface SiteLayoutProps {
-    children: any;
+    children: ReactNode | ReactNode[];
 }
 
 const SiteLayout = ({ children }: SiteLayoutProps) => {
