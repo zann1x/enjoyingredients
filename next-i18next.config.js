@@ -4,7 +4,7 @@ module.exports = {
         defaultLocale: 'de',
         domains: [
             {
-                domain: 'enjoyingredients.de',
+                domain: 'www.enjoyingredients.de',
                 defaultLocale: 'de',
             },
         ],

@@ -18,9 +18,9 @@ const getBaseURLForLocale = (locale) => {
 
     switch (locale) {
         case 'de':
-            return 'https://enjoyingredients.de';
+            return 'https://www.enjoyingredients.de';
         default:
-            return 'https://enjoyingredients.com';
+            return 'https://www.enjoyingredients.com';
     }
 };
 
