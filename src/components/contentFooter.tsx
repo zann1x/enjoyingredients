@@ -10,7 +10,7 @@ const ContentFooter = () => {
         <>
             <span>{contact_us}</span>
             <StyledExtLink href="mailto:info@enjoyingredients.de">
-                mail@enjoyingredients.com
+                info@enjoyingredients.de
             </StyledExtLink>
         </>
     );
