@@ -124,6 +124,10 @@ const StyledPostHeading = styled.h1`
     font-weight: ${theme.fontWeight.f600};
     text-align: center;
     font-style: italic;
+
+    @media (max-width: 500px) {
+        font-size: ${theme.fontSize.h2};
+    }
 `;
 
 const StyledPublishingDate = styled.p`
