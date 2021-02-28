@@ -39,7 +39,7 @@ const SEO = ({
 
     canonical = canonical
         ? canonical
-        : `${getBaseURLForLocale(router.locale)}/${pathname}`;
+        : `${getBaseURLForLocale(router.locale)}${pathname}`;
 
     // TODO: potentially add hreflang
     return (
