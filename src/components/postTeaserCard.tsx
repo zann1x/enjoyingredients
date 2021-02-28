@@ -38,16 +38,18 @@ const PostTeaserCard = ({ post }: PostTeaserCardProps) => {
             {post.feature_image && (
                 <Link href={postUrl}>
                     <a>
-                        <StyledFeatureImg
-                            src={post.feature_image}
-                            alt="Teaser Image"
-                            layout="responsive"
-                            width="auto"
-                            height="auto"
-                            objectFit="cover"
-                            objectPosition="50% 50%"
-                            priority={true}
-                        />
+                        <StyledFeatureImgDiv>
+                            <Image
+                                src={post.feature_image}
+                                alt="Teaser Image"
+                                layout="responsive"
+                                width="auto"
+                                height="auto"
+                                objectFit="cover"
+                                objectPosition="50% 50%"
+                                priority={true}
+                            />
+                        </StyledFeatureImgDiv>
                     </a>
                 </Link>
             )}
@@ -81,9 +83,9 @@ const StyledHeading = styled.p`
     font-weight: ${({ theme }) => theme.fontWeight.f700};
 `;
 
-const StyledFeatureImg = styled(Image)`
+const StyledFeatureImgDiv = styled.div`
     border-radius: 0.5rem 0.5rem 0 0;
-    max-height: 350px;
+    overflow: hidden;
 `;
 
 const StyledExcerpt = styled.p`

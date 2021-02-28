@@ -42,14 +42,16 @@ export const BlogPost = ({ post }: BlogPostProps) => {
             />
 
             {post.feature_image && (
-                <StyledHeroImage
-                    src={post.feature_image}
-                    alt="Feature Image"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="50% 50%"
-                    priority={true}
-                />
+                <StyledHeroImageDiv>
+                    <Image
+                        src={post.feature_image}
+                        alt="Feature Image"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        priority={true}
+                    />
+                </StyledHeroImageDiv>
             )}
 
             <CenteredContent>
@@ -108,7 +110,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     };
 };
 
-const StyledHeroImage = styled(Image)`
+const StyledHeroImageDiv = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

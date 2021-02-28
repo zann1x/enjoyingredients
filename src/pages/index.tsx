@@ -47,9 +47,9 @@ export const Index = ({ latestPosts }: IndexProps) => {
             <CenteredContent>{displayedContent}</CenteredContent>
 
             {latestPosts.length > 5 && (
-                <StyledMoreLink href={EUrlType.BLOG_CATEGORY}>
-                    <a>{t('startpage_more_posts')}</a>
-                </StyledMoreLink>
+                <Link href={EUrlType.BLOG_CATEGORY}>
+                    <StyledMoreLink>{t('startpage_more_posts')}</StyledMoreLink>
+                </Link>
             )}
         </SiteLayout>
     );
@@ -83,7 +83,7 @@ const StyledTeaserCardArea = styled.div`
     margin-left: auto;
 `;
 
-const StyledMoreLink = styled(Link)`
+const StyledMoreLink = styled.a`
     border: 1px solid ${({ theme }) => theme.color.gray600};
     border-radius: 1.5rem;
     margin: 0 auto 1.5rem;

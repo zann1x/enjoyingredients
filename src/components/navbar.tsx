@@ -22,12 +22,14 @@ const Navbar = () => {
             <StyledNavMenu>
                 <Link href="/">
                     <a>
-                        <StyledLogo
-                            src={'/img/logo.png'}
-                            alt={config.siteTitle}
-                            width="232.8px"
-                            height="40px"
-                        />
+                        <StyledLogoDiv>
+                            <Image
+                                src={'/img/logo.png'}
+                                alt={config.siteTitle}
+                                width="232.8px"
+                                height="40px"
+                            />
+                        </StyledLogoDiv>
                     </a>
                 </Link>
                 <StyledBurgerMenuDiv>
@@ -114,7 +116,7 @@ const StyledNavLinkDiv = styled.div`
         props.isopen === 'true' ? `display: block;` : `display: none;`}
 `;
 
-const StyledLogo = styled(Image)`
+const StyledLogoDiv = styled.div`
     color: ${({ theme }) => theme.color.black};
 `;
 
