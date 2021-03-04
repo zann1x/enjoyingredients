@@ -33,7 +33,6 @@ module.exports = {
     },
     plugins: [
         `gatsby-plugin-catch-links`,
-        `gatsby-plugin-force-trailing-slashes`,
         'gatsby-plugin-plausible',
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sharp',

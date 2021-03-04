@@ -1,8 +1,8 @@
 const EUrlType = {
     STARTPAGE: '/',
-    ABOUT: '/about/',
-    BLOG_POST: '/blog/posts/',
-    BLOG_RECIPES: '/blog/recipes/',
+    ABOUT: '/about',
+    BLOG_POST: '/blog/posts',
+    BLOG_RECIPES: '/blog/recipes',
     PAGE: '/',
 };
 
@@ -11,7 +11,7 @@ function createIdPathFromSlug(urlType, slug) {
 }
 
 function createPathFromSlug(urlType, slug) {
-    return urlType + slug + '/';
+    return urlType + '/' + slug;
 }
 
 module.exports = {

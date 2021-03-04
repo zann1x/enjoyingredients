@@ -68,7 +68,7 @@ exports.createPages = async ({ actions, graphql }) => {
     if (pages && Array.isArray(pages.nodes) && pages.nodes.length) {
         pages.nodes.forEach((page) => {
             createPage({
-                path: createPathFromSlug(EUrlType.PAGE, page.slug),
+                path: page.slug,
                 component: pageTemplate,
                 context: {
                     slug: page.slug,
