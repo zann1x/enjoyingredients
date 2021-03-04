@@ -98,6 +98,14 @@ const StyledPostContent = styled.section`
         padding: 1.125rem 0 0.3rem 0;
     }
 
+    th, td {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #f8f8f8;
+    }
+
     figure.kg-card {
         &.kg-image-card {
             padding: 1rem 0;
