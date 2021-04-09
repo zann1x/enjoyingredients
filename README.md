@@ -1,8 +1,8 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/73f01ed1-7664-42a8-9f0a-d53c2cc646cb/deploy-status)](https://app.netlify.com/sites/enjoyingredients/deploys)
 
-<h1 align="center">
-  EnjoyIngredients
-</h1>
+# EnjoyIngredients
+
+![](content/img/startpage.png)
 
 ## 🚀 Quick start
 
