@@ -54,7 +54,7 @@ export const Index: React.FC<IndexProps> = ({
             <CenteredContent>{displayedContent}</CenteredContent>
 
             {latestPosts.nodes.length > 5 && (
-                <StyledMoreButton to={EUrlType.BLOG_CATEGORY}>
+                <StyledMoreButton to={EUrlType.BLOG_RECIPES}>
                     {intl.formatMessage({ id: 'startpage_more_posts' })}
                 </StyledMoreButton>
             )}
