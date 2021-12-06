@@ -10,7 +10,7 @@
         {
             "files": ["*.json", "*.md", "*.yml", "*yaml"],
             "options": {
-                "tabWidth": 2,
+                "tabWidth": 2
             }
         }
     ]

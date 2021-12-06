@@ -50,11 +50,3 @@
 1. **Update the Content API key**
 
    Add a integration for Gatsby in Ghost and copy the generated Content API Key into `.ghost.json`. Also update the API URL to `http://localhost:2368` in this file for the development config.
-
----
-
-Notes
-
-- Husky NPM package
-  - the installation added it to git's core.hooksPath
-  - the installation added a .husky/\_/husky.sh file
